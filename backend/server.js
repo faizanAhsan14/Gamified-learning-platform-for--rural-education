@@ -14,21 +14,11 @@ const PORT = process.env.PORT || 8000;
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: '*', // Allow all origins
-  credentials: false, // Set to false when using wildcard origin
+  origin: 'http://localhost:7000', // Your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-  optionsSuccessStatus: 200
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
-
-// Additional CORS headers for maximum compatibility
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Max-Age', '86400'); // 24 hours
-  next();
-});
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
@@ -47,111 +37,17 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://isurajpanda_db_user:7
 });
 
 // Models
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  grade: { type: String, required: true },
-  profilePicture: { type: String, default: '' },
-  totalPoints: { type: Number, default: 0 },
-      badges: [{
-    name: { type: String },
-    type: { type: String }, // gold, silver, bronze, special
-    earnedAt: { type: Date, default: Date.now },
-    description: { type: String }
-  }],
-  completedModules: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Module' }],
-  moduleProgress: [{
-    moduleId: { type: mongoose.Schema.Types.ObjectId, ref: 'Module' },
-    progress: { type: Number, default: 0 }, // percentage
-    lastAccessed: { type: Date, default: Date.now }
-  }],
-  quizResults: [{
-    quizId: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz' },
-    score: Number,
-    totalQuestions: Number,
-    completedAt: { type: Date, default: Date.now },
-    timeSpent: Number // in seconds
-  }],
-  settings: {
-    dailyReminders: { type: Boolean, default: true },
-    soundEffects: { type: Boolean, default: true },
-    darkMode: { type: Boolean, default: true }
-  },
-  createdAt: { type: Date, default: Date.now },
-  lastActive: { type: Date, default: Date.now }
-});
-
-const moduleSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  subject: { type: String, required: true }, // biology, python, algebra, etc.
-  difficulty: { type: String, enum: ['easy', 'medium', 'hard'], default: 'medium' },
-  estimatedTime: { type: Number, required: true }, // in minutes
-  prerequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Module' }],
-  content: [{
-    type: { type: String, enum: ['text', 'video', 'interactive', 'simulation'] },
-    title: String,
-    content: String, // HTML content or URL
-    duration: Number // in minutes
-  }],
-  learningObjectives: [String],
-  isActive: { type: Boolean, default: true },
-  createdAt: { type: Date, default: Date.now }
-});
-
-const quizSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  moduleId: { type: mongoose.Schema.Types.ObjectId, ref: 'Module' },
-  subject: { type: String, required: true },
-  difficulty: { type: String, enum: ['easy', 'medium', 'hard'], default: 'medium' },
-  timeLimit: { type: Number, required: true }, // in minutes
-  questions: [{
-    question: { type: String, required: true },
-    type: { type: String, enum: ['multiple-choice', 'true-false', 'short-answer'], default: 'multiple-choice' },
-    options: [String], // for multiple choice
-    correctAnswer: { type: String, required: true },
-    explanation: String,
-    points: { type: Number, default: 1 }
-  }],
-  isActive: { type: Boolean, default: true },
-  createdAt: { type: Date, default: Date.now }
-});
-
-const leaderboardSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  grade: { type: String, required: true },
-  totalPoints: { type: Number, required: true },
-  badgeCount: { type: Number, required: true },
-  weeklyPoints: { type: Number, default: 0 },
-  monthlyPoints: { type: Number, default: 0 },
-  lastUpdated: { type: Date, default: Date.now }
-});
-
-// Create models
-const User = mongoose.model('User', userSchema);
-const Module = mongoose.model('Module', moduleSchema);
-const Quiz = mongoose.model('Quiz', quizSchema);
-const Leaderboard = mongoose.model('Leaderboard', leaderboardSchema);
+const User = require('./models/User');
+const Module = require('./models/Module');
+const Quiz = require('./models/Quiz');
+const Leaderboard = require('./models/Leaderboard');
 
 // JWT middleware
-const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
+const { authenticateToken } = require('./middleware/auth');
 
-  if (!token) {
-    return res.status(401).json({ message: 'Access token required' });
-  }
-
-  jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret', (err, user) => {
-    if (err) {
-      return res.status(403).json({ message: 'Invalid or expired token' });
-    }
-    req.user = user;
-    next();
-  });
-};
+// Routes
+const quizRoutes = require('./routes/quizzes');
+app.use('/api/quizzes', quizRoutes);
 
 // Helper function to calculate overall progress
 const calculateOverallProgress = async (userId) => {
@@ -528,7 +424,7 @@ app.get('/api/quizzes', authenticateToken, async (req, res) => {
 });
 
 // Get quiz categories (grouped by subject and grade)
-app.get('/api/quiz-categories', authenticateToken, async (req, res) => {
+app.get('/api/quizzes/categories', authenticateToken, async (req, res) => {
   try {
     const categories = await Quiz.aggregate([
       { $match: { isActive: true } },

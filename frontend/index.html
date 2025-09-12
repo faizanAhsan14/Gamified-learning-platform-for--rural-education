@@ -1461,7 +1461,7 @@
                 this.isExpanded = false; // Always start in slim mode
                 this.isMobile = window.innerWidth < 768;
                 this.isLoading = false;
-                this.backendUrl = 'https://sih-backend-xi.vercel.app';
+                this.backendUrl = 'https://sih-backend-xi.vercel.app'; // Change to your backend URL
                 console.log('Backend URL set to:', this.backendUrl);
                 console.log('Current timestamp:', new Date().toISOString());
                 this.token = localStorage.getItem('stitch_jwt') || null;
@@ -1939,32 +1939,12 @@
             
             async generateBadgesContent() {
                 try {
-                    const response = await fetch('data/achievements.json');
-                    const achievementsData = await response.json();
-                    const definitions = achievementsData.definitions || [];
-                    const awards = achievementsData.awards || [];
-                    
-                    // Get current user info
-                    const currentUser = this.data.dashboard ? this.data.dashboard.user : null;
-                    const currentUserId = currentUser ? (currentUser.id || 'user_' + Date.now()) : null;
-                    
-                    // Get user's earned badges
-                    const userAwards = currentUserId ? awards.filter(a => a.student_id === currentUserId) : [];
-                    const earnedBadgeNames = new Set(userAwards.map(a => a.name));
-                    
-                    const badges = definitions.map(def => {
-                        const isEarned = earnedBadgeNames.has(def.name);
-                        const award = userAwards.find(a => a.name === def.name);
-                        
-                        return {
-                            title: def.name,
-                            description: def.condition,
-                            icon: 'emoji_events',
-                            color: isEarned ? '#FFD700' : '#666666',
-                            status: isEarned ? 'unlocked' : 'locked',
-                            earnedDate: award ? new Date(award.timestamp).toLocaleDateString() : null
-                        };
-                    });
+                    // Use the existing API fetch to get badge data
+                    const badges = await this.apiFetch('/api/badges');
+
+                    if (!badges) {
+                        throw new Error('No badge data returned from API.');
+                    }
                     
                     return `
                             <div class="content-header">
@@ -1975,12 +1955,12 @@
                             <section class="content-section">
                                 <div class="grid-container" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
                                 ${badges.map(badge => `
-                                    <div class="card" style="text-align: center; padding: 1.5rem; ${badge.status === 'locked' ? 'opacity: 0.6;' : ''}">
-                                        <span class="material-symbols-outlined" style="font-size: 3rem; color: ${badge.color}; margin-bottom: 0.75rem; display: block;">${badge.icon}</span>
-                                        <h3 style="margin-bottom: 0.5rem; font-size: 1rem; ${badge.status === 'locked' ? 'color: var(--text-secondary);' : ''}">${badge.title}</h3>
-                                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">${badge.status === 'unlocked' ? 'Earned Badge' : 'Locked Badge'}</p>
+                                    <div class="card" style="text-align: center; padding: 1.5rem; ${!badge.earned ? 'opacity: 0.6;' : ''}">
+                                        <span class="material-symbols-outlined" style="font-size: 3rem; color: ${badge.earned ? '#FFD700' : '#666666'}; margin-bottom: 0.75rem; display: block;">emoji_events</span>
+                                        <h3 style="margin-bottom: 0.5rem; font-size: 1rem; ${!badge.earned ? 'color: var(--text-secondary);' : ''}">${badge.name}</h3>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">${badge.earned ? 'Earned Badge' : 'Locked Badge'}</p>
                                         <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem;">${badge.description}</p>
-                                        ${badge.earnedDate ? `<p style="font-size: 0.7rem; color: var(--primary-color); font-weight: 600;">Earned: ${badge.earnedDate}</p>` : ''}
+                                        ${badge.earnedAt ? `<p style="font-size: 0.7rem; color: var(--primary-color); font-weight: 600;">Earned: ${new Date(badge.earnedAt).toLocaleDateString()}</p>` : ''}
                                     </div>
                                 `).join('')}
                                     </div>
@@ -2212,7 +2192,7 @@
                 const self = this; // Store reference to this
                 try {
                     console.log('Fetching quiz categories from backend...');
-                    const response = await fetch(`${this.backendUrl}/api/quiz-categories`, {
+                    const response = await fetch(`${this.backendUrl}/api/quizzes/categories`, {
                         headers: {
                             'Authorization': `Bearer ${this.token}`,
                             'Content-Type': 'application/json'
