@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduQuest - Login & Sign Up</title>
+    <link rel="icon" href="data:image/x-icon;base64,">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #38e07b;
+            --background-color: #111714;
+            --container-background: #1c2620;
+            --text-color: #ffffff;
+            --text-secondary-color: #9eb7a8;
+            --border-color: #29382f;
+            --input-background: #111714;
+            --input-border-color: #3d5245;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Spline Sans", "Noto Sans", sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Allow wrapping for the mobile menu */
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            position: relative; /* Needed for absolute positioning of mobile menu */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 2rem;
+            height: 2rem;
+            color: var(--primary-color);
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+            letter-spacing: -0.025em;
+        }
+
+        /* Nav container for both mobile and desktop */
+        .nav-container {
+            display: none; /* Hidden on mobile by default */
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            background-color: var(--background-color);
+        }
+        
+        .nav-container.open {
+            display: flex; /* Shown when hamburger is clicked */
+        }
+
+        .main-nav, .header-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .main-nav a, .header-actions a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 0.5rem 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .button {
+            background-color: transparent;
+            font-size: 0.875rem;
+            font-weight: bold;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            border: 1px solid var(--border-color);
+        }
+
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .button-primary {
+            background-color: var(--primary-color);
+            color: var(--background-color) !important;
+            border-color: var(--primary-color);
+        }
+        
+        .button-primary:hover {
+            background-color: var(--primary-color);
+            opacity: 0.9;
+        }
+
+        .menu-button {
+            display: block; /* Visible on mobile */
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+        
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            header {
+                flex-wrap: nowrap;
+                padding: 1rem 2.5rem;
+            }
+
+            .nav-container {
+                display: flex;
+                flex-direction: row;
+                width: auto;
+                padding: 0;
+                background-color: transparent;
+            }
+
+            .main-nav {
+                flex-direction: row;
+                gap: 2rem;
+                width: auto;
+                margin-right: 2rem;
+            }
+
+            .header-actions {
+                flex-direction: row;
+                gap: 1rem;
+                width: auto;
+            }
+            
+            .main-nav a, .header-actions a {
+                padding: 0;
+                width: auto;
+                text-align: left;
+            }
+
+            .header-actions .button {
+                padding: 0.5rem 1rem; /* Restore padding on desktop */
+                border: none;
+            }
+
+            .menu-button {
+                display: none; /* Hidden on desktop */
+            }
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 28rem;
+            margin: auto;
+            background-color: var(--container-background);
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+        
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+
+        .form-header h2 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .form-header p {
+            color: var(--text-secondary-color);
+            margin-top: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            display: block;
+            width: 100%;
+            border-radius: 0.75rem;
+            background-color: var(--input-background);
+            border: 1px solid var(--input-border-color);
+            height: 3rem;
+            padding: 0 1rem;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 1px var(--primary-color);
+        }
+        
+        .form-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-actions a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--background-color);
+            background-color: var(--primary-color);
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-top: 1rem;
+        }
+        
+        .submit-button:hover {
+            opacity: 0.9;
+        }
+
+        .switch-form-text {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        
+        .switch-form-text a {
+            font-weight: 500;
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #signup-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a class="logo" href="#">
+                <div class="logo-icon">
+                    <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+                    </svg>
+                </div>
+                <h1 class="logo-text">EduQuest</h1>
+            </a>
+            
+            <button class="menu-button" id="menu-toggle">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            
+            <div class="nav-container" id="nav-menu">
+                <nav class="main-nav">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Courses</a>
+                    <a href="#">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <a class="button" href="#" id="login-link">Log In</a>
+                    <a class="button button-primary" href="#" id="signup-link">Sign Up</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <!-- Login Form -->
+                <div id="login-form">
+                    <div class="form-header">
+                        <h2>Welcome Back!</h2>
+                        <p>Log in to continue your learning journey.</p>
+                    </div>
+                    <form onsubmit="return false;">
+                        <div class="form-group">
+                           <div class="form-actions">
+                                <label class="form-label" for="login-email">Username or Email</label>
+                            </div>
+                            <input class="form-input" id="login-email" placeholder="you@example.com" required type="email" />
+                        </div>
+                        <div class="form-group">
+                            <div class="form-actions">
+                                <label class="form-label" for="login-password">Password</label>
+                                <a href="#">Forgot password?</a>
+                            </div>
+                            <input class="form-input" id="login-password" placeholder="••••••••" required type="password" />
+                        </div>
+                        <button class="submit-button" type="submit">Log In</button>
+                    </form>
+                    <p class="switch-form-text">
+                        Don't have an account?
+                        <a id="show-signup">Sign up</a>
+                    </p>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signup-form">
+                    <div class="form-header">
+                        <h2>Create an Account</h2>
+                        <p>Start your learning adventure with us.</p>
+                    </div>
+                    <form onsubmit="return false;">
+                        <div class="form-group">
+                            <label class="form-label" for="signup-username">Username</label>
+                            <input class="form-input" id="signup-username" placeholder="yourusername" required type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="signup-email">Email</label>
+                            <input class="form-input" id="signup-email" placeholder="you@example.com" required type="email" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="signup-password">Password</label>
+                            <input class="form-input" id="signup-password" placeholder="••••••••" required type="password" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="signup-grade">Grade Level</label>
+                            <select class="form-input" id="signup-grade" required>
+                                <option value="Grade 9">Grade 9</option>
+                                <option value="Grade 10" selected>Grade 10</option>
+                                <option value="Grade 11">Grade 11</option>
+                                <option value="Grade 12">Grade 12</option>
+                            </select>
+                        </div>
+                        <button class="submit-button" type="submit">Sign Up</button>
+                    </form>
+                    <p class="switch-form-text">
+                        Already have an account?
+                        <a id="show-login">Log in</a>
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        class AuthApp {
+            constructor() {
+                this.backendUrl = 'https://sih25048.vercel.app';
+                this.token = localStorage.getItem('stitch_jwt') || null;
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.checkAuth();
+            }
+
+            checkAuth() {
+                if (this.token) {
+                    // User is already logged in, redirect to dashboard
+                    window.location.href = 'dashboard.html';
+                    return;
+                }
+            }
+
+            bindEvents() {
+                const loginForm = document.getElementById('login-form');
+                const signupForm = document.getElementById('signup-form');
+                const showSignup = document.getElementById('show-signup');
+                const showLogin = document.getElementById('show-login');
+                const loginLink = document.getElementById('login-link');
+                const signupLink = document.getElementById('signup-link');
+                const menuToggle = document.getElementById('menu-toggle');
+                const navMenu = document.getElementById('nav-menu');
+
+                // Form switching
+                showSignup.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginForm.style.display = 'none';
+                    signupForm.style.display = 'block';
+                });
+
+                signupLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginForm.style.display = 'none';
+                    signupForm.style.display = 'block';
+                });
+
+                showLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginForm.style.display = 'block';
+                    signupForm.style.display = 'none';
+                });
+
+                loginLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginForm.style.display = 'block';
+                    signupForm.style.display = 'none';
+                });
+                
+                // Mobile menu toggle
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('open');
+                });
+
+                // Login form submission
+                const loginFormElement = loginForm.querySelector('form');
+                loginFormElement.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    await this.handleLogin(loginFormElement);
+                });
+
+                // Signup form submission
+                const signupFormElement = signupForm.querySelector('form');
+                signupFormElement.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    await this.handleSignup(signupFormElement);
+                });
+
+                // Show login form by default
+                loginForm.style.display = 'block';
+            }
+
+            async handleLogin(form) {
+                const formData = new FormData(form);
+                const email = formData.get('email') || document.getElementById('login-email').value;
+                const password = formData.get('password') || document.getElementById('login-password').value;
+
+                try {
+                    const response = await fetch(`${this.backendUrl}/api/auth/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Login failed');
+                    }
+
+                    const data = await response.json();
+                    this.token = data.token;
+                    localStorage.setItem('stitch_jwt', this.token);
+                    
+                    // Redirect to dashboard
+                    window.location.href = 'dashboard.html';
+                } catch (error) {
+                    this.showError(`Login failed: ${error.message}`);
+                }
+            }
+
+            async handleSignup(form) {
+                const formData = new FormData(form);
+                const name = formData.get('name') || document.getElementById('signup-username').value;
+                const email = formData.get('email') || document.getElementById('signup-email').value;
+                const password = formData.get('password') || document.getElementById('signup-password').value;
+                const grade = formData.get('grade') || document.getElementById('signup-grade').value;
+
+                try {
+                    const response = await fetch(`${this.backendUrl}/api/auth/register`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, email, password, grade })
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Registration failed');
+                    }
+
+                    // Registration successful, redirect to index
+                    window.location.href = 'index.html';
+                } catch (error) {
+                    this.showError(`Registration failed: ${error.message}`);
+                }
+            }
+
+            showError(message) {
+                // Create or update error message
+                let errorDiv = document.querySelector('.error-message');
+                if (!errorDiv) {
+                    errorDiv = document.createElement('div');
+                    errorDiv.className = 'error-message';
+                    errorDiv.style.cssText = `
+                        background-color: #ef4444;
+                        color: white;
+                        padding: 1rem;
+                        border-radius: 0.5rem;
+                        margin-bottom: 1rem;
+                        text-align: center;
+                    `;
+                    document.querySelector('.form-container').insertBefore(errorDiv, document.querySelector('.form-container').firstChild);
+                }
+                errorDiv.textContent = message;
+                setTimeout(() => errorDiv.remove(), 5000);
+            }
+
+            showSuccess(message) {
+                // Create or update success message
+                let successDiv = document.querySelector('.success-message');
+                if (!successDiv) {
+                    successDiv = document.createElement('div');
+                    successDiv.className = 'success-message';
+                    successDiv.style.cssText = `
+                        background-color: #10b981;
+                        color: white;
+                        padding: 1rem;
+                        border-radius: 0.5rem;
+                        margin-bottom: 1rem;
+                        text-align: center;
+                    `;
+                    document.querySelector('.form-container').insertBefore(successDiv, document.querySelector('.form-container').firstChild);
+                }
+                successDiv.textContent = message;
+                setTimeout(() => successDiv.remove(), 5000);
+            }
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new AuthApp();
+        });
+    </script>
+</body>
+</html>
