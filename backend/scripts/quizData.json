@@ -1,0 +1,984 @@
+{
+  "quizzes": [
+    {
+      "title": "Class 6 Mathematics",
+      "description": "A quiz on the fundamentals of mathematics for Class 6.",
+      "subject": "Mathematics",
+      "grade": "6",
+      "difficulty": "easy",
+      "timeLimit": 20,
+      "questions": [
+        { "question": "What is the successor of 99?", "options": ["98", "100", "101", "99"], "correctAnswer": "100", "explanation": "The successor is the number that comes just after a number." },
+        { "question": "What is the smallest prime number?", "options": ["0", "1", "2", "3"], "correctAnswer": "2", "explanation": "A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself." },
+        { "question": "How many sides does a hexagon have?", "options": ["5", "6", "7", "8"], "correctAnswer": "6", "explanation": "A hexagon is a six-sided polygon." },
+        { "question": "What is the value of 5 x (4 + 3)?", "options": ["23", "35", "27", "40"], "correctAnswer": "35", "explanation": "Using BODMAS, we first solve the bracket (4+3=7), then multiply by 5." },
+        { "question": "What is 3/4 as a decimal?", "options": ["0.25", "0.50", "0.75", "1.00"], "correctAnswer": "0.75", "explanation": "3 divided by 4 is 0.75." },
+        { "question": "What is the perimeter of a square with a side length of 5 cm?", "options": ["15 cm", "20 cm", "25 cm", "30 cm"], "correctAnswer": "20 cm", "explanation": "The perimeter of a square is 4 times the side length." },
+        { "question": "Which of these is not a polygon?", "options": ["Triangle", "Square", "Circle", "Pentagon"], "correctAnswer": "Circle", "explanation": "A polygon is a plane figure with at least three straight sides and angles, and typically five or more." },
+        { "question": "What is the Roman numeral for 50?", "options": ["C", "L", "D", "M"], "correctAnswer": "L", "explanation": "L represents 50 in Roman numerals." },
+        { "question": "What is 20% of 100?", "options": ["10", "20", "30", "40"], "correctAnswer": "20", "explanation": "20% of 100 is (20/100) * 100 = 20." },
+        { "question": "An angle greater than 90 degrees and less than 180 degrees is called?", "options": ["Acute angle", "Obtuse angle", "Right angle", "Reflex angle"], "correctAnswer": "Obtuse angle", "explanation": "An obtuse angle is more than 90° but less than 180°." }
+      ]
+    },
+    {
+      "title": "Class 6 Science",
+      "description": "A quiz on the fundamentals of science for Class 6.",
+      "subject": "Science",
+      "grade": "6",
+      "difficulty": "easy",
+      "timeLimit": 20,
+      "questions": [
+        { "question": "Which part of a plant absorbs water and nutrients from the soil?", "options": ["Leaf", "Stem", "Root", "Flower"], "correctAnswer": "Root", "explanation": "Roots anchor the plant and absorb water and nutrients." },
+        { "question": "What is the process by which plants make their own food?", "options": ["Respiration", "Photosynthesis", "Transpiration", "Germination"], "correctAnswer": "Photosynthesis", "explanation": "Photosynthesis is the process where plants use sunlight, water, and carbon dioxide to create their own food." },
+        { "question": "Which of these is a source of Vitamin C?", "options": ["Milk", "Egg", "Orange", "Bread"], "correctAnswer": "Orange", "explanation": "Citrus fruits like oranges are a rich source of Vitamin C." },
+        { "question": "What is the solid form of water?", "options": ["Vapor", "Ice", "Liquid", "Gas"], "correctAnswer": "Ice", "explanation": "Water in its solid state is called ice." },
+        { "question": "Which gas do we breathe in?", "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], "correctAnswer": "Oxygen", "explanation": "Humans and most other animals need oxygen to survive." },
+        { "question": "What is the center of our solar system?", "options": ["Earth", "Moon", "Sun", "Mars"], "correctAnswer": "Sun", "explanation": "The Sun is the star at the center of our solar system." },
+        { "question": "Which of these is a conductor of electricity?", "options": ["Wood", "Plastic", "Rubber", "Copper"], "correctAnswer": "Copper", "explanation": "Metals like copper are good conductors of electricity." },
+        { "question": "What is the main function of the heart?", "options": ["To pump blood", "To digest food", "To help us breathe", "To help us think"], "correctAnswer": "To pump blood", "explanation": "The heart pumps blood throughout the body." },
+        { "question": "Which of these is a herbivore?", "options": ["Lion", "Tiger", "Cow", "Wolf"], "correctAnswer": "Cow", "explanation": "Herbivores are animals that feed on plants." },
+        { "question": "What is the boiling point of water?", "options": ["0°C", "50°C", "100°C", "150°C"], "correctAnswer": "100°C", "explanation": "Water boils at 100 degrees Celsius at sea level." }
+      ]
+    },
+    {
+      "title": "Class 6 English",
+      "description": "A quiz on the fundamentals of English for Class 6.",
+      "subject": "English",
+      "grade": "6",
+      "difficulty": "easy",
+      "timeLimit": 20,
+      "questions": [
+        { "question": "What is the plural of 'child'?", "options": ["Childs", "Children", "Childes", "Childer"], "correctAnswer": "Children", "explanation": "The plural of child is children." },
+        { "question": "Which of these is a vowel?", "options": ["B", "C", "D", "A"], "correctAnswer": "A", "explanation": "The vowels in the English alphabet are A, E, I, O, U." },
+        { "question": "What is the opposite of 'happy'?", "options": ["Sad", "Angry", "Excited", "Tired"], "correctAnswer": "Sad", "explanation": "Sad is the opposite of happy." },
+        { "question": "Which word is a noun?", "options": ["Run", "Quickly", "Book", "Beautiful"], "correctAnswer": "Book", "explanation": "A noun is a word that represents a person, place, thing, or idea." },
+        { "question": "What is the past tense of 'go'?", "options": ["Goed", "Gone", "Went", "Going"], "correctAnswer": "Went", "explanation": "The past tense of go is went." },
+        { "question": "Which sentence is correct?", "options": ["She is a good girl.", "She are a good girl.", "She be a good girl.", "She is a good girls."], "correctAnswer": "She is a good girl.", "explanation": "The verb 'is' agrees with the singular subject 'She'." },
+        { "question": "What is a synonym for 'big'?", "options": ["Small", "Large", "Tiny", "Short"], "correctAnswer": "Large", "explanation": "A synonym is a word that has the same or nearly the same meaning as another word." },
+        { "question": "Which of these is a pronoun?", "options": ["John", "He", "London", "House"], "correctAnswer": "He", "explanation": "A pronoun is a word that is used instead of a noun or noun phrase." },
+        { "question": "What do you call a person who writes books?", "options": ["Author", "Doctor", "Teacher", "Singer"], "correctAnswer": "Author", "explanation": "An author is a writer of a book, article, or report." },
+        { "question": "What is the comparative form of 'good'?", "options": ["Gooder", "Best", "Better", "More good"], "correctAnswer": "Better", "explanation": "The comparative form of good is better." }
+      ]
+    },
+    {
+      "title": "Class 6 Social Science",
+      "description": "A quiz on the fundamentals of Social Science for Class 6.",
+      "subject": "Social Science",
+      "grade": "6",
+      "difficulty": "easy",
+      "timeLimit": 20,
+      "questions": [
+        { "question": "Which planet is known as the 'Red Planet'?", "options": ["Earth", "Mars", "Jupiter", "Venus"], "correctAnswer": "Mars", "explanation": "Mars is called the Red Planet because of the iron oxide prevalent on its surface, which gives it a reddish appearance." },
+        { "question": "What is the capital of India?", "options": ["Mumbai", "Kolkata", "New Delhi", "Chennai"], "correctAnswer": "New Delhi", "explanation": "New Delhi is the capital city of India." },
+        { "question": "Which of these is a major component of the Earth's atmosphere?", "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], "correctAnswer": "Nitrogen", "explanation": "Nitrogen makes up about 78% of the Earth's atmosphere." },
+        { "question": "What is a group of stars forming a recognizable pattern called?", "options": ["Planet", "Galaxy", "Constellation", "Asteroid"], "correctAnswer": "Constellation", "explanation": "A constellation is a group of stars that forms a pattern in the sky." },
+        { "question": "Which historical period is associated with the invention of the wheel?", "options": ["Stone Age", "Bronze Age", "Iron Age", "Modern Age"], "correctAnswer": "Stone Age", "explanation": "The invention of the wheel is generally attributed to the Mesopotamian civilization during the late Stone Age/early Bronze Age." },
+        { "question": "What is the largest ocean on Earth?", "options": ["Atlantic Ocean", "Indian Ocean", "Southern Ocean", "Pacific Ocean"], "correctAnswer": "Pacific Ocean", "explanation": "The Pacific Ocean is the largest and deepest of Earth's oceanic divisions." },
+        { "question": "Who was the first Prime Minister of independent India?", "options": ["Mahatma Gandhi", "Sardar Patel", "Jawaharlal Nehru", "B.R. Ambedkar"], "correctAnswer": "Jawaharlal Nehru", "explanation": "Jawaharlal Nehru served as the first Prime Minister of India from 1947 to 1964." },
+        { "question": "What is a map that shows physical features like mountains and rivers called?", "options": ["Political Map", "Thematic Map", "Physical Map", "Road Map"], "correctAnswer": "Physical Map", "explanation": "A physical map shows the physical landscape features of a place." },
+        { "question": "Which continent is known as the 'Dark Continent'?", "options": ["Asia", "Africa", "Europe", "South America"], "correctAnswer": "Africa", "explanation": "Africa was historically referred to as the 'Dark Continent' because much of it remained unexplored by Europeans for a long time." },
+        { "question": "What is the imaginary line that divides the Earth into Northern and Southern Hemispheres?", "options": ["Prime Meridian", "Equator", "Tropic of Cancer", "Tropic of Capricorn"], "correctAnswer": "Equator", "explanation": "The Equator is an imaginary line that circles Earth at 0 degrees latitude, horizontally dividing it into the Northern and Southern Hemispheres." }
+      ]
+    },
+    {
+      "title": "Class 7 Mathematics",
+      "description": "A quiz on intermediate mathematics for Class 7.",
+      "subject": "Mathematics",
+      "grade": "7",
+      "difficulty": "easy",
+      "timeLimit": 25,
+      "questions": [
+        { "question": "What is the value of (-5) + 7?", "options": ["2", "-2", "12", "-12"], "correctAnswer": "2", "explanation": "Adding a positive number to a negative number means moving to the right on the number line." },
+        { "question": "What is the product of 0.5 and 0.2?", "options": ["1.0", "0.1", "10.0", "0.01"], "correctAnswer": "0.1", "explanation": "0.5 * 0.2 = 0.10, which is 0.1." },
+        { "question": "Convert 1/5 into a percentage.", "options": ["10%", "20%", "25%", "50%"], "correctAnswer": "20%", "explanation": "To convert a fraction to a percentage, multiply by 100. (1/5) * 100 = 20%." },
+        { "question": "If x + 3 = 10, what is the value of x?", "options": ["7", "13", "-7", "-13"], "correctAnswer": "7", "explanation": "To find x, subtract 3 from both sides: x = 10 - 3 = 7." },
+        { "question": "What is the area of a triangle with base 10 cm and height 6 cm?", "options": ["30 cm²", "60 cm²", "16 cm²", "40 cm²"], "correctAnswer": "30 cm²", "explanation": "The area of a triangle is (1/2) * base * height. (1/2) * 10 * 6 = 30 cm²." },
+        { "question": "Simplify: 2a + 3b - a + 2b", "options": ["3a + 5b", "a + b", "a + 5b", "3a + b"], "correctAnswer": "a + 5b", "explanation": "Combine like terms: (2a - a) + (3b + 2b) = a + 5b." },
+        { "question": "An angle measuring exactly 180 degrees is called a ____ angle.", "options": ["Acute", "Obtuse", "Straight", "Reflex"], "correctAnswer": "Straight", "explanation": "A straight angle forms a straight line." },
+        { "question": "What is the ratio of 15 to 25 in its simplest form?", "options": ["3:5", "5:3", "1:5", "3:10"], "correctAnswer": "3:5", "explanation": "Divide both numbers by their greatest common divisor, which is 5. 15/5 = 3, 25/5 = 5." },
+        { "question": "What is the absolute value of -8?", "options": ["-8", "8", "0", "Undefined"], "correctAnswer": "8", "explanation": "The absolute value of a number is its distance from zero, always non-negative." },
+        { "question": "A circle has a diameter of 14 cm. What is its radius?", "options": ["7 cm", "28 cm", "14 cm", "21 cm"], "correctAnswer": "7 cm", "explanation": "The radius is half of the diameter." }
+      ]
+    },
+    {
+      "title": "Class 7 Science",
+      "description": "A quiz on intermediate science for Class 7.",
+      "subject": "Science",
+      "grade": "7",
+      "difficulty": "easy",
+      "timeLimit": 25,
+      "questions": [
+        { "question": "Which of these is an example of a chemical change?", "options": ["Melting ice", "Boiling water", "Burning wood", "Tearing paper"], "correctAnswer": "Burning wood", "explanation": "Burning wood produces new substances (ash, smoke, gases), which is a chemical change. [45]" },
+        { "question": "The transfer of heat from a hotter object to a colder object by direct contact is called:", "options": ["Convection", "Radiation", "Conduction", "Evaporation"], "correctAnswer": "Conduction", "explanation": "Conduction is the transfer of heat through direct contact. [4]" },
+        { "question": "Which acid is present in lemon juice?", "options": ["Sulphuric acid", "Hydrochloric acid", "Citric acid", "Acetic acid"], "correctAnswer": "Citric acid", "explanation": "Citrus fruits like lemons contain citric acid. [4]" },
+        { "question": "What is the function of red blood cells?", "options": ["Fight infections", "Clot blood", "Carry oxygen", "Produce antibodies"], "correctAnswer": "Carry oxygen", "explanation": "Red blood cells contain hemoglobin, which carries oxygen to the body's tissues. [20]" },
+        { "question": "Which of these is an insectivorous plant?", "options": ["Rose", "Mango", "Pitcher plant", "Banyan"], "correctAnswer": "Pitcher plant", "explanation": "Insectivorous plants like the pitcher plant trap and digest insects for nutrients. [4]" },
+        { "question": "What kind of mirror is used as a rearview mirror in vehicles?", "options": ["Concave mirror", "Plane mirror", "Convex mirror", "Cylindrical mirror"], "correctAnswer": "Convex mirror", "explanation": "Convex mirrors provide a wider field of view, making them suitable for rearview mirrors. [17]" },
+        { "question": "What is the process of breaking down food into simpler substances in the body?", "options": ["Respiration", "Digestion", "Excretion", "Circulation"], "correctAnswer": "Digestion", "explanation": "Digestion is the process of breaking down food into molecules that can be absorbed and utilized by the body. [45]" },
+        { "question": "Which instrument is used to measure temperature?", "options": ["Barometer", "Anemometer", "Thermometer", "Hygrometer"], "correctAnswer": "Thermometer", "explanation": "A thermometer is a device that measures temperature or a temperature gradient. [17]" },
+        { "question": "Soil rich in humus and highly fertile is called:", "options": ["Sandy soil", "Clayey soil", "Loamy soil", "Rocky soil"], "correctAnswer": "Loamy soil", "explanation": "Loamy soil is a mixture of sand, silt, and clay, and is rich in humus, making it ideal for plant growth. [45]" },
+        { "question": "What is the main function of the small intestine?", "options": ["Absorption of water", "Digestion of food", "Storage of food", "Absorption of digested food"], "correctAnswer": "Absorption of digested food", "explanation": "The small intestine is the primary site for the absorption of nutrients from digested food. [45]" }
+      ]
+    },
+    {
+      "title": "Class 7 English",
+      "description": "A quiz on intermediate English for Class 7.",
+      "subject": "English",
+      "grade": "7",
+      "difficulty": "easy",
+      "timeLimit": 25,
+      "questions": [
+        { "question": "Identify the adjective in the sentence: 'The clever fox outsmarted the hungry crow.'", "options": ["fox", "outsmarted", "hungry", "crow"], "correctAnswer": "hungry", "explanation": "An adjective describes a noun. 'Hungry' describes the crow." },
+        { "question": "Which of these is in the present continuous tense?", "options": ["He played", "He is playing", "He has played", "He will play"], "correctAnswer": "He is playing", "explanation": "The present continuous tense is formed with 'is/am/are' + verb-ing." },
+        { "question": "What is the past participle of 'write'?", "options": ["Wrote", "Written", "Writing", "Writes"], "correctAnswer": "Written", "explanation": "The past participle of write is written." },
+        { "question": "Complete the sentence: 'She _____ to the market yesterday.'", "options": ["goes", "went", "gone", "going"], "correctAnswer": "went", "explanation": "'Yesterday' indicates the simple past tense, so 'went' is appropriate." },
+        { "question": "Choose the correct preposition: 'The book is ____ the table.'", "options": ["in", "on", "at", "under"], "correctAnswer": "on", "explanation": "'On' is used to indicate a position on a surface." },
+        { "question": "What is the antonym of 'ancient'?", "options": ["Old", "Modern", "Historic", "Antique"], "correctAnswer": "Modern", "explanation": "Modern means belonging to the present or recent times, which is the opposite of ancient." },
+        { "question": "Which type of sentence expresses a strong feeling or emotion?", "options": ["Declarative", "Interrogative", "Imperative", "Exclamatory"], "correctAnswer": "Exclamatory", "explanation": "An exclamatory sentence ends with an exclamation mark." },
+        { "question": "Identify the adverb in the sentence: 'She sings beautifully.'", "options": ["She", "sings", "beautifully", "notes"], "correctAnswer": "beautifully", "explanation": "An adverb modifies a verb, adjective, or another adverb. 'Beautifully' modifies 'sings'." },
+        { "question": "What is the plural of 'sheep'?", "options": ["Sheeps", "Sheep", "Sheepes", "Sheepses"], "correctAnswer": "Sheep", "explanation": "The plural of sheep is sheep (it's an irregular plural noun)." },
+        { "question": "Which of these is a collective noun?", "options": ["Student", "Table", "Flock", "Happiness"], "correctAnswer": "Flock", "explanation": "A collective noun refers to a group of things or people (e.g., a flock of birds)." }
+      ]
+    },
+    {
+      "title": "Class 7 Social Science",
+      "description": "A quiz on intermediate Social Science for Class 7.",
+      "subject": "Social Science",
+      "grade": "7",
+      "difficulty": "easy",
+      "timeLimit": 25,
+      "questions": [
+        { "question": "Which of these rulers established the Mughal Empire in India?", "options": ["Akbar", "Babur", "Humayun", "Aurangzeb"], "correctAnswer": "Babur", "explanation": "Babur founded the Mughal Empire in India in 1526. [1]" },
+        { "question": "What is the term for a large area of flat land?", "options": ["Mountain", "Plateau", "Plain", "Valley"], "correctAnswer": "Plain", "explanation": "A plain is a large area of flat land with few trees. [31]" },
+        { "question": "Which important monument was built by Shah Jahan?", "options": ["Red Fort", "Qutub Minar", "Taj Mahal", "India Gate"], "correctAnswer": "Taj Mahal", "explanation": "The Taj Mahal, a white marble mausoleum, was built by Mughal emperor Shah Jahan in memory of his wife Mumtaz Mahal." },
+        { "question": "The process of wearing away of the Earth's surface by natural agents is called:", "options": ["Deposition", "Weathering", "Erosion", "Sedimentation"], "correctAnswer": "Erosion", "explanation": "Erosion is the process of wearing away the Earth's surface by natural forces. [38]" },
+        { "question": "Which religious text is central to Islam?", "options": ["Bible", "Quran", "Gita", "Torah"], "correctAnswer": "Quran", "explanation": "The Quran is the central religious text of Islam." },
+        { "question": "What is the form of government where power is held by the people and exercised by them directly or through elected representatives?", "options": ["Monarchy", "Dictatorship", "Democracy", "Oligarchy"], "correctAnswer": "Democracy", "explanation": "Democracy is a system of government where the citizens exercise power, usually by electing representatives from among themselves." },
+        { "question": "Which continent is home to the Amazon Rainforest?", "options": ["Africa", "Asia", "South America", "Australia"], "correctAnswer": "South America", "explanation": "The Amazon Rainforest covers much of northwestern Brazil and extends into Colombia, Peru, and other South American countries." },
+        { "question": "Who was the founder of the Mauryan Empire?", "options": ["Ashoka", "Chandragupta Maurya", "Bindusara", "Samudragupta"], "correctAnswer": "Chandragupta Maurya", "explanation": "Chandragupta Maurya established the Mauryan Empire in ancient India. [1]" },
+        { "question": "The layer of air surrounding the Earth is known as the:", "options": ["Lithosphere", "Hydrosphere", "Atmosphere", "Biosphere"], "correctAnswer": "Atmosphere", "explanation": "The atmosphere is the envelope of gases surrounding the Earth. [38]" },
+        { "question": "What is the practice of planting a variety of crops on the same land?", "options": ["Monocropping", "Mixed cropping", "Shifting cultivation", "Nomadic herding"], "correctAnswer": "Mixed cropping", "explanation": "Mixed cropping involves growing two or more crops simultaneously on the same field." }
+      ]
+    },
+    {
+      "title": "Class 8 Mathematics",
+      "description": "A quiz on fundamental algebraic and geometric concepts for Class 8.",
+      "subject": "Mathematics",
+      "grade": "8",
+      "difficulty": "medium",
+      "timeLimit": 30,
+      "questions": [
+        { "question": "What is the square root of 144?", "options": ["10", "12", "14", "16"], "correctAnswer": "12", "explanation": "12 multiplied by 12 equals 144." },
+        { "question": "Solve for y: 2y - 5 = 7", "options": ["4", "6", "12", "10"], "correctAnswer": "6", "explanation": "Add 5 to both sides: 2y = 12. Then divide by 2: y = 6." },
+        { "question": "What is the formula for the area of a circle with radius 'r'?", "options": ["2πr", "πr²", "πd", "2πd"], "correctAnswer": "πr²", "explanation": "The area of a circle is calculated using the formula A = πr²." },
+        { "question": "If a number is increased by 10%, and the original number was 50, what is the new number?", "options": ["55", "50", "60", "45"], "correctAnswer": "55", "explanation": "10% of 50 is 5. So, 50 + 5 = 55." },
+        { "question": "What is the value of (3/5) + (1/10)?", "options": ["4/15", "7/10", "1/2", "3/50"], "correctAnswer": "7/10", "explanation": "Find a common denominator (10). (6/10) + (1/10) = 7/10." },
+        { "question": "How many faces does a cuboid have?", "options": ["4", "6", "8", "12"], "correctAnswer": "6", "explanation": "A cuboid is a three-dimensional shape with 6 rectangular faces." },
+        { "question": "The sum of the angles in a quadrilateral is:", "options": ["90 degrees", "180 degrees", "270 degrees", "360 degrees"], "correctAnswer": "360 degrees", "explanation": "A quadrilateral can be divided into two triangles, and each triangle has 180 degrees, so 2 * 180 = 360 degrees." },
+        { "question": "If a dozen eggs cost Rs. 60, what is the cost of 5 eggs?", "options": ["Rs. 25", "Rs. 30", "Rs. 20", "Rs. 40"], "correctAnswer": "Rs. 25", "explanation": "Cost of 1 egg = 60/12 = Rs. 5. Cost of 5 eggs = 5 * 5 = Rs. 25." },
+        { "question": "Which of these is a rational number?", "options": ["√2", "π", "0.333...", "e"], "correctAnswer": "0.333...", "explanation": "A rational number can be expressed as a fraction p/q, where q ≠ 0. 0.333... is 1/3." },
+        { "question": "What is the expanded form of (a + b)²?", "options": ["a² + b²", "a² - b²", "a² + 2ab + b²", "a² - 2ab + b²"], "correctAnswer": "a² + 2ab + b²", "explanation": "This is a standard algebraic identity." }
+      ]
+    },
+    {
+      "title": "Class 8 Science",
+      "description": "A quiz on basic scientific principles for Class 8.",
+      "subject": "Science",
+      "grade": "8",
+      "difficulty": "medium",
+      "timeLimit": 30,
+      "questions": [
+        { "question": "Which of these is a synthetic fibre?", "options": ["Cotton", "Jute", "Nylon", "Silk"], "correctAnswer": "Nylon", "explanation": "Nylon is a man-made or synthetic fibre." },
+        { "question": "What is the force responsible for friction?", "options": ["Gravitational force", "Magnetic force", "Muscular force", "Contact force"], "correctAnswer": "Contact force", "explanation": "Friction is a force that opposes motion between two surfaces in contact." },
+        { "question": "Which metal is liquid at room temperature?", "options": ["Iron", "Gold", "Mercury", "Copper"], "correctAnswer": "Mercury", "explanation": "Mercury is the only metal that is liquid at standard temperature and pressure." },
+        { "question": "The process of separating grains from chaff is called:", "options": ["Threshing", "Winnowing", "Harvesting", "Sowing"], "correctAnswer": "Winnowing", "explanation": "Winnowing is a farm method that uses wind to separate grain from chaff." },
+        { "question": "Which gas is produced during photosynthesis?", "options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen"], "correctAnswer": "Oxygen", "explanation": "Plants take in carbon dioxide and release oxygen during photosynthesis." },
+        { "question": "What is the unit of force?", "options": ["Joule", "Watt", "Newton", "Pascal"], "correctAnswer": "Newton", "explanation": "The SI unit of force is the Newton (N)." },
+        { "question": "Which of these is a non-renewable resource?", "options": ["Sunlight", "Wind", "Coal", "Water"], "correctAnswer": "Coal", "explanation": "Non-renewable resources are those that exist in fixed amounts and are consumed much faster than they are formed." },
+        { "question": "The inner wall of the small intestine has millions of finger-like outgrowths called:", "options": ["Villi", "Alveoli", "Nephrons", "Gland cells"], "correctAnswer": "Villi", "explanation": "Villi increase the surface area for efficient absorption of digested food." },
+        { "question": "What is the common name for the disease caused by the AIDS virus?", "options": ["Malaria", "Typhoid", "HIV/AIDS", "Tuberculosis"], "correctAnswer": "HIV/AIDS", "explanation": "HIV (Human Immunodeficiency Virus) causes AIDS (Acquired Immunodeficiency Syndrome)." },
+        { "question": "Which part of the eye controls the amount of light entering it?", "options": ["Retina", "Cornea", "Pupil", "Lens"], "correctAnswer": "Pupil", "explanation": "The pupil, controlled by the iris, adjusts its size to regulate the amount of light entering the eye." }
+      ]
+    },
+    {
+      "title": "Class 8 English",
+      "description": "A quiz on fundamental English grammar and vocabulary for Class 8.",
+      "subject": "English",
+      "grade": "8",
+      "difficulty": "medium",
+      "timeLimit": 30,
+      "questions": [
+        { "question": "Choose the correct article: 'He is ____ honest man.'", "options": ["a", "an", "the", "no article"], "correctAnswer": "an", "explanation": "Though 'honest' starts with 'h', it has a vowel sound, hence 'an' is used." },
+        { "question": "Identify the passive voice sentence:", "options": ["She writes a letter.", "A letter is written by her.", "She is writing a letter.", "She has written a letter."], "correctAnswer": "A letter is written by her.", "explanation": "In passive voice, the action is done to the subject." },
+        { "question": "What is the direct speech equivalent of: 'He asked me if I was hungry.'", "options": ["He asked, 'Are you hungry?'", "He asked, 'I am hungry.'", "He asked, 'Was you hungry?'", "He asked, 'Am I hungry?'"], "correctAnswer": "He asked, 'Are you hungry?'", "explanation": "The reported speech converts back to a direct question." },
+        { "question": "Fill in the blank with the correct modal verb: 'You ____ complete your homework by tomorrow.'", "options": ["might", "should", "could", "would"], "correctAnswer": "should", "explanation": "'Should' indicates obligation or recommendation." },
+        { "question": "What is the adverbial clause in the sentence: 'She studies hard so that she can pass the exam.'", "options": ["She studies hard", "so that she can pass the exam", "she can pass the exam", "studies hard"], "correctAnswer": "so that she can pass the exam", "explanation": "An adverbial clause gives more information about the verb, here explaining why she studies hard." },
+        { "question": "Which of these words is a homophone for 'their'?", "options": ["There", "Here", "Where", "Then"], "correctAnswer": "There", "explanation": "Homophones are words that sound the same but have different meanings and spellings." },
+        { "question": "Choose the correct form of the verb: 'Neither John nor his brothers ____ responsible.'", "options": ["is", "are", "was", "has been"], "correctAnswer": "are", "explanation": "When 'neither...nor' connects two subjects, the verb agrees with the subject closest to it (brothers is plural)." },
+        { "question": "What is the superlative degree of the adjective 'beautiful'?", "options": ["Beautifuler", "More beautiful", "Most beautiful", "Beauty"], "correctAnswer": "Most beautiful", "explanation": "For longer adjectives, 'most' is used for the superlative degree." },
+        { "question": "Identify the type of sentence: 'Close the door.'", "options": ["Declarative", "Interrogative", "Imperative", "Exclamatory"], "correctAnswer": "Imperative", "explanation": "An imperative sentence gives a command or instruction." },
+        { "question": "Which prefix means 'opposite of' or 'not'?", "options": ["re-", "un-", "pre-", "co-"], "correctAnswer": "un-", "explanation": "'Un-' is a common prefix used to form antonyms (e.g., happy -> unhappy)." }
+      ]
+    },
+    {
+      "title": "Class 8 Social Science",
+      "description": "A quiz on Indian history, geography, and civics for Class 8.",
+      "subject": "Social Science",
+      "grade": "8",
+      "difficulty": "medium",
+      "timeLimit": 30,
+      "questions": [
+        { "question": "Who introduced the 'Doctrine of Lapse' in India?", "options": ["Lord Dalhousie", "Lord Curzon", "Lord William Bentinck", "Lord Ripon"], "correctAnswer": "Lord Dalhousie", "explanation": "Lord Dalhousie was the Governor-General of India who implemented the Doctrine of Lapse." },
+        { "question": "Which of these is a major source of freshwater?", "options": ["Oceans", "Seas", "Rivers", "Saltwater lakes"], "correctAnswer": "Rivers", "explanation": "Rivers, along with lakes and glaciers, are major sources of freshwater." },
+        { "question": "What is the term for a natural event that causes great damage or loss of life?", "options": ["Climate change", "Natural disaster", "Global warming", "Weather phenomenon"], "correctAnswer": "Natural disaster", "explanation": "Natural disasters are extreme natural events that cause significant harm to people and property. [31]" },
+        { "question": "In which year did the Jallianwala Bagh Massacre take place?", "options": ["1919", "1920", "1922", "1925"], "correctAnswer": "1919", "explanation": "The Jallianwala Bagh Massacre occurred on April 13, 1919, in Amritsar." },
+        { "question": "Which of these is a fundamental right guaranteed by the Indian Constitution?", "options": ["Right to Property", "Right to Work", "Right to Education", "Right to adequate livelihood"], "correctAnswer": "Right to Education", "explanation": "The Right to Education is a fundamental right under Article 21A of the Indian Constitution." },
+        { "question": "The movement of people from rural areas to urban areas is known as:", "options": ["Emigration", "Immigration", "Urbanization", "Rural migration"], "correctAnswer": "Urbanization", "explanation": "Urbanization refers to the increasing number of people that live in urban areas." },
+        { "question": "Who founded the 'Arya Samaj'?", "options": ["Swami Vivekananda", "Raja Ram Mohan Roy", "Dayananda Saraswati", "Jyotirao Phule"], "correctAnswer": "Dayananda Saraswati", "explanation": "Swami Dayananda Saraswati founded the Arya Samaj in 1875." },
+        { "question": "What is the process by which rocks are broken down into smaller pieces?", "options": ["Erosion", "Deposition", "Weathering", "Transportation"], "correctAnswer": "Weathering", "explanation": "Weathering is the breakdown of rocks, soil, and minerals as well as wood and artificial materials through contact with the Earth's atmosphere, biota, and waters. [38]" },
+        { "question": "Which battle marked the beginning of British rule in India?", "options": ["Battle of Buxar", "Battle of Plassey", "Battle of Panipat", "Battle of Seringapatam"], "correctAnswer": "Battle of Plassey", "explanation": "The Battle of Plassey in 1757 was a decisive victory for the British East India Company over the Nawab of Bengal and his French allies." },
+        { "question": "What is the highest judicial body in India?", "options": ["High Court", "District Court", "Supreme Court", "Lok Adalat"], "correctAnswer": "Supreme Court", "explanation": "The Supreme Court of India is the highest judicial court and the final court of appeal under the Constitution of India." }
+      ]
+    },
+    {
+      "title": "Class 9 Mathematics",
+      "description": "A quiz on advanced mathematics for Class 9, including geometry and algebra.",
+      "subject": "Mathematics",
+      "grade": "9",
+      "difficulty": "medium",
+      "timeLimit": 35,
+      "questions": [
+        { "question": "What is the perimeter of a semi-circle with radius 7 cm?", "options": ["22 cm", "36 cm", "44 cm", "14 cm"], "correctAnswer": "36 cm", "explanation": "Perimeter = πr + 2r = (22/7)*7 + 2*7 = 22 + 14 = 36 cm." },
+        { "question": "The area of an equilateral triangle with side 'a' is:", "options": ["a²/4", "(√3/4)a²", "a³", "a²/2"], "correctAnswer": "(√3/4)a²", "explanation": "This is the standard formula for the area of an equilateral triangle." },
+        { "question": "If x/3 + 1 = 5, what is the value of x?", "options": ["12", "15", "18", "9"], "correctAnswer": "12", "explanation": "x/3 = 4, so x = 12." },
+        { "question": "What is the total surface area of a cube with side length 's'?", "options": ["s³", "6s²", "4s²", "2s²"], "correctAnswer": "6s²", "explanation": "A cube has 6 equal square faces, each with area s²." },
+        { "question": "Factorize: x² - 9", "options": ["(x-3)(x+3)", "(x-3)²", "(x+3)²", "x(x-9)"], "correctAnswer": "(x-3)(x+3)", "explanation": "This is a difference of squares: a² - b² = (a-b)(a+b)." },
+        { "question": "What is the median of the data set: 2, 5, 8, 1, 9?", "options": ["2", "5", "8", "9"], "correctAnswer": "5", "explanation": "First, arrange in ascending order: 1, 2, 5, 8, 9. The middle number is 5." },
+        { "question": "The exterior angle of a regular hexagon is:", "options": ["60 degrees", "90 degrees", "120 degrees", "45 degrees"], "correctAnswer": "60 degrees", "explanation": "The sum of exterior angles of any polygon is 360 degrees. For a regular hexagon (6 sides), 360/6 = 60 degrees." },
+        { "question": "If a cone has a radius of 3 cm and a height of 4 cm, what is its slant height?", "options": ["3 cm", "4 cm", "5 cm", "6 cm"], "correctAnswer": "5 cm", "explanation": "Using Pythagoras theorem: slant height² = radius² + height² = 3² + 4² = 9 + 16 = 25. So, slant height = √25 = 5 cm." },
+        { "question": "Which of these is an irrational number?", "options": ["√4", "√9", "√7", "0.75"], "correctAnswer": "√7", "explanation": "An irrational number cannot be expressed as a simple fraction, and its decimal representation is non-terminating and non-repeating." },
+        { "question": "What is the probability of getting an even number when rolling a standard six-sided die?", "options": ["1/6", "1/3", "1/2", "2/3"], "correctAnswer": "1/2", "explanation": "The even numbers are 2, 4, 6 (3 outcomes). Total outcomes are 6. So, 3/6 = 1/2." }
+      ]
+    },
+    {
+      "title": "Class 9 Science - Physics",
+      "description": "A quiz on fundamental physics concepts for Class 9.",
+      "subject": "Physics",
+      "grade": "9",
+      "difficulty": "medium",
+      "timeLimit": 35,
+      "questions": [
+        { "question": "What is the SI unit of acceleration?", "options": ["m/s", "m/s²", "N", "J"], "correctAnswer": "m/s²", "explanation": "Acceleration is the rate of change of velocity, measured in meters per second squared." },
+        { "question": "Which of Newton's laws of motion is also known as the law of inertia?", "options": ["First Law", "Second Law", "Third Law", "Law of Gravitation"], "correctAnswer": "First Law", "explanation": "Newton's First Law states that an object at rest stays at rest and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force." },
+        { "question": "What is the formula for calculating work done?", "options": ["Force x Time", "Force / Distance", "Force x Distance", "Mass x Acceleration"], "correctAnswer": "Force x Distance", "explanation": "Work is done when a force acts on an object and causes it to move through a distance. W = F * d." },
+        { "question": "Sound travels fastest through which medium?", "options": ["Air", "Water", "Steel", "Vacuum"], "correctAnswer": "Steel", "explanation": "Sound waves travel fastest through solids, then liquids, and slowest through gases. They cannot travel through a vacuum." },
+        { "question": "What is the phenomenon responsible for the twinkling of stars?", "options": ["Reflection", "Refraction", "Dispersion", "Scattering"], "correctAnswer": "Refraction", "explanation": "The twinkling of stars is caused by the refraction of starlight due to the Earth's atmosphere." },
+        { "question": "What is the energy possessed by a body due to its position or state?", "options": ["Kinetic energy", "Potential energy", "Chemical energy", "Thermal energy"], "correctAnswer": "Potential energy", "explanation": "Potential energy is stored energy due to position or arrangement." },
+        { "question": "The device used to measure electric current is called a/an:", "options": ["Voltmeter", "Ammeter", "Galvanometer", "Ohmmeter"], "correctAnswer": "Ammeter", "explanation": "An ammeter measures electric current in amperes." },
+        { "question": "Which of these is a scalar quantity?", "options": ["Velocity", "Force", "Displacement", "Speed"], "correctAnswer": "Speed", "explanation": "A scalar quantity has magnitude only, while a vector quantity has both magnitude and direction. Speed has only magnitude." },
+        { "question": "What is the value of gravitational acceleration (g) approximately on Earth's surface?", "options": ["9.8 m/s", "9.8 m/s²", "10 m/s", "6.7 x 10^-11 Nm²/kg²"], "correctAnswer": "9.8 m/s²", "explanation": "The approximate value of acceleration due to gravity on Earth's surface is 9.8 m/s²." },
+        { "question": "The phenomenon of splitting of white light into its constituent colours when it passes through a prism is called:", "options": ["Reflection", "Refraction", "Dispersion", "Interference"], "correctAnswer": "Dispersion", "explanation": "Dispersion is the separation of light into its component colors according to their respective wavelengths." }
+      ]
+    },
+    {
+      "title": "Class 9 Science - Chemistry",
+      "description": "A quiz on fundamental chemistry concepts for Class 9.",
+      "subject": "Chemistry",
+      "grade": "9",
+      "difficulty": "medium",
+      "timeLimit": 35,
+      "questions": [
+        { "question": "What is the chemical symbol for sodium?", "options": ["Na", "So", "Nd", "Sd"], "correctAnswer": "Na", "explanation": "Na is the symbol for Sodium, derived from its Latin name Natrium." },
+        { "question": "Which of these is a noble gas?", "options": ["Oxygen", "Chlorine", "Helium", "Nitrogen"], "correctAnswer": "Helium", "explanation": "Noble gases (Group 18) are unreactive and include Helium, Neon, Argon, etc." },
+        { "question": "The process of a solid directly changing into a gas without passing through the liquid state is called:", "options": ["Evaporation", "Condensation", "Sublimation", "Melting"], "correctAnswer": "Sublimation", "explanation": "Dry ice (solid CO2) is a common example of sublimation." },
+        { "question": "What is the pH value of a neutral solution?", "options": ["0", "7", "14", "Between 0 and 7"], "correctAnswer": "7", "explanation": "A neutral solution, like pure water, has a pH of 7." },
+        { "question": "Which of these elements is a metalloid?", "options": ["Iron", "Carbon", "Silicon", "Oxygen"], "correctAnswer": "Silicon", "explanation": "Metalloids have properties intermediate between metals and nonmetals. Silicon is a common example." },
+        { "question": "The outermost shell of an atom is known as the:", "options": ["K-shell", "L-shell", "Valence shell", "Inner shell"], "correctAnswer": "Valence shell", "explanation": "The valence shell contains the electrons involved in chemical bonding." },
+        { "question": "What is the law of conservation of mass?", "options": ["Mass can be created but not destroyed.", "Mass can be destroyed but not created.", "Mass can neither be created nor destroyed.", "Mass is always conserved in chemical reactions."], "correctAnswer": "Mass can neither be created nor destroyed.", "explanation": "This law states that in a closed system, the total mass of the reactants equals the total mass of the products." },
+        { "question": "Which type of bonding involves the sharing of electrons?", "options": ["Ionic bonding", "Covalent bonding", "Metallic bonding", "Hydrogen bonding"], "correctAnswer": "Covalent bonding", "explanation": "Covalent bonds are formed by the mutual sharing of one or more pairs of electrons between two atoms." },
+        { "question": "What is the molecular formula of water?", "options": ["H2O2", "CO2", "H2O", "N2O"], "correctAnswer": "H2O", "explanation": "Water consists of two hydrogen atoms and one oxygen atom." },
+        { "question": "An element has an atomic number of 17. How many valence electrons does it have?", "options": ["5", "7", "17", "2"], "correctAnswer": "7", "explanation": "An atomic number of 17 means the electron configuration is 2, 8, 7. Thus, it has 7 valence electrons." }
+      ]
+    },
+    {
+      "title": "Class 9 Science - Biology",
+      "description": "A quiz on fundamental biology concepts for Class 9.",
+      "subject": "Biology",
+      "grade": "9",
+      "difficulty": "medium",
+      "timeLimit": 35,
+      "questions": [
+        { "question": "Which organelle is known as the 'powerhouse of the cell'?", "options": ["Nucleus", "Ribosome", "Mitochondria", "Endoplasmic Reticulum"], "correctAnswer": "Mitochondria", "explanation": "Mitochondria are responsible for generating most of the cell's supply of adenosine triphosphate (ATP), used as a source of chemical energy." },
+        { "question": "Which of these is a plant hormone?", "options": ["Insulin", "Adrenaline", "Auxin", "Thyroxine"], "correctAnswer": "Auxin", "explanation": "Auxins are a class of plant hormones that are involved in growth regulation." },
+        { "question": "The process of loss of water in the form of water vapor from the aerial parts of a plant is called:", "options": ["Photosynthesis", "Respiration", "Transpiration", "Absorption"], "correctAnswer": "Transpiration", "explanation": "Transpiration is essentially evaporation of water from plant leaves." },
+        { "question": "Which type of tissue connects bone to bone?", "options": ["Muscle tissue", "Nervous tissue", "Ligament", "Tendon"], "correctAnswer": "Ligament", "explanation": "Ligaments are strong fibrous tissues that connect bones to other bones." },
+        { "question": "What is the scientific name for the common housefly?", "options": ["Homo sapiens", "Mangifera indica", "Musca domestica", "Panthera leo"], "correctAnswer": "Musca domestica", "explanation": "Musca domestica is the scientific name for the housefly." },
+        { "question": "Which of these diseases is caused by bacteria?", "options": ["Malaria", "Measles", "Tuberculosis", "Flu"], "correctAnswer": "Tuberculosis", "explanation": "Tuberculosis (TB) is an infectious disease caused by the bacterium Mycobacterium tuberculosis." },
+        { "question": "The movement of water molecules from a region of higher concentration to a region of lower concentration through a semi-permeable membrane is called:", "options": ["Diffusion", "Osmosis", "Active transport", "Facilitated diffusion"], "correctAnswer": "Osmosis", "explanation": "Osmosis is a special type of diffusion involving water movement across a selectively permeable membrane." },
+        { "question": "Which component of blood helps in blood clotting?", "options": ["Red blood cells", "White blood cells", "Plasma", "Platelets"], "correctAnswer": "Platelets", "explanation": "Platelets are small, colorless cell fragments in our blood that form clots and stop or prevent bleeding." },
+        { "question": "Which plant tissue is responsible for the transport of food (sugars) from leaves to other parts of the plant?", "options": ["Xylem", "Phloem", "Parenchyma", "Sclerenchyma"], "correctAnswer": "Phloem", "explanation": "Phloem transports sugars, amino acids, and other organic molecules throughout the plant. [10]" },
+        { "question": "What is the outermost protective layer of a plant cell?", "options": ["Cell membrane", "Cell wall", "Cytoplasm", "Nucleus"], "correctAnswer": "Cell wall", "explanation": "The cell wall provides structural support and protection to plant cells." }
+      ]
+    },
+    {
+      "title": "Class 9 English",
+      "description": "A quiz on advanced English grammar and literature for Class 9.",
+      "subject": "English",
+      "grade": "9",
+      "difficulty": "medium",
+      "timeLimit": 35,
+      "questions": [
+        { "question": "Identify the type of clause: 'He failed because he did not study.'", "options": ["Noun clause", "Adjective clause", "Adverb clause", "Main clause"], "correctAnswer": "Adverb clause", "explanation": "The clause 'because he did not study' modifies the verb 'failed' by telling us why he failed. [2]" },
+        { "question": "Choose the correct reporting verb: She ____ that she was tired.", "options": ["said", "told", "asked", "enquired"], "correctAnswer": "said", "explanation": "'Said' is used when reporting a statement without a direct object following it. [2, 41]" },
+        { "question": "Change into passive voice: 'The students are cleaning the classroom.'", "options": ["The classroom is cleaned by the students.", "The classroom is being cleaned by the students.", "The classroom has been cleaned by the students.", "The classroom was cleaned by the students."], "correctAnswer": "The classroom is being cleaned by the students.", "explanation": "For present continuous tense in passive voice: is/am/are + being + past participle. [43]" },
+        { "question": "Which modal verb expresses strong obligation?", "options": ["Can", "May", "Must", "Might"], "correctAnswer": "Must", "explanation": "'Must' indicates a strong necessity or obligation. [41]" },
+        { "question": "Fill in the blank with a suitable determiner: '____ students attended the seminar.'", "options": ["Much", "Little", "Few", "Plenty"], "correctAnswer": "Few", "explanation": "'Few' is used with countable nouns (students) to indicate a small number. [2]" },
+        { "question": "Correct the error: 'Each of the boys play cricket.'", "options": ["Each of the boys plays cricket.", "Each of the boy play cricket.", "All of the boys play cricket.", "Each boy plays cricket."], "correctAnswer": "Each of the boys plays cricket.", "explanation": "When 'each of' is used, the verb should be singular. [43]" },
+        { "question": "What is the synonym for 'ubiquitous'?", "options": ["Rare", "Common", "Limited", "Scarce"], "correctAnswer": "Common", "explanation": "Ubiquitous means present, appearing, or found everywhere, implying commonness." },
+        { "question": "Identify the phrasal verb: 'She often gets along with her siblings.'", "options": ["often gets", "gets along", "along with", "her siblings"], "correctAnswer": "gets along", "explanation": "A phrasal verb is a verb combined with an adverb or a preposition, or sometimes both, to give a new meaning (get along means to have a harmonious relationship). [47]" },
+        { "question": "Complete the conditional sentence: 'If I had studied harder, I ____ the exam.'", "options": ["would pass", "will pass", "would have passed", "passed"], "correctAnswer": "would have passed", "explanation": "This is a third conditional sentence, used for past hypothetical situations: If + past perfect, would have + past participle. [46]" },
+        { "question": "Which punctuation mark is used to indicate a pause or separation between parts of a sentence, often lists?", "options": ["Period", "Comma", "Semicolon", "Colon"], "correctAnswer": "Comma", "explanation": "The comma is used for various purposes, including separating items in a list or clauses in a sentence." }
+      ]
+    },
+    {
+      "title": "Class 9 Social Science - History",
+      "description": "A quiz on modern world history for Class 9.",
+      "subject": "History",
+      "grade": "9",
+      "difficulty": "medium",
+      "timeLimit": 35,
+      "questions": [
+        { "question": "In which country did the French Revolution take place?", "options": ["England", "Germany", "France", "Russia"], "correctAnswer": "France", "explanation": "The French Revolution began in 1789 in France." },
+        { "question": "Who was the leader of the Bolshevik Party during the Russian Revolution?", "options": ["Joseph Stalin", "Leon Trotsky", "Vladimir Lenin", "Mikhail Gorbachev"], "correctAnswer": "Vladimir Lenin", "explanation": "Vladimir Lenin led the Bolsheviks to power in Russia during the October Revolution of 1917." },
+        { "question": "Which event is considered the beginning of World War II in Europe?", "options": ["Attack on Pearl Harbor", "Invasion of Poland", "Battle of Stalingrad", "D-Day landings"], "correctAnswer": "Invasion of Poland", "explanation": "Germany's invasion of Poland on September 1, 1939, is widely considered the start of World War II. [1]" },
+        { "question": "The 'Great Depression' was a severe worldwide economic depression that occurred during which decade?", "options": ["1910s", "1920s", "1930s", "1940s"], "correctAnswer": "1930s", "explanation": "The Great Depression lasted from 1929 to the late 1930s." },
+        { "question": "Who was the author of 'Das Kapital', a foundational text in communist philosophy?", "options": ["Friedrich Engels", "Karl Marx", "Vladimir Lenin", "Mao Zedong"], "correctAnswer": "Karl Marx", "explanation": "Karl Marx wrote 'Das Kapital', critiquing capitalism. [1]" },
+        { "question": "Which ideology emphasizes extreme nationalism, totalitarianism, and the suppression of opposition?", "options": ["Communism", "Socialism", "Fascism", "Liberalism"], "correctAnswer": "Fascism", "explanation": "Fascism is a political ideology that emerged in early 20th-century Europe, notably in Italy and Germany." },
+        { "question": "The term 'apartheid' refers to a system of racial segregation and discrimination, primarily in which country?", "options": ["United States", "India", "South Africa", "Australia"], "correctAnswer": "South Africa", "explanation": "Apartheid was a system of institutionalized racial segregation and discrimination enforced in South Africa from 1948 until 1994." },
+        { "question": "Which of these leaders advocated non-violent civil disobedience for India's independence?", "options": ["Subhas Chandra Bose", "Bhagat Singh", "Mahatma Gandhi", "Jawaharlal Nehru"], "correctAnswer": "Mahatma Gandhi", "explanation": "Mahatma Gandhi was a proponent of non-violent resistance, or Satyagraha." },
+        { "question": "The establishment of the United Nations (UN) took place after which major global conflict?", "options": ["World War I", "World War II", "Cold War", "Korean War"], "correctAnswer": "World War II", "explanation": "The United Nations was established in 1945 after World War II to prevent future conflicts." },
+        { "question": "What was the main purpose of the 'New Deal' policies in the United States during the Great Depression?", "options": ["To declare war", "To provide economic relief and recovery", "To abolish slavery", "To expand civil rights"], "correctAnswer": "To provide economic relief and recovery", "explanation": "The New Deal was a series of programs and reforms in the United States between 1933 and 1939, enacted by President Franklin D. Roosevelt." }
+      ]
+    },
+    {
+      "title": "Class 9 Social Science - Geography",
+      "description": "A quiz on physical and human geography for Class 9.",
+      "subject": "Geography",
+      "grade": "9",
+      "difficulty": "medium",
+      "timeLimit": 35,
+      "questions": [
+        { "question": "Which mountain range is located in the eastern part of North America?", "options": ["Rocky Mountains", "Andes Mountains", "Himalayas", "Appalachian Mountains"], "correctAnswer": "Appalachian Mountains", "explanation": "The Appalachian Mountains run along the eastern side of North America." },
+        { "question": "What is the study of weather and climate called?", "options": ["Geology", "Hydrology", "Meteorology", "Oceanography"], "correctAnswer": "Meteorology", "explanation": "Meteorology is the scientific study of Earth's atmosphere and the processes that cause weather. [7]" },
+        { "question": "Which of these is a major cause of soil erosion?", "options": ["Planting trees", "Crop rotation", "Deforestation", "Terrace farming"], "correctAnswer": "Deforestation", "explanation": "Removal of forest cover leads to increased soil erosion. [38]" },
+        { "question": "What is the term for a broad, flat top mountain?", "options": ["Peak", "Hill", "Plateau", "Valley"], "correctAnswer": "Plateau", "explanation": "A plateau is a flat-topped highland area with at least one steep side. [7]" },
+        { "question": "Which climate zone experiences hot, wet, and humid conditions year-round?", "options": ["Polar", "Temperate", "Arid", "Tropical"], "correctAnswer": "Tropical", "explanation": "Tropical regions near the equator experience consistently high temperatures and rainfall. [7]" },
+        { "question": "The deepest oceanic trench on Earth is the:", "options": ["Java Trench", "Puerto Rico Trench", "Mariana Trench", "Kermadec Trench"], "correctAnswer": "Mariana Trench", "explanation": "The Mariana Trench, located in the western Pacific Ocean, is the deepest part of the world's oceans. [7]" },
+        { "question": "What is the process of extracting minerals from the Earth?", "options": ["Agriculture", "Manufacturing", "Mining", "Fishing"], "correctAnswer": "Mining", "explanation": "Mining is the extraction of valuable minerals or other geological materials from the Earth. [7]" },
+        { "question": "Which of these is a major river in China?", "options": ["Ganges", "Nile", "Yellow River", "Mississippi River"], "correctAnswer": "Yellow River", "explanation": "The Yellow River (Huang He) is the second-longest river in Asia." },
+        { "question": "What is the difference between weather and climate?", "options": ["Weather is long-term, climate is short-term.", "Weather is atmospheric conditions at a specific time, climate is long-term weather patterns.", "Weather is only temperature, climate is only precipitation.", "There is no difference."], "correctAnswer": "Weather is atmospheric conditions at a specific time, climate is long-term weather patterns.", "explanation": "Weather describes short-term atmospheric conditions, while climate describes long-term average weather conditions for a region. [17]" },
+        { "question": "Which factor primarily influences the distribution of population across the globe?", "options": ["Technology", "Economic development", "Physical features and climate", "Government policies"], "correctAnswer": "Physical features and climate", "explanation": "Availability of water, fertile land, suitable climate, and accessible terrain often determine where people choose to settle." }
+      ]
+    },
+    {
+      "title": "Class 9 Social Science - Political Science",
+      "description": "A quiz on democratic principles and the Indian Constitution for Class 9.",
+      "subject": "Political Science",
+      "grade": "9",
+      "difficulty": "medium",
+      "timeLimit": 35,
+      "questions": [
+        { "question": "Which body is responsible for making laws in India?", "options": ["Judiciary", "Executive", "Legislature", "Media"], "correctAnswer": "Legislature", "explanation": "The Parliament (Lok Sabha and Rajya Sabha) forms the legislative body in India responsible for law-making." },
+        { "question": "What does 'secularism' mean in the context of the Indian Constitution?", "options": ["State promoting one religion", "State having no religion", "State treating all religions equally", "State suppressing religious practices"], "correctAnswer": "State treating all religions equally", "explanation": "Indian secularism implies that the state maintains a neutral stance towards all religions, respecting and protecting them equally." },
+        { "question": "How many houses does the Indian Parliament consist of?", "options": ["One", "Two", "Three", "Four"], "correctAnswer": "Two", "explanation": "The Indian Parliament is bicameral, consisting of the Lok Sabha (House of the People) and the Rajya Sabha (Council of States)." },
+        { "question": "What is the minimum age required to be a voter in India?", "options": ["16 years", "18 years", "21 years", "25 years"], "correctAnswer": "18 years", "explanation": "The voting age in India was lowered from 21 to 18 years in 1989." },
+        { "question": "Which term describes a form of government where the head of state is not a monarch but is usually an elected president?", "options": ["Monarchy", "Republic", "Dictatorship", "Oligarchy"], "correctAnswer": "Republic", "explanation": "India is a republic, meaning the head of state (President) is elected, not a hereditary monarch." },
+        { "question": "The 'Preamble' to the Indian Constitution begins with the words:", "options": ["We, the People of India...", "India, a Sovereign...", "To secure to all its citizens...", "Justice, Liberty, Equality..."], "correctAnswer": "We, the People of India...", "explanation": "The Preamble is an introductory statement of the Constitution that serves as a guide to the document." },
+        { "question": "Which part of the Indian Constitution deals with Fundamental Rights?", "options": ["Part II", "Part III", "Part IV", "Part V"], "correctAnswer": "Part III", "explanation": "Part III of the Indian Constitution (Articles 12-35) enumerates the Fundamental Rights." },
+        { "question": "What is the 'Rule of Law'?", "options": ["Rules made by the rulers", "Everyone is equal before the law", "Only the king makes laws", "Laws are only for the poor"], "correctAnswer": "Everyone is equal before the law", "explanation": "The Rule of Law means that all citizens are subject to the same laws, irrespective of their position or status." },
+        { "question": "The institution that interprets the laws and settles disputes in India is the:", "options": ["Legislature", "Executive", "Judiciary", "Bureaucracy"], "correctAnswer": "Judiciary", "explanation": "The judiciary is responsible for upholding the law, interpreting it, and administering justice." },
+        { "question": "Who is considered the chief architect of the Indian Constitution?", "options": ["Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Vallabhbhai Patel", "B.R. Ambedkar"], "correctAnswer": "B.R. Ambedkar", "explanation": "Dr. B.R. Ambedkar was the Chairman of the Drafting Committee of the Constituent Assembly and played a pivotal role in drafting the Indian Constitution." }
+      ]
+    },
+    {
+      "title": "Class 10 Mathematics",
+      "description": "A comprehensive quiz on Class 10 Mathematics covering key concepts.",
+      "subject": "Mathematics",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "What is the quadratic formula for solving ax² + bx + c = 0?", "options": ["x = (-b ± √(b²-4ac))/2a", "x = (b ± √(b²-4ac))/2a", "x = (-b ± √(b²+4ac))/2a", "x = (-b + √(b²-4ac))/a"], "correctAnswer": "x = (-b ± √(b²-4ac))/2a", "explanation": "This is the standard formula to find the roots of a quadratic equation." },
+        { "question": "If two triangles are similar, their corresponding sides are:", "options": ["Equal", "Proportional", "Perpendicular", "Parallel"], "correctAnswer": "Proportional", "explanation": "Similar triangles have the same shape, meaning their corresponding angles are equal and corresponding sides are in proportion." },
+        { "question": "What is the value of sin 30°?", "options": ["0", "1/2", "√3/2", "1"], "correctAnswer": "1/2", "explanation": "Sin 30° is a standard trigonometric value." },
+        { "question": "The distance between the points (2, 3) and (4, 1) is:", "options": ["√8", "√10", "√12", "2"], "correctAnswer": "√8", "explanation": "Using the distance formula: √((x2-x1)² + (y2-y1)²) = √((4-2)² + (1-3)²) = √(2² + (-2)²) = √(4+4) = √8." },
+        { "question": "What is the surface area of a sphere with radius 'r'?", "options": ["πr²", "2πr²", "3πr²", "4πr²"], "correctAnswer": "4πr²", "explanation": "This is the formula for the surface area of a sphere." },
+        { "question": "If the roots of a quadratic equation are real and equal, the discriminant (D) is:", "options": ["D > 0", "D < 0", "D = 0", "D ≠ 0"], "correctAnswer": "D = 0", "explanation": "For real and equal roots, the discriminant (b²-4ac) must be zero." },
+        { "question": "A line that intersects a circle at two distinct points is called a:", "options": ["Tangent", "Secant", "Radius", "Diameter"], "correctAnswer": "Secant", "explanation": "A secant line passes through two points on a curve." },
+        { "question": "What is the mean of the first five natural numbers (1, 2, 3, 4, 5)?", "options": ["2", "3", "4", "5"], "correctAnswer": "3", "explanation": "Mean = (1+2+3+4+5)/5 = 15/5 = 3." },
+        { "question": "The highest common factor (HCF) of 12 and 18 is:", "options": ["2", "3", "6", "9"], "correctAnswer": "6", "explanation": "The common factors of 12 (1, 2, 3, 4, 6, 12) and 18 (1, 2, 3, 6, 9, 18) are 1, 2, 3, 6. The highest is 6." },
+        { "question": "A bag contains 3 red and 2 blue balls. What is the probability of drawing a red ball?", "options": ["2/5", "3/5", "1/2", "1/3"], "correctAnswer": "3/5", "explanation": "Total balls = 3 + 2 = 5. Number of red balls = 3. Probability = 3/5." }
+      ]
+    },
+    {
+      "title": "Class 10 Science - Physics",
+      "description": "A quiz on key physics concepts including electricity and light for Class 10.",
+      "subject": "Physics",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "What is the SI unit of electric power?", "options": ["Volt", "Ampere", "Ohm", "Watt"], "correctAnswer": "Watt", "explanation": "Electric power is measured in Watts (W)." },
+        { "question": "Which device is used to produce electricity by converting mechanical energy into electrical energy?", "options": ["Motor", "Generator", "Transformer", "Resistor"], "correctAnswer": "Generator", "explanation": "A generator converts mechanical energy into electrical energy." },
+        { "question": "The phenomenon due to which a parallel beam of light, after striking a spherical mirror, converges to a single point or appears to diverge from a single point is called:", "options": ["Reflection", "Refraction", "Dispersion", "Total internal reflection"], "correctAnswer": "Reflection", "explanation": "This describes the behavior of light rays when they reflect off a spherical mirror and pass through or appear to pass through its principal focus." },
+        { "question": "What is the resistance of a conductor inversely proportional to?", "options": ["Length", "Area of cross-section", "Temperature", "Material"], "correctAnswer": "Area of cross-section", "explanation": "Resistance R = ρL/A, where ρ is resistivity, L is length, and A is area of cross-section." },
+        { "question": "The human eye forms the image of an object at its:", "options": ["Cornea", "Pupil", "Retina", "Iris"], "correctAnswer": "Retina", "explanation": "The retina is the light-sensitive layer at the back of the eye where images are formed." },
+        { "question": "Which effect of electric current is used in an electric fuse?", "options": ["Heating effect", "Magnetic effect", "Chemical effect", "Luminating effect"], "correctAnswer": "Heating effect", "explanation": "An electric fuse works on the heating effect of current. When current exceeds a safe limit, the fuse wire heats up and melts, breaking the circuit." },
+        { "question": "A convex lens is also known as a:", "options": ["Diverging lens", "Converging lens", "Zoom lens", "Microscope lens"], "correctAnswer": "Converging lens", "explanation": "A convex lens converges parallel rays of light to a single point (focus)." },
+        { "question": "What is the SI unit of magnetic field strength?", "options": ["Weber", "Tesla", "Henry", "Farad"], "correctAnswer": "Tesla", "explanation": "The SI unit for magnetic field strength (magnetic flux density) is the Tesla (T)." },
+        { "question": "The scattering of light by colloidal particles is called:", "options": ["Dispersion", "Reflection", "Refraction", "Tyndall effect"], "correctAnswer": "Tyndall effect", "explanation": "The Tyndall effect is the scattering of light as it passes through a colloid. [4]" },
+        { "question": "What is the minimum distance required between the source and reflector for distinct echo formation?", "options": ["1.7 m", "17 m", "170 m", "7 m"], "correctAnswer": "17 m", "explanation": "For a distinct echo, the sound must travel to the reflector and back, covering twice the distance, and the brain needs at least 0.1 seconds to distinguish between the original sound and the echo. Assuming the speed of sound is approx. 340 m/s, distance = (340 * 0.1)/2 = 17m." }
+      ]
+    },
+    {
+      "title": "Class 10 Science - Chemistry",
+      "description": "A quiz on chemical reactions, carbon compounds, and periodicity for Class 10.",
+      "subject": "Chemistry",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "Which gas is produced when metals react with acids?", "options": ["Oxygen", "Carbon dioxide", "Hydrogen", "Nitrogen"], "correctAnswer": "Hydrogen", "explanation": "Metals (like zinc) react with acids (like HCl) to produce a salt and hydrogen gas. Zn + 2HCl → ZnCl₂ + H₂." },
+        { "question": "What is the common name for CaO?", "options": ["Slaked lime", "Quicklime", "Limestone", "Washing soda"], "correctAnswer": "Quicklime", "explanation": "CaO is calcium oxide, commonly known as quicklime. [11]" },
+        { "question": "Which of these is a saturated hydrocarbon?", "options": ["Ethylene", "Acetylene", "Methane", "Benzene"], "correctAnswer": "Methane", "explanation": "Saturated hydrocarbons (alkanes) contain only single bonds. Methane (CH₄) is the simplest alkane." },
+        { "question": "What happens during an oxidation reaction?", "options": ["Gain of electrons", "Loss of electrons", "Gain of hydrogen", "Loss of oxygen"], "correctAnswer": "Loss of electrons", "explanation": "Oxidation is defined as the loss of electrons or gain of oxygen. [32]" },
+        { "question": "Which element is found in all organic compounds?", "options": ["Oxygen", "Nitrogen", "Carbon", "Hydrogen"], "correctAnswer": "Carbon", "explanation": "Organic chemistry is the study of carbon-containing compounds." },
+        { "question": "What is the general formula for alkenes?", "options": ["CnH2n+2", "CnH2n", "CnH2n-2", "CnHn"], "correctAnswer": "CnH2n", "explanation": "Alkenes are unsaturated hydrocarbons with at least one carbon-carbon double bond, and their general formula is CnH2n." },
+        { "question": "Which scientist proposed the periodic law stating that the properties of elements are a periodic function of their atomic masses?", "options": ["Döbereiner", "Newlands", "Mendeleev", "Moseley"], "correctAnswer": "Mendeleev", "explanation": "Dmitri Mendeleev published the first widely recognized periodic table, organizing elements by atomic mass. [11]" },
+        { "question": "A substance that changes the rate of a chemical reaction without itself being consumed in the reaction is called a/an:", "options": ["Reactant", "Product", "Catalyst", "Inhibitor"], "correctAnswer": "Catalyst", "explanation": "Catalysts speed up chemical reactions. [11]" },
+        { "question": "Which of these is a strong acid?", "options": ["Acetic acid", "Formic acid", "Hydrochloric acid", "Citric acid"], "correctAnswer": "Hydrochloric acid", "explanation": "Strong acids completely ionize in water, like Hydrochloric acid (HCl)." },
+        { "question": "The atomic number of an element is 6. How many electrons are in its K-shell?", "options": ["2", "4", "6", "8"], "correctAnswer": "2", "explanation": "The K-shell can hold a maximum of 2 electrons. For an atomic number of 6, the electron configuration would be 2, 4. [25]" }
+      ]
+    },
+    {
+      "title": "Class 10 Science - Biology",
+      "description": "A quiz on life processes, control, and coordination, and reproduction for Class 10.",
+      "subject": "Biology",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "Which component of blood is responsible for transporting oxygen?", "options": ["White Blood Cells", "Plasma", "Platelets", "Red Blood Cells"], "correctAnswer": "Red Blood Cells", "explanation": "Red blood cells contain hemoglobin, which binds to oxygen for transport. [20]" },
+        { "question": "What is the functional unit of the kidney?", "options": ["Neuron", "Alveolus", "Nephron", "Bronchiole"], "correctAnswer": "Nephron", "explanation": "Nephrons are the microscopic filtering units in the kidneys that filter blood and form urine. [20]" },
+        { "question": "Which hormone regulates sugar levels in the blood?", "options": ["Thyroxine", "Adrenaline", "Insulin", "Testosterone"], "correctAnswer": "Insulin", "explanation": "Insulin, produced by the pancreas, lowers blood glucose levels." },
+        { "question": "The process of fusion of male and female gametes is called:", "options": ["Fertilization", "Pollination", "Germination", "Budding"], "correctAnswer": "Fertilization", "explanation": "Fertilization is the union of male and female gametes to form a zygote." },
+        { "question": "Which part of the brain is responsible for controlling balance and posture?", "options": ["Cerebrum", "Cerebellum", "Medulla", "Hypothalamus"], "correctAnswer": "Cerebellum", "explanation": "The cerebellum is located at the back of the brain and is primarily responsible for motor control, coordination, and balance." },
+        { "question": "Which of these is an example of an involuntary action?", "options": ["Writing", "Walking", "Digesting food", "Talking"], "correctAnswer": "Digesting food", "explanation": "Digestion is controlled by the autonomic nervous system and occurs without conscious thought." },
+        { "question": "The energy currency of the cell is:", "options": ["Glucose", "DNA", "ATP", "RNA"], "correctAnswer": "ATP", "explanation": "ATP (Adenosine Triphosphate) provides energy for many metabolic processes. [5]" },
+        { "question": "Which reproductive method involves the development of an offspring from an unfertilized egg?", "options": ["Sexual reproduction", "Asexual reproduction", "Parthenogenesis", "Budding"], "correctAnswer": "Parthenogenesis", "explanation": "Parthenogenesis is a form of asexual reproduction in which growth and development of embryos occur without fertilization." },
+        { "question": "Where does gaseous exchange occur in human lungs?", "options": ["Bronchi", "Trachea", "Alveoli", "Bronchioles"], "correctAnswer": "Alveoli", "explanation": "Alveoli are tiny air sacs where oxygen from the air is absorbed into the blood and carbon dioxide is released. [30]" },
+        { "question": "The phenomenon of an organism developing different forms in response to its environment is called:", "options": ["Adaptation", "Evolution", "Variation", "Natural selection"], "correctAnswer": "Adaptation", "explanation": "Adaptation is a characteristic that an organism acquires over time in response to its environment to improve its survival and reproduction. [17]" }
+      ]
+    },
+    {
+      "title": "Class 10 English",
+      "description": "A comprehensive quiz on English language and literature for Class 10.",
+      "subject": "English",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "Identify the figure of speech: 'The silence was deafening.'", "options": ["Metaphor", "Simile", "Personification", "Oxymoron"], "correctAnswer": "Oxymoron", "explanation": "Oxymoron combines contradictory terms ('silence' and 'deafening')." },
+        { "question": "Choose the correct tense: 'By next year, I ____ my degree.'", "options": ["will complete", "will be completing", "will have completed", "would complete"], "correctAnswer": "will have completed", "explanation": " 'By next year' indicates the future perfect tense, implying completion of an action by a specific future time. [49]" },
+        { "question": "Which of these is a compound sentence?", "options": ["She sings.", "She sings and dances.", "Because she sings, she is happy.", "She sings beautifully."], "correctAnswer": "She sings and dances.", "explanation": "A compound sentence consists of two or more independent clauses joined by a coordinating conjunction (like 'and')." },
+        { "question": "Change into reported speech: 'He said, 'I am going to the market.''", "options": ["He said that I was going to the market.", "He said that he was going to the market.", "He said he is going to the market.", "He said I am going to the market."], "correctAnswer": "He said that he was going to the market.", "explanation": "Pronouns and tense are adjusted in reported speech. [9]" },
+        { "question": "Fill in the blank with the correct preposition: 'He is afraid ____ dogs.'", "options": ["of", "from", "with", "about"], "correctAnswer": "of", "explanation": "'Afraid of' is the correct idiom. [44]" },
+        { "question": "Identify the determiner: 'Many people attended the event.'", "options": ["Many", "people", "attended", "event"], "correctAnswer": "Many", "explanation": "Determiners modify nouns by providing information about quantity, possession, or specificity. [48]" },
+        { "question": "What is the antonym for 'benevolent'?", "options": ["Kind", "Generous", "Malicious", "Compassionate"], "correctAnswer": "Malicious", "explanation": "Benevolent means well-meaning and kindly; malicious means intending to do harm. [39]" },
+        { "question": "Which of these is an example of active voice?", "options": ["The ball was kicked by the boy.", "The book was read by her.", "The boy kicked the ball.", "The food was eaten by us."], "correctAnswer": "The boy kicked the ball.", "explanation": "In active voice, the subject performs the action. [43]" },
+        { "question": "What is a 'soliloquy' in literature?", "options": ["A dialogue between two characters.", "A speech delivered by a character alone on stage.", "A short poem.", "A form of narrative."], "correctAnswer": "A speech delivered by a character alone on stage.", "explanation": "A soliloquy reveals a character's thoughts and feelings to the audience." },
+        { "question": "Which sentence demonstrates subject-verb agreement?", "options": ["The dogs barks loudly.", "The dog bark loudly.", "The dog barks loudly.", "The dogs bark loudly."], "correctAnswer": "The dog barks loudly.", "explanation": "Singular subject ('dog') takes a singular verb ('barks'). Plural subject ('dogs') takes a plural verb ('bark')." }
+      ]
+    },
+    {
+      "title": "Class 10 Social Science - History",
+      "description": "A quiz on modern Indian history and contemporary world issues for Class 10.",
+      "subject": "History",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "Who was the founder of the Indian National Army (INA)?", "options": ["Mahatma Gandhi", "Subhas Chandra Bose", "Jawaharlal Nehru", "Sardar Patel"], "correctAnswer": "Subhas Chandra Bose", "explanation": "Subhas Chandra Bose reorganized and led the Azad Hind Fauj (Indian National Army)." },
+        { "question": "The 'Non-Cooperation Movement' was launched in which year?", "options": ["1919", "1920", "1922", "1929"], "correctAnswer": "1920", "explanation": "The Non-Cooperation Movement, led by Mahatma Gandhi, was launched in 1920." },
+        { "question": "Which country initiated the 'New Economic Policy' (NEP) in 1921?", "options": ["China", "Soviet Union", "United States", "Germany"], "correctAnswer": "Soviet Union", "explanation": "The NEP was introduced by Vladimir Lenin in Soviet Russia. [1]" },
+        { "question": "The incident of 'Chauri Chaura' led to the withdrawal of which movement?", "options": ["Quit India Movement", "Civil Disobedience Movement", "Non-Cooperation Movement", "Swadeshi Movement"], "correctAnswer": "Non-Cooperation Movement", "explanation": "The violent incident at Chauri Chaura in 1922 prompted Mahatma Gandhi to call off the Non-Cooperation Movement." },
+        { "question": "Which of these was a major cause of the 'Scramble for Africa' in the late 19th century?", "options": ["Search for new religions", "Quest for raw materials and markets", "Cultural exchange", "Spread of democracy"], "correctAnswer": "Quest for raw materials and markets", "explanation": "European powers sought to control African territories for their natural resources and to expand their markets." },
+        { "question": "The term 'Holocaust' primarily refers to the genocide of approximately six million Jews by the Nazi regime during World War II in which region?", "options": ["Asia", "Europe", "Africa", "North America"], "correctAnswer": "Europe", "explanation": "The Holocaust was perpetrated across Nazi-occupied Europe. [1]" },
+        { "question": "Who composed the song 'Vande Mataram'?", "options": ["Rabindranath Tagore", "Bankim Chandra Chattopadhyay", "Mahatma Gandhi", "Subramania Bharati"], "correctAnswer": "Bankim Chandra Chattopadhyay", "explanation": "Vande Mataram was written by Bankim Chandra Chattopadhyay in 1870s and later included in his novel Anandamath." },
+        { "question": "What was the main objective of the 'Salt March' (Dandi March) led by Mahatma Gandhi?", "options": ["To protest against textile taxes", "To oppose the British salt monopoly", "To demand full independence", "To promote Hindu-Muslim unity"], "correctAnswer": "To oppose the British salt monopoly", "explanation": "Gandhi led the Dandi March in 1930 to challenge the British salt tax." },
+        { "question": "Which ideology emphasizes the establishment of an egalitarian society with no private ownership of means of production?", "options": ["Capitalism", "Socialism", "Communism", "Imperialism"], "correctAnswer": "Communism", "explanation": "Communism aims for a classless society with communal ownership of resources. [1]" },
+        { "question": "The 'Bretton Woods System' was established to regulate which aspect of the global economy after World War II?", "options": ["Trade tariffs", "Exchange rates", "Labor laws", "Environmental regulations"], "correctAnswer": "Exchange rates", "explanation": "The Bretton Woods system created a system of fixed exchange rates between currencies. [1]" }
+      ]
+    },
+    {
+      "title": "Class 10 Social Science - Geography",
+      "description": "A quiz on Indian geography, resources, and development for Class 10.",
+      "subject": "Geography",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "Which of these states is a major producer of cotton in India?", "options": ["Bihar", "Kerala", "Gujarat", "Odisha"], "correctAnswer": "Gujarat", "explanation": "Gujarat is one of the leading cotton-producing states in India." },
+        { "question": "What is 'shifting cultivation' also known as in North-Eastern India?", "options": ["Jhum cultivation", "Intensive farming", "Plantation farming", "Terrace cultivation"], "correctAnswer": "Jhum cultivation", "explanation": "Jhum cultivation is a traditional method of shifting cultivation in North-Eastern India." },
+        { "question": "Which of these is a major iron ore producing region in India?", "options": ["Malwa Plateau", "Deccan Plateau", "Chota Nagpur Plateau", "Thar Desert"], "correctAnswer": "Chota Nagpur Plateau", "explanation": "The Chota Nagpur Plateau region is rich in mineral resources, including iron ore. [7]" },
+        { "question": "What is the highest peak in India (wholly within India)?", "options": ["Mount Everest", "Kanchenjunga", "K2", "Nanda Devi"], "correctAnswer": "Kanchenjunga", "explanation": "While K2 is higher, Kanchenjunga is the highest peak wholly within India." },
+        { "question": "Which type of soil is ideal for growing cotton?", "options": ["Alluvial soil", "Red soil", "Black soil", "Laterite soil"], "correctAnswer": "Black soil", "explanation": "Black soil, also known as Regur soil, is well-suited for cotton cultivation due to its high clay content and moisture retention capacity." },
+        { "question": "The 'Green Revolution' in India primarily aimed at increasing the production of:", "options": ["Tea", "Cotton", "Food grains", "Spices"], "correctAnswer": "Food grains", "explanation": "The Green Revolution focused on increasing the production of wheat and rice through improved seeds and agricultural practices." },
+        { "question": "Which city is known as the 'Silicon Valley of India'?", "options": ["Mumbai", "Delhi", "Chennai", "Bengaluru"], "correctAnswer": "Bengaluru", "explanation": "Bengaluru (Bangalore) is a major IT hub and is often referred to as the Silicon Valley of India." },
+        { "question": "What is the process of collecting and storing rainwater for future use?", "options": ["Irrigation", "Drip farming", "Rainwater harvesting", "Groundwater extraction"], "correctAnswer": "Rainwater harvesting", "explanation": "Rainwater harvesting is the accumulation and storage of rainwater for reuse. [45]" },
+        { "question": "Which of these is a non-metallic mineral?", "options": ["Iron", "Copper", "Mica", "Bauxite"], "correctAnswer": "Mica", "explanation": "Mica is a group of minerals that are silicates and are non-metallic." },
+        { "question": "The Ganga Action Plan (GAP) was launched to achieve which objective?", "options": ["Increase navigation in Ganga", "Control floods in Ganga", "Reduce pollution in River Ganga", "Promote tourism along Ganga"], "correctAnswer": "Reduce pollution in River Ganga", "explanation": "The Ganga Action Plan was a program launched by the Government of India in 1986 to reduce pollution levels in the River Ganga." }
+      ]
+    },
+    {
+      "title": "Class 10 Social Science - Political Science",
+      "description": "A quiz on power sharing, federalism, and political parties for Class 10.",
+      "subject": "Political Science",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "What is 'federalism'?", "options": ["Concentration of power at one level", "Division of power between central and state governments", "Power exercised by a single individual", "Power held by the military"], "correctAnswer": "Division of power between central and state governments", "explanation": "Federalism is a system of government in which power is divided between a central authority and constituent political units. [7]" },
+        { "question": "Which amendment added the words 'socialist' and 'secular' to the Preamble of the Indian Constitution?", "options": ["24th Amendment", "42nd Amendment", "44th Amendment", "73rd Amendment"], "correctAnswer": "42nd Amendment", "explanation": "The 42nd Amendment, passed in 1976, is often called the 'Mini-Constitution'." },
+        { "question": "What is the main role of a 'political party' in a democracy?", "options": ["To administer justice", "To manufacture goods", "To contest elections and form government", "To provide public services"], "correctAnswer": "To contest elections and form government", "explanation": "Political parties aim to gain power through elections and run the government." },
+        { "question": "Which level of government is responsible for subjects like defense and foreign affairs in a federal system?", "options": ["State government", "Local government", "Central government", "Municipal government"], "correctAnswer": "Central government", "explanation": "Subjects of national importance like defense and foreign policy are usually handled by the central government. [7]" },
+        { "question": "What does 'Universal Adult Franchise' mean?", "options": ["Only educated people can vote", "Only rich people can vote", "All adults have the right to vote regardless of caste, creed, sex, etc.", "Only men can vote"], "correctAnswer": "All adults have the right to vote regardless of caste, creed, sex, etc.", "explanation": "It ensures that every adult citizen has the right to vote." },
+        { "question": "Which of these is a characteristic of 'democracy'?", "options": ["Rule by a single person", "Freedom of speech and expression", "Suppression of dissent", "Hereditary rule"], "correctAnswer": "Freedom of speech and expression", "explanation": "Democratic governments protect fundamental rights and freedoms, including freedom of speech. [7]" },
+        { "question": "What is a 'coalition government'?", "options": ["A government formed by a single party with an absolute majority", "A government formed by two or more political parties", "A government run by the military", "A government elected for a very short term"], "correctAnswer": "A government formed by two or more political parties", "explanation": "Coalition governments are formed when no single party secures a clear majority, necessitating alliances." },
+        { "question": "The system of 'checks and balances' ensures:", "options": ["Concentration of power", "Absence of accountability", "Separation of powers and mutual restraints", "Unlimited power to one branch"], "correctAnswer": "Separation of powers and mutual restraints", "explanation": "Checks and balances prevent any one branch of government from becoming too powerful by allowing other branches to scrutinize and limit its actions." },
+        { "question": "Which term describes a society that consists of people from different linguistic, cultural, and ethnic backgrounds?", "options": ["Homogeneous society", "Monocultural society", "Diverse society", "Autocratic society"], "correctAnswer": "Diverse society", "explanation": "A diverse society embraces multiple cultural identities and backgrounds." },
+        { "question": "What is the role of the 'Opposition Party' in a democracy?", "options": ["To always support the government", "To criticize government policies and offer alternatives", "To make laws independently", "To control the judiciary"], "correctAnswer": "To criticize government policies and offer alternatives", "explanation": "The opposition plays a crucial role in holding the ruling government accountable and presenting alternative policies and programs." }
+      ]
+    },
+    {
+      "title": "Class 10 Social Science - Economics",
+      "description": "A quiz on development, sectors of the Indian economy, and money for Class 10.",
+      "subject": "Economics",
+      "grade": "10",
+      "difficulty": "medium",
+      "timeLimit": 40,
+      "questions": [
+        { "question": "What is 'Gross Domestic Product' (GDP)?", "options": ["Total imports of a country", "Total exports of a country", "Total value of all final goods and services produced within a country's borders in a specific time period", "Total income of the government"], "correctAnswer": "Total value of all final goods and services produced within a country's borders in a specific time period", "explanation": "GDP measures the economic output of a nation. [13, 19]" },
+        { "question": "Which sector of the economy includes agriculture, forestry, and fishing?", "options": ["Primary sector", "Secondary sector", "Tertiary sector", "Quaternary sector"], "correctAnswer": "Primary sector", "explanation": "The primary sector involves the extraction and production of raw materials." },
+        { "question": "What is the main function of a 'bank'?", "options": ["Printing currency", "Granting loans and accepting deposits", "Collecting taxes", "Providing defense services"], "correctAnswer": "Granting loans and accepting deposits", "explanation": "Banks primarily act as financial intermediaries, facilitating borrowing and lending. [3, 13]" },
+        { "question": "What does 'Human Development Index' (HDI) measure?", "options": ["Economic growth", "Income inequality", "Overall achievement in key dimensions of human development", "Political stability"], "correctAnswer": "Overall achievement in key dimensions of human development", "explanation": "HDI considers life expectancy, education, and per capita income. [3]" },
+        { "question": "Which of these is an example of an 'informal sector' activity?", "options": ["Working in a government office", "Being employed by a multinational company", "Running a small street-side shop", "Working as a doctor in a private hospital"], "correctAnswer": "Running a small street-side shop", "explanation": "The informal sector consists of economic activities that are not officially regulated or taxed. [3]" },
+        { "question": "What is the situation when a country imports more than it exports?", "options": ["Trade surplus", "Trade deficit", "Balanced trade", "Free trade"], "correctAnswer": "Trade deficit", "explanation": "A trade deficit occurs when a country's imports exceed its exports. [3]" },
+        { "question": "The process of rapid integration or interconnection between countries is known as:", "options": ["Privatization", "Nationalization", "Liberalization", "Globalization"], "correctAnswer": "Globalization", "explanation": "Globalization refers to the increasing interconnectedness of the world's economies, cultures, and populations. [26]" },
+        { "question": "What is 'inflation'?", "options": ["A decrease in the general price level", "A sustained increase in the general price level", "A period of economic recession", "An increase in unemployment"], "correctAnswer": "A sustained increase in the general price level", "explanation": "Inflation is the rate at which the general level of prices for goods and services is rising, and subsequently, the purchasing power of currency is falling." },
+        { "question": "Which of these is a self-help group activity?", "options": ["Big business investments", "Small savings and credit activities among members", "Government grants for large projects", "International trade agreements"], "correctAnswer": "Small savings and credit activities among members", "explanation": "Self-help groups (SHGs) facilitate small savings and provide micro-credit to their members, particularly women in rural areas. [3]" },
+        { "question": "What is the main objective of 'sustainable development'?", "options": ["To maximize current economic growth", "To meet the needs of the present without compromising the ability of future generations to meet their own needs", "To promote industrialization at all costs", "To extract all natural resources quickly"], "correctAnswer": "To meet the needs of the present without compromising the ability of future generations to meet their own needs", "explanation": "Sustainable development aims for long-term well-being by balancing economic, social, and environmental considerations. [3, 26]" }
+      ]
+    },
+    {
+      "title": "Class 11 Mathematics",
+      "description": "An advanced quiz on sets, relations, functions, trigonometry, and calculus basics for Class 11.",
+      "subject": "Mathematics",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "If A = {1, 2, 3} and B = {3, 4, 5}, what is A ∪ B?", "options": ["{3}", "{1, 2, 3, 4, 5}", "{1, 2, 4, 5}", "{ }"], "correctAnswer": "{1, 2, 3, 4, 5}", "explanation": "The union of two sets contains all unique elements from both sets. [6, 28]" },
+        { "question": "What is the principal value of sin⁻¹(1/2)?", "options": ["π/6", "π/3", "π/2", "0"], "correctAnswer": "π/6", "explanation": "The principal value of sin⁻¹(1/2) is 30 degrees, which is π/6 radians. [8]" },
+        { "question": "Find the domain of the function f(x) = 1/(x-2).", "options": ["All real numbers", "x ≠ 0", "x ≠ 2", "x > 2"], "correctAnswer": "x ≠ 2", "explanation": "The denominator cannot be zero, so x cannot be 2. [21]" },
+        { "question": "What is the value of cos(π/2)?", "options": ["0", "1", "-1", "Undefined"], "correctAnswer": "0", "explanation": "Cos 90° = 0. [6]" },
+        { "question": "The equation of a straight line passing through (x₁, y₁) with slope 'm' is:", "options": ["y - y₁ = m(x - x₁)", "y = mx + c", "x - x₁ = m(y - y₁)", "y = mx"], "correctAnswer": "y - y₁ = m(x - x₁)", "explanation": "This is the point-slope form of the equation of a line. [6, 23]" },
+        { "question": "What is the derivative of x² with respect to x?", "options": ["x", "2x", "x³", "1/x"], "correctAnswer": "2x", "explanation": "Using the power rule for differentiation: d/dx (x^n) = nx^(n-1). [18]" },
+        { "question": "If a, b, c are in Arithmetic Progression (A.P.), then 2b = ?", "options": ["a + c", "a - c", "ac", "a/c"], "correctAnswer": "a + c", "explanation": "In an A.P., the middle term is the average of its neighbors: b = (a+c)/2, so 2b = a+c. [18]" },
+        { "question": "How many different words can be formed using the letters of the word 'APPLE'?", "options": ["60", "120", "24", "30"], "correctAnswer": "60", "explanation": "Total letters = 5. 'P' repeats twice. So, permutations = 5! / 2! = (5*4*3*2*1) / (2*1) = 120/2 = 60. [6]" },
+        { "question": "What is the probability of drawing a king from a standard deck of 52 cards?", "options": ["1/13", "1/52", "4/13", "1/4"], "correctAnswer": "1/13", "explanation": "There are 4 kings in a deck of 52 cards. So, 4/52 = 1/13. [6, 23]" },
+        { "question": "The statement 'If P then Q' is logically equivalent to:", "options": ["If Q then P", "If not P then not Q", "Not P or Q", "P and not Q"], "correctAnswer": "Not P or Q", "explanation": "This is a fundamental logical equivalence: P → Q ≡ ¬P ∨ Q." }
+      ]
+    },
+    {
+      "title": "Class 11 Physics",
+      "description": "An advanced quiz on mechanics, properties of matter, and thermodynamics for Class 11.",
+      "subject": "Physics",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "What is the SI unit of momentum?", "options": ["kg m/s", "kg m/s²", "N s", "Joule"], "correctAnswer": "kg m/s", "explanation": "Momentum (p) = mass (m) × velocity (v), so its unit is kg m/s." },
+        { "question": "According to Hooke's Law, stress is proportional to:", "options": ["Force", "Area", "Strain", "Pressure"], "correctAnswer": "Strain", "explanation": "Hooke's Law states that within the elastic limit, stress is directly proportional to strain." },
+        { "question": "What is the formula for kinetic energy?", "options": ["mgh", "1/2 mv²", "F.d", "P.V"], "correctAnswer": "1/2 mv²", "explanation": "Kinetic energy is the energy of motion, calculated as half times mass times velocity squared." },
+        { "question": "Which of these is a characteristic of an ideal gas?", "options": ["Molecules exert strong intermolecular forces.", "Molecules occupy significant volume.", "Collisions between molecules are perfectly elastic.", "Molecules are always in a fixed position."], "correctAnswer": "Collisions between molecules are perfectly elastic.", "explanation": "Ideal gas assumes negligible intermolecular forces and perfectly elastic collisions. [8]" },
+        { "question": "What is the SI unit of viscosity?", "options": ["Pascal", "Poise", "Newton", "Ns/m²"], "correctAnswer": "Ns/m²", "explanation": "The SI unit of dynamic viscosity is Pascal-second (Pa·s) or Newton-second per square meter (Ns/m²)." },
+        { "question": "The phenomenon of an object continuing in its state of rest or uniform motion unless acted upon by an external force is called:", "options": ["Force", "Momentum", "Inertia", "Gravity"], "correctAnswer": "Inertia", "explanation": "Inertia is the resistance of any physical object to any change in its state of motion. [4]" },
+        { "question": "What is the specific heat capacity of water at room temperature (approximately)?", "options": ["1 J/g°C", "4.18 J/g°C", "10 J/g°C", "0.5 J/g°C"], "correctAnswer": "4.18 J/g°C", "explanation": "The specific heat capacity of water is approximately 4.18 J/g°C or 1 calorie/g°C. [22]" },
+        { "question": "Which type of wave requires a medium for its propagation?", "options": ["Electromagnetic wave", "Transverse wave", "Longitudinal wave", "Mechanical wave"], "correctAnswer": "Mechanical wave", "explanation": "Mechanical waves (like sound waves) need a medium to travel through. Electromagnetic waves (like light) do not. [4]" },
+        { "question": "What is the dimensional formula for gravitational constant (G)?", "options": ["[M⁻¹L³T⁻²]", "[M¹L²T⁻²]", "[M⁻²L³T⁻¹]", "[M⁻¹L⁻²T²]"], "correctAnswer": "[M⁻¹L³T⁻²]", "explanation": "From F = Gm₁m₂/r², G = Fr²/(m₁m₂). Substituting units gives [M⁻¹L³T⁻²]." },
+        { "question": "The rate of flow of charge is known as:", "options": ["Voltage", "Resistance", "Current", "Power"], "correctAnswer": "Current", "explanation": "Electric current is defined as the rate of flow of electric charge. [4]" }
+      ]
+    },
+    {
+      "title": "Class 11 Chemistry",
+      "description": "An advanced quiz on atomic structure, chemical bonding, and states of matter for Class 11.",
+      "subject": "Chemistry",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "Which atomic model is known as the 'plum pudding' model?", "options": ["Rutherford's Model", "Bohr's Model", "Thomson's Model", "Chadwick's Model"], "correctAnswer": "Thomson's Model", "explanation": "J.J. Thomson proposed the plum pudding model of the atom. [25]" },
+        { "question": "What is the maximum number of electrons that can be accommodated in the M-shell (n=3)?", "options": ["2", "8", "18", "32"], "correctAnswer": "18", "explanation": "The maximum number of electrons in a shell is given by 2n², where n is the principal quantum number. For M-shell (n=3), 2 * 3² = 18. [25]" },
+        { "question": "Which type of hybridization is observed in a methane (CH₄) molecule?", "options": ["sp", "sp²", "sp³", "dsp²"], "correctAnswer": "sp³", "explanation": "Methane has a tetrahedral geometry with sp³ hybridization of the central carbon atom." },
+        { "question": "According to the Ideal Gas Law, what is the relationship between pressure (P), volume (V), number of moles (n), and temperature (T)?", "options": ["PV = nRT", "P/V = nRT", "PT = nRV", "PVT = nR"], "correctAnswer": "PV = nRT", "explanation": "PV = nRT is the ideal gas equation. [11]" },
+        { "question": "Which of these elements has the highest electronegativity?", "options": ["Fluorine", "Chlorine", "Oxygen", "Nitrogen"], "correctAnswer": "Fluorine", "explanation": "Fluorine is the most electronegative element in the periodic table." },
+        { "question": "What is the oxidation state of sulfur in H₂SO₄ (sulfuric acid)?", "options": ["+2", "+4", "+6", "-2"], "correctAnswer": "+6", "explanation": "Oxygen is -2 (4 oxygen atoms = -8), Hydrogen is +1 (2 hydrogen atoms = +2). For the molecule to be neutral, Sulfur must be +6 (+2 + 6 - 8 = 0). [25]" },
+        { "question": "The process of removing electrons from an atom or molecule is called:", "options": ["Reduction", "Oxidation", "Neutralization", "Hydrolysis"], "correctAnswer": "Oxidation", "explanation": "Oxidation is defined as the loss of electrons. [32]" },
+        { "question": "Which intermolecular force is responsible for the relatively high boiling point of water?", "options": ["London dispersion forces", "Dipole-dipole interactions", "Hydrogen bonding", "Ionic bonds"], "correctAnswer": "Hydrogen bonding", "explanation": "Hydrogen bonding is a strong type of dipole-dipole interaction responsible for many of water's unique properties. [11]" },
+        { "question": "What is the SI unit of amount of substance?", "options": ["Gram", "Kilogram", "Mole", "Liter"], "correctAnswer": "Mole", "explanation": "The mole is the SI unit of amount of substance. [32]" },
+        { "question": "Which postulate of Dalton's atomic theory was disproven by the discovery of isotopes?", "options": ["Atoms are indivisible particles.", "Atoms of the same element are identical in all respects.", "Atoms combine in simple whole-number ratios.", "Atoms of different elements are different."], "correctAnswer": "Atoms of the same element are identical in all respects.", "explanation": "Isotopes are atoms of the same element with different masses, contradicting the idea of identical atoms for an element. [25]" }
+      ]
+    },
+    {
+      "title": "Class 11 Biology",
+      "description": "An advanced quiz on plant and animal physiology, cell biology, and biodiversity for Class 11.",
+      "subject": "Biology",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "Which of these is a monocot plant?", "options": ["Pea", "Bean", "Rice", "Mustard"], "correctAnswer": "Rice", "explanation": "Monocot plants have a single cotyledon in their seeds. Rice, wheat, and maize are examples. [29]" },
+        { "question": "What is the site of cellular respiration in eukaryotic cells?", "options": ["Cytoplasm", "Nucleus", "Mitochondria", "Chloroplast"], "correctAnswer": "Mitochondria", "explanation": "Mitochondria are responsible for ATP production through cellular respiration. [5]" },
+        { "question": "Which hormone promotes cell division and apical dominance in plants?", "options": ["Auxin", "Gibberellin", "Cytokinin", "Abscisic acid"], "correctAnswer": "Auxin", "explanation": "Auxins are primarily responsible for cell elongation and play a key role in apical dominance. [29]" },
+        { "question": "The human heart has how many chambers?", "options": ["2", "3", "4", "5"], "correctAnswer": "4", "explanation": "The human heart consists of two atria and two ventricles. [5, 20]" },
+        { "question": "Which phylum includes animals with jointed legs?", "options": ["Annelida", "Mollusca", "Arthropoda", "Chordata"], "correctAnswer": "Arthropoda", "explanation": "Arthropods are characterized by their segmented bodies, exoskeletons, and jointed appendages." },
+        { "question": "What is the scientific study of the classification of living organisms?", "options": ["Ecology", "Genetics", "Taxonomy", "Physiology"], "correctAnswer": "Taxonomy", "explanation": "Taxonomy is the branch of science concerned with classification, especially of organisms; systematics. [10, 29]" },
+        { "question": "Which of these is a fat-soluble vitamin?", "options": ["Vitamin C", "Vitamin B complex", "Vitamin A", "Folic acid"], "correctAnswer": "Vitamin A", "explanation": "Vitamins A, D, E, and K are fat-soluble vitamins. [5]" },
+        { "question": "The process of intake of food by an organism is called:", "options": ["Digestion", "Absorption", "Ingestion", "Egestion"], "correctAnswer": "Ingestion", "explanation": "Ingestion is the process of taking food into the body through the mouth. [20]" },
+        { "question": "Which structure is responsible for filtering blood in the human kidney?", "options": ["Ureter", "Bladder", "Glomerulus", "Collecting duct"], "correctAnswer": "Glomerulus", "explanation": "The glomerulus is a network of capillaries that performs the first step of filtering blood. [20]" },
+        { "question": "Which of these is a characteristic of phylum Cnidaria (Coelenterata)?", "options": ["Jointed legs", "Segmented body", "Presence of stinging cells (cnidocytes)", "Notochord"], "correctAnswer": "Presence of stinging cells (cnidocytes)", "explanation": "Cnidarians are characterized by specialized cells called cnidocytes, which contain stinging capsules (nematocysts). [20]" }
+      ]
+    },
+    {
+      "title": "Class 11 English Core",
+      "description": "An advanced quiz on English grammar, writing skills, and literary devices for Class 11.",
+      "subject": "English Core",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "Identify the type of sentence: 'Despite the heavy rain, they decided to go for a walk.'", "options": ["Simple", "Compound", "Complex", "Compound-complex"], "correctAnswer": "Complex", "explanation": "A complex sentence contains an independent clause and at least one dependent clause ('Despite the heavy rain' is a dependent adverbial phrase, forming a complex structure with the independent clause). [2]" },
+        { "question": "Which literary device involves a contradiction that reveals a deeper truth?", "options": ["Irony", "Metaphor", "Simile", "Alliteration"], "correctAnswer": "Irony", "explanation": "Irony often involves a contrast between expectation and reality, or what is said and what is meant, revealing a deeper meaning." },
+        { "question": "Choose the correct phrase: 'He is accustomed ____ hard work.'", "options": ["to", "with", "at", "for"], "correctAnswer": "to", "explanation": "'Accustomed to' is the correct idiomatic expression. [44]" },
+        { "question": "What is the function of a 'Gerund'?", "options": ["Acts as a verb", "Acts as an adjective", "Acts as a noun", "Acts as an adverb"], "correctAnswer": "Acts as a noun", "explanation": "A gerund is a verb form ending in -ing that functions as a noun (e.g., 'Swimming is my favorite hobby')." },
+        { "question": "Fill in the blank with the correct conditional structure: 'If she ____, she would have succeeded.'", "options": ["tried", "had tried", "tries", "will try"], "correctAnswer": "had tried", "explanation": "This is a third conditional structure (If + Past Perfect, would have + Past Participle). [46]" },
+        { "question": "What is the reported speech of: 'The teacher said, 'The Earth revolves around the Sun.'", "options": ["The teacher said that the Earth revolved around the Sun.", "The teacher said that the Earth revolves around the Sun.", "The teacher asked if the Earth revolves around the Sun.", "The teacher said the Earth will revolve around the Sun."], "correctAnswer": "The teacher said that the Earth revolves around the Sun.", "explanation": "Universal truths or facts remain in the present tense even in reported speech. [2, 41]" },
+        { "question": "Identify the word with a silent 'B':", "options": ["Rabbit", "Lamb", "Bubble", "Abstract"], "correctAnswer": "Lamb", "explanation": "In 'lamb', the 'b' is silent. [47]" },
+        { "question": "Which of these sentences uses parallelism correctly?", "options": ["She likes to run, to swim, and cycling.", "She likes to run, swim, and cycle.", "She likes running, to swim, and cycles.", "She likes running, swimming, and to cycle."], "correctAnswer": "She likes to run, swim, and cycle.", "explanation": "Parallelism requires consistent grammatical forms in a series. Here, infinitives (to run, swim, cycle) are consistent." },
+        { "question": "What is the correct punctuation for a direct quotation within a sentence?", "options": ["He said, \"I am happy\".", "He said, 'I am happy'.", "He said: I am happy.", "He said; \"I am happy.\""], "correctAnswer": "He said, \"I am happy\".", "explanation": "Direct quotations are enclosed in double quotation marks and often preceded by a comma." },
+        { "question": "Choose the most appropriate connective: 'It was raining heavily; ____, we decided to stay indoors.'", "options": ["therefore", "however", "although", "but"], "correctAnswer": "therefore", "explanation": "'Therefore' indicates a result or consequence, suitable for connecting the two clauses. [46]" }
+      ]
+    },
+    {
+      "title": "Class 11 History",
+      "description": "A quiz on ancient civilizations, empires, and cultural changes for Class 11.",
+      "subject": "History",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "Which civilization is known for developing the first writing system, Cuneiform?", "options": ["Egyptian", "Indus Valley", "Mesopotamian", "Chinese"], "correctAnswer": "Mesopotamian", "explanation": "Cuneiform, one of the earliest systems of writing, was invented by the Sumerians of Mesopotamia. [1]" },
+        { "question": "The Roman Empire was characterized by its vast territory and long-lasting influence. Which emperor divided the Roman Empire into Eastern and Western halves?", "options": ["Augustus", "Julius Caesar", "Constantine", "Diocletian"], "correctAnswer": "Diocletian", "explanation": "Emperor Diocletian divided the Roman Empire in 285 AD to improve administration. [1]" },
+        { "question": "The 'Silk Road' was a network of trade routes connecting which two major regions?", "options": ["Africa and Europe", "Europe and the Americas", "Asia and Europe", "Asia and Africa"], "correctAnswer": "Asia and Europe", "explanation": "The Silk Road facilitated trade and cultural exchange between the East (primarily China) and the West. [1]" },
+        { "question": "Which of these religious movements originated in India and spread to East and Southeast Asia?", "options": ["Christianity", "Islam", "Buddhism", "Judaism"], "correctAnswer": "Buddhism", "explanation": "Buddhism, founded by Siddhartha Gautama, spread widely from India. [1]" },
+        { "question": "What was the primary characteristic of 'feudalism' in medieval Europe?", "options": ["Strong central governments", "Large urban populations", "A system of land tenure and military service", "Extensive international trade"], "correctAnswer": "A system of land tenure and military service", "explanation": "Feudalism involved a hierarchical system where land was exchanged for loyalty and military service. [42]" },
+        { "question": "The Renaissance, a period of renewed interest in classical art, literature, and learning, originated in which region?", "options": ["France", "England", "Italy", "Germany"], "correctAnswer": "Italy", "explanation": "The Renaissance began in Florence, Italy, in the 14th century. [33]" },
+        { "question": "Which famous explorer is credited with the first circumnavigation of the Earth?", "options": ["Christopher Columbus", "Vasco da Gama", "Ferdinand Magellan", "James Cook"], "correctAnswer": "Ferdinand Magellan", "explanation": "Magellan's expedition completed the first circumnavigation of the Earth, although he died en route. [1]" },
+        { "question": "The 'Reformation' in the 16th century challenged the authority of which institution?", "options": ["Scientific institutions", "Monarchies", "The Roman Catholic Church", "Universities"], "correctAnswer": "The Roman Catholic Church", "explanation": "The Protestant Reformation led to a split within Western Christianity. [33]" },
+        { "question": "What was the significance of the invention of the 'printing press' by Gutenberg?", "options": ["It led to the decline of literacy.", "It made books more expensive.", "It facilitated the spread of knowledge and ideas.", "It encouraged oral traditions."], "correctAnswer": "It facilitated the spread of knowledge and ideas.", "explanation": "The printing press revolutionized communication and played a crucial role in the Renaissance and Reformation. [33]" },
+        { "question": "Which historical event is associated with the 'Columbian Exchange'?", "options": ["The fall of the Roman Empire", "The European discovery of the Americas", "The Industrial Revolution", "The end of the Cold War"], "correctAnswer": "The European discovery of the Americas", "explanation": "The Columbian Exchange refers to the widespread transfer of plants, animals, culture, human populations, technology, diseases, and ideas between the Americas, West Africa, and the Old World in the 15th and 16th centuries. [1]" }
+      ]
+    },
+    {
+      "title": "Class 11 Geography",
+      "description": "An advanced quiz on physical geography, Indian physical environment, and cartography for Class 11.",
+      "subject": "Geography",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "What is the theory that describes the large-scale motion of Earth's lithosphere?", "options": ["Continental Drift Theory", "Plate Tectonics Theory", "Seafloor Spreading", "Isostasy"], "correctAnswer": "Plate Tectonics Theory", "explanation": "Plate tectonics explains the movement of Earth's large plates and the geological phenomena that result from it. [7]" },
+        { "question": "Which of these forces is responsible for the movement of wind?", "options": ["Gravity", "Coriolis force", "Pressure gradient force", "Frictional force"], "correctAnswer": "Pressure gradient force", "explanation": "Air flows from areas of high pressure to areas of low pressure, creating wind. [7]" },
+        { "question": "What is the highest mountain peak in the Himalayas located in Nepal?", "options": ["K2", "Kangchenjunga", "Mount Everest", "Nanga Parbat"], "correctAnswer": "Mount Everest", "explanation": "Mount Everest is the highest peak in the world. [7]" },
+        { "question": "The process of transformation of an amorphous solid into a crystalline form is called:", "options": ["Melting", "Freezing", "Crystallization", "Sublimation"], "correctAnswer": "Crystallization", "explanation": "Crystallization is the process by which a solid forms, where the atoms or molecules are highly organized into a structure known as a crystal. [45]" },
+        { "question": "Which type of rocks are formed from the cooling and solidification of magma or lava?", "options": ["Sedimentary rocks", "Metamorphic rocks", "Igneous rocks", "Stratified rocks"], "correctAnswer": "Igneous rocks", "explanation": "Igneous rocks are formed from the solidification of molten rock material. [7]" },
+        { "question": "What is an 'equinox'?", "options": ["Day and night are of equal length.", "Longest day of the year.", "Shortest day of the year.", "Time when the sun is directly overhead at the tropics."], "correctAnswer": "Day and night are of equal length.", "explanation": "An equinox occurs twice a year (around March 20 and September 22) when the tilt of Earth's axis is neither toward nor away from the sun, resulting in roughly equal day and night hours worldwide. [7]" },
+        { "question": "Which type of forest is characterized by trees that shed their leaves in a particular season?", "options": ["Evergreen forests", "Coniferous forests", "Deciduous forests", "Mangrove forests"], "correctAnswer": "Deciduous forests", "explanation": "Deciduous forests are characterized by the shedding of leaves in autumn or the dry season. [7]" },
+        { "question": "What is the difference between an atlas and a globe?", "options": ["An atlas is 3D, a globe is 2D.", "An atlas is a collection of maps, a globe is a spherical model of Earth.", "An atlas shows political boundaries, a globe shows physical features.", "There is no difference."], "correctAnswer": "An atlas is a collection of maps, a globe is a spherical model of Earth.", "explanation": "An atlas is a book of maps, while a globe is a three-dimensional representation of Earth. [36]" },
+        { "question": "Which ocean current flows along the eastern coast of North America and brings warm water?", "options": ["California Current", "Labrador Current", "Gulf Stream", "Benguela Current"], "correctAnswer": "Gulf Stream", "explanation": "The Gulf Stream is a warm and swift Atlantic Ocean current that originates in the Gulf of Mexico and stretches to Europe. [7]" },
+        { "question": "What is the main cause of 'Tsunami'?", "options": ["Volcanic eruption", "Strong winds", "Underwater earthquake", "High tide"], "correctAnswer": "Underwater earthquake", "explanation": "Tsunamis are most commonly caused by large, undersea earthquakes at tectonic plate boundaries. [7]" }
+      ]
+    },
+    {
+      "title": "Class 11 Political Science",
+      "description": "An advanced quiz on political theory, Indian Constitution, and human rights for Class 11.",
+      "subject": "Political Science",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "What is the fundamental principle of 'Liberalism'?", "options": ["Collective ownership", "Individual liberty and equality", "Absolute monarchy", "State control over all aspects of life"], "correctAnswer": "Individual liberty and equality", "explanation": "Liberalism is a political and moral philosophy based on the rights of the individual, liberty, consent of the governed, political equality, and equality before the law." },
+        { "question": "Which article of the Indian Constitution abolishes untouchability?", "options": ["Article 14", "Article 15", "Article 16", "Article 17"], "correctAnswer": "Article 17", "explanation": "Article 17 of the Indian Constitution prohibits untouchability." },
+        { "question": "What does the term 'suffrage' refer to?", "options": ["Right to education", "Right to property", "Right to vote", "Right to protest"], "correctAnswer": "Right to vote", "explanation": "Suffrage is the right to vote in political elections." },
+        { "question": "Which of these is a feature of a 'Unitary System' of government?", "options": ["Division of power between central and state", "Single central government with ultimate authority", "Independent regional governments", "Weak central authority"], "correctAnswer": "Single central government with ultimate authority", "explanation": "In a unitary system, the central government holds all or most of the governmental power." },
+        { "question": "The concept of 'Universal Human Rights' emerged significantly after which global event?", "options": ["World War I", "The Cold War", "World War II", "The French Revolution"], "correctAnswer": "World War II", "explanation": "The atrocities of World War II led to the creation of the Universal Declaration of Human Rights by the United Nations. [37]" },
+        { "question": "What is the primary role of a 'Constitution'?", "options": ["To dictate daily policies", "To outline the fundamental laws and principles of a state", "To establish a monarchy", "To control the media"], "correctAnswer": "To outline the fundamental laws and principles of a state", "explanation": "A constitution is a set of fundamental principles or established precedents according to which a state or other organization is governed." },
+        { "question": "Which organ of the Indian government is considered the 'guardian of the Constitution'?", "options": ["Parliament", "President", "Supreme Court", "Prime Minister"], "correctAnswer": "Supreme Court", "explanation": "The Supreme Court, through judicial review, protects the Constitution and fundamental rights." },
+        { "question": "What is the concept of 'Negative Liberty'?", "options": ["Freedom to do anything", "Freedom from external interference", "Freedom to achieve one's potential", "Freedom to obey laws"], "correctAnswer": "Freedom from external interference", "explanation": "Negative liberty focuses on absence of constraints or interference by others on an individual's actions." },
+        { "question": "Which historical document proclaimed 'Life, Liberty, and the pursuit of Happiness' as unalienable rights?", "options": ["Magna Carta", "Declaration of the Rights of Man and of the Citizen", "Declaration of Independence (USA)", "Bill of Rights (UK)"], "correctAnswer": "Declaration of Independence (USA)", "explanation": "This phrase is central to the United States Declaration of Independence. [1]" },
+        { "question": "What is 'Justice' in a political context?", "options": ["Only punishing criminals", "Fair and equitable treatment for all individuals", "Rewarding only the privileged", "Maintaining the status quo"], "correctAnswer": "Fair and equitable treatment for all individuals", "explanation": "Justice broadly refers to fairness, equity, and the impartial administration of law." }
+      ]
+    },
+    {
+      "title": "Class 11 Economics",
+      "description": "An advanced quiz on microeconomics, statistics for economics, and Indian economic development for Class 11.",
+      "subject": "Economics",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "Which of these is a central problem of an economy?", "options": ["What to produce?", "How to produce?", "For whom to produce?", "All of the above"], "correctAnswer": "All of the above", "explanation": "Every economy faces the fundamental problems of scarcity, leading to decisions about what, how, and for whom to produce. [13]" },
+        { "question": "What does 'Opportunity Cost' refer to?", "options": ["The monetary cost of a good", "The value of the next best alternative forgone", "The cost of production", "The selling price of a product"], "correctAnswer": "The value of the next best alternative forgone", "explanation": "Opportunity cost is the cost of choosing one alternative over another. [13]" },
+        { "question": "Which statistical tool is used to measure the central tendency of data?", "options": ["Range", "Standard Deviation", "Mean", "Correlation"], "correctAnswer": "Mean", "explanation": "Mean, median, and mode are measures of central tendency. [18]" },
+        { "question": "What is 'production possibility frontier' (PPF)?", "options": ["A curve showing maximum output of two goods with given resources and technology.", "A curve showing minimum output of two goods.", "A line showing unlimited resources.", "A diagram showing economic stagnation."], "correctAnswer": "A curve showing maximum output of two goods with given resources and technology.", "explanation": "The PPF illustrates the trade-offs faced by an economy. [13]" },
+        { "question": "What was the main reason for India's slow economic growth during the colonial period?", "options": ["Lack of natural resources", "High population growth", "Exploitative British policies", "Lack of skilled labor"], "correctAnswer": "Exploitative British policies", "explanation": "British economic policies were primarily aimed at benefiting Britain, often at the expense of Indian industries and agriculture. [3]" },
+        { "question": "Which of these is a 'fixed cost' for a firm?", "options": ["Wages of temporary labor", "Cost of raw materials", "Rent of the factory building", "Electricity bill (variable portion)"], "correctAnswer": "Rent of the factory building", "explanation": "Fixed costs do not vary with the level of output (e.g., rent, salaries of permanent staff). [13]" },
+        { "question": "What is the purpose of a 'Histogram' in statistics?", "options": ["To show relationships between variables", "To display frequencies of continuous data", "To compare different categories", "To show trends over time"], "correctAnswer": "To display frequencies of continuous data", "explanation": "A histogram is a graphical representation of the distribution of numerical data. [18]" },
+        { "question": "The term 'Disguised Unemployment' refers to a situation where:", "options": ["People are actively looking for jobs but can't find them", "People are employed, but their contribution to output is zero or negligible", "People are employed for short periods", "People are highly skilled but unemployed"], "correctAnswer": "People are employed, but their contribution to output is zero or negligible", "explanation": "Disguised unemployment is common in agricultural sectors where more people are employed than are actually needed. [3]" },
+        { "question": "What is 'Liberalization' in the context of economic reforms?", "options": ["Increasing government control over the economy", "Reducing government restrictions and opening up the economy", "Nationalizing private industries", "Imposing higher taxes"], "correctAnswer": "Reducing government restrictions and opening up the economy", "explanation": "Liberalization involves reducing government intervention and promoting free markets. [3]" },
+        { "question": "Which of these is an example of an 'externality'?", "options": ["Cost of producing a car", "Pollution from a factory affecting nearby residents", "Price paid for a movie ticket", "Wages paid to workers"], "correctAnswer": "Pollution from a factory affecting nearby residents", "explanation": "An externality is a cost or benefit caused by a producer or consumer that is not financially incurred or received by that producer or consumer." }
+      ]
+    },
+    {
+      "title": "Class 11 Computer Science",
+      "description": "A quiz on programming fundamentals, data representation, and computational thinking for Class 11.",
+      "subject": "Computer Science",
+      "grade": "11",
+      "difficulty": "medium",
+      "timeLimit": 45,
+      "questions": [
+        { "question": "Which programming language is known for its readability and simplicity, making it popular for beginners?", "options": ["Java", "C++", "Python", "Assembly Language"], "correctAnswer": "Python", "explanation": "Python's clear syntax and extensive libraries make it highly beginner-friendly." },
+        { "question": "What is the binary representation of the decimal number 10?", "options": ["1010", "0101", "1100", "0011"], "correctAnswer": "1010", "explanation": "To convert decimal 10 to binary: 10/2 = 5 R 0, 5/2 = 2 R 1, 2/2 = 1 R 0, 1/2 = 0 R 1. Reading remainders from bottom up gives 1010." },
+        { "question": "Which of these is a 'logical operator' in programming?", "options": ["+", "-", "*", "AND"], "correctAnswer": "AND", "explanation": "Logical operators (AND, OR, NOT) are used to combine or modify boolean expressions." },
+        { "question": "What does 'CPU' stand for?", "options": ["Central Process Unit", "Control Processing Unit", "Central Processing Unit", "Computer Personal Unit"], "correctAnswer": "Central Processing Unit", "explanation": "The CPU is the electronic circuitry that carries out the instructions of a computer program." },
+        { "question": "Which data type is used to store true/false values?", "options": ["Integer", "Float", "String", "Boolean"], "correctAnswer": "Boolean", "explanation": "Boolean data types represent logical values: true or false." },
+        { "question": "What is an 'algorithm'?", "options": ["A type of computer hardware", "A specific programming language", "A step-by-step procedure to solve a problem", "A debugging tool"], "correctAnswer": "A step-by-step procedure to solve a problem", "explanation": "An algorithm is a set of well-defined instructions to perform a task or solve a problem." },
+        { "question": "Which component of a computer stores frequently used instructions and data for faster access?", "options": ["Hard Disk Drive", "RAM", "ROM", "Cache Memory"], "correctAnswer": "Cache Memory", "explanation": "Cache memory is a small, high-speed memory that stores frequently accessed data and instructions to speed up CPU processing." },
+        { "question": "What is 'debugging' in programming?", "options": ["Writing code", "Testing code for errors", "Fixing errors in code", "Compiling code"], "correctAnswer": "Fixing errors in code", "explanation": "Debugging is the process of finding and resolving defects or problems within a computer program." },
+        { "question": "Which of these is an example of an 'input device'?", "options": ["Monitor", "Printer", "Keyboard", "Speaker"], "correctAnswer": "Keyboard", "explanation": "An input device sends information to a computer system (e.g., keyboard, mouse, scanner)." },
+        { "question": "What is 'pseudo-code'?", "options": ["A fake programming language", "A detailed programming language syntax", "An informal high-level description of an algorithm", "A low-level machine code"], "correctAnswer": "An informal high-level description of an algorithm", "explanation": "Pseudo-code is a simplified textual representation of an algorithm, resembling programming code but without strict syntax rules." }
+      ]
+    },
+    {
+      "title": "Class 12 Mathematics",
+      "description": "An advanced quiz on calculus, vectors, and probability for Class 12.",
+      "subject": "Mathematics",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "What is the derivative of sin(x²)?", "options": ["cos(x²)", "2x cos(x²)", "-2x cos(x²)", "cos(2x)"], "correctAnswer": "2x cos(x²)", "explanation": "Using the chain rule: d/dx(f(g(x))) = f'(g(x)) * g'(x). Here f(u) = sin(u) and g(x) = x². So, cos(x²) * 2x. [12]" },
+        { "question": "If A = [[1, 2], [3, 4]], what is the determinant of A?", "options": ["-2", "2", "10", "0"], "correctAnswer": "-2", "explanation": "Determinant = (1*4) - (2*3) = 4 - 6 = -2. [12]" },
+        { "question": "What is ∫(1/x) dx?", "options": ["ln|x| + C", "x + C", "eˣ + C", "-1/x² + C"], "correctAnswer": "ln|x| + C", "explanation": "The integral of 1/x is the natural logarithm of the absolute value of x, plus a constant of integration. [12]" },
+        { "question": "Find the unit vector in the direction of vector a = 3i - 4j.", "options": ["(3i - 4j)/5", "(3i + 4j)/5", "i - j", "3i - 4j"], "correctAnswer": "(3i - 4j)/5", "explanation": "Unit vector = vector / |vector|. |a| = √(3² + (-4)²) = √(9+16) = √25 = 5. [12]" },
+        { "question": "If P(A) = 0.4 and P(B) = 0.5, and A and B are independent events, what is P(A ∩ B)?", "options": ["0.9", "0.2", "0.1", "0.6"], "correctAnswer": "0.2", "explanation": "For independent events, P(A ∩ B) = P(A) * P(B) = 0.4 * 0.5 = 0.2. [8]" },
+        { "question": "What is the equation of a plane passing through the origin (0,0,0) and having normal vector (A, B, C)?", "options": ["Ax + By + Cz = 1", "Ax + By + Cz = 0", "A + B + C = 0", "x + y + z = 0"], "correctAnswer": "Ax + By + Cz = 0", "explanation": "The general equation of a plane is Ax + By + Cz + D = 0. Since it passes through the origin, D must be 0. [8]" },
+        { "question": "The order of the differential equation (d²y/dx²)³ + (dy/dx)² + y = 0 is:", "options": ["1", "2", "3", "0"], "correctAnswer": "2", "explanation": "The order of a differential equation is the order of the highest derivative present in the equation. [12]" },
+        { "question": "What is the range of the function f(x) = |x|?", "options": ["(-∞, ∞)", "[0, ∞)", "(-∞, 0]", "(0, ∞)"], "correctAnswer": "[0, ∞)", "explanation": "The absolute value function always returns non-negative values. [21]" },
+        { "question": "Which of these is an example of a scalar triple product?", "options": ["a . (b x c)", "a x (b x c)", "a + b + c", "a . b"], "correctAnswer": "a . (b x c)", "explanation": "The scalar triple product is the dot product of one vector with the cross product of two other vectors. It results in a scalar value. [12]" },
+        { "question": "In a Linear Programming Problem, the feasible region is a:", "options": ["Straight line", "Circle", "Convex polygon", "Parabola"], "correctAnswer": "Convex polygon", "explanation": "The feasible region in a Linear Programming Problem is typically a convex polygon (or unbounded region) formed by the intersection of constraints. [8, 16]" }
+      ]
+    },
+    {
+      "title": "Class 12 Physics",
+      "description": "An advanced quiz on electromagnetism, optics, and modern physics for Class 12.",
+      "subject": "Physics",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "What is the SI unit of electric flux?", "options": ["Volt meter (Vm)", "Newton per Coulomb (N/C)", "Joule (J)", "Coulomb (C)"], "correctAnswer": "Volt meter (Vm)", "explanation": "Electric flux is the measure of the electric field passing through a given surface, and its SI unit is volt meter (Vm) or Nm²/C." },
+        { "question": "According to Lenz's Law, the direction of induced current is such that it:", "options": ["Opposes the cause producing it", "Aids the cause producing it", "Is perpendicular to the magnetic field", "Is parallel to the magnetic field"], "correctAnswer": "Opposes the cause producing it", "explanation": "Lenz's Law states that the direction of the induced electric current always opposes the change in magnetic flux that created it." },
+        { "question": "What is the formula for the energy of a photon?", "options": ["E = mc²", "E = hf", "E = pc", "E = Fd"], "correctAnswer": "E = hf", "explanation": "The energy of a photon (E) is directly proportional to its frequency (f), where h is Planck's constant. [8]" },
+        { "question": "Which phenomenon proves the wave nature of light?", "options": ["Photoelectric effect", "Compton effect", "Diffraction", "Blackbody radiation"], "correctAnswer": "Diffraction", "explanation": "Diffraction, interference, and polarization are phenomena that demonstrate the wave nature of light." },
+        { "question": "What is the relationship between electric field (E) and electric potential (V)?", "options": ["E = -dV/dr", "E = dV/dr", "E = V/r", "E = V * r"], "correctAnswer": "E = -dV/dr", "explanation": "The electric field is the negative gradient of the electric potential." },
+        { "question": "A p-n junction diode conducts current when it is:", "options": ["Forward biased", "Reverse biased", "Unbiased", "Always conducts"], "correctAnswer": "Forward biased", "explanation": "A p-n junction diode allows current to flow easily when forward biased (p-side connected to positive terminal, n-side to negative). [8]" },
+        { "question": "What is the de Broglie wavelength formula?", "options": ["λ = h/mv", "λ = mv/h", "λ = E/h", "λ = hf"], "correctAnswer": "λ = h/mv", "explanation": "The de Broglie wavelength (λ) is inversely proportional to the momentum (mv) of a particle. [8]" },
+        { "question": "Which type of nuclear reaction involves the splitting of a heavy nucleus into lighter nuclei?", "options": ["Nuclear fusion", "Nuclear fission", "Radioactive decay", "Nuclear synthesis"], "correctAnswer": "Nuclear fission", "explanation": "Nuclear fission is the process where a heavy atomic nucleus splits into two or more smaller nuclei, releasing a large amount of energy. [8]" },
+        { "question": "The phenomenon of splitting of spectral lines in the presence of an external magnetic field is called:", "options": ["Stark effect", "Zeeman effect", "Raman effect", "Photoelectric effect"], "correctAnswer": "Zeeman effect", "explanation": "The Zeeman effect is the splitting of a spectral line into several components in the presence of a static magnetic field. [8]" },
+        { "question": "What is the equivalent resistance of two resistors R₁ and R₂ connected in parallel?", "options": ["R₁ + R₂", "(R₁R₂)/(R₁ + R₂)", "(R₁ + R₂)/(R₁R₂)", "√(R₁R₂)"], "correctAnswer": "(R₁R₂)/(R₁ + R₂)", "explanation": "For parallel resistors, 1/R_eq = 1/R₁ + 1/R₂." }
+      ]
+    },
+    {
+      "title": "Class 12 Chemistry",
+      "description": "An advanced quiz on solutions, electrochemistry, kinetics, and organic chemistry for Class 12.",
+      "subject": "Chemistry",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "What is 'osmotic pressure'?", "options": ["Pressure exerted by a gas", "Pressure required to stop osmosis", "Pressure due to solvent movement", "Pressure of the solute particles"], "correctAnswer": "Pressure required to stop osmosis", "explanation": "Osmotic pressure is the minimum pressure that needs to be applied to a solution to prevent the inward flow of its pure solvent across a semipermeable membrane. [8]" },
+        { "question": "Which of these is a characteristic of a 'colloidal solution'?", "options": ["Particles settle down quickly", "Particles are visible to the naked eye", "Exhibits Tyndall effect", "Does not scatter light"], "correctAnswer": "Exhibits Tyndall effect", "explanation": "Colloidal solutions show the Tyndall effect, where light is scattered by the dispersed particles. [34]" },
+        { "question": "What is the 'rate determining step' in a multi-step reaction?", "options": ["The fastest step", "The slowest step", "The initial step", "The final step"], "correctAnswer": "The slowest step", "explanation": "The slowest step in a reaction mechanism determines the overall rate of the reaction. [8]" },
+        { "question": "Which catalyst is typically used in the Haber process for the synthesis of ammonia?", "options": ["Vanadium(V) oxide", "Platinum", "Finely divided iron", "Nickel"], "correctAnswer": "Finely divided iron", "explanation": "Finely divided iron with molybdenum as a promoter is used in the Haber process. [11]" },
+        { "question": "What is the general formula for a 'ketone'?", "options": ["R-OH", "R-CHO", "R-CO-R'", "R-COOH"], "correctAnswer": "R-CO-R'", "explanation": "Ketones contain a carbonyl group (C=O) bonded to two alkyl or aryl groups. [11]" },
+        { "question": "Which of these is a primary amine?", "options": ["(CH₃)₂NH", "(CH₃)₃N", "CH₃NH₂", "(C₂H₅)₂NH"], "correctAnswer": "CH₃NH₂", "explanation": "A primary amine has only one alkyl group attached to the nitrogen atom. [8]" },
+        { "question": "What is the IUPAC name for HCOOH?", "options": ["Acetic acid", "Formic acid", "Methanoic acid", "Ethanoic acid"], "correctAnswer": "Methanoic acid", "explanation": "HCOOH is methanoic acid (common name: formic acid). [11]" },
+        { "question": "What type of intermolecular forces are present in hydrogen fluoride (HF)?", "options": ["London dispersion forces", "Dipole-dipole interactions", "Hydrogen bonding", "All of the above"], "correctAnswer": "All of the above", "explanation": "HF exhibits strong hydrogen bonding, dipole-dipole interactions (due to polarity), and London dispersion forces (due to temporary dipoles). [11]" },
+        { "question": "Which complex ion is expected to be diamagnetic?", "options": ["[Fe(CN)₆]³⁻", "[CoF₆]³⁻", "[Ni(CN)₄]²⁻", "[Cr(H₂O)₆]³⁺"], "correctAnswer": "[Ni(CN)₄]²⁻", "explanation": "[Ni(CN)₄]²⁻ (nickel in +2 oxidation state) has a d⁸ configuration, and CN⁻ is a strong ligand, causing pairing of electrons and resulting in a square planar diamagnetic complex. [8]" },
+        { "question": "What is the main product formed when propene reacts with HBr in the presence of peroxide?", "options": ["1-bromopropane", "2-bromopropane", "1,2-dibromopropane", "Propanol"], "correctAnswer": "1-bromopropane", "explanation": "In the presence of peroxide, the addition of HBr to unsymmetrical alkenes follows anti-Markovnikov's rule, yielding 1-bromopropane. [8]" }
+      ]
+    },
+    {
+      "title": "Class 12 Biology",
+      "description": "An advanced quiz on reproduction, genetics, biotechnology, and ecology for Class 12.",
+      "subject": "Biology",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "What is the function of the 'placenta' during pregnancy?", "options": ["To store waste products", "To produce hormones only", "To facilitate exchange of nutrients, oxygen, and waste products between mother and fetus", "To protect the fetus from physical shock only"], "correctAnswer": "To facilitate exchange of nutrients, oxygen, and waste products between mother and fetus", "explanation": "The placenta is a vital organ that connects the mother's uterine wall to the developing fetus, providing nutrients, removing waste, and producing hormones. [5]" },
+        { "question": "Which scientist proposed the 'Double Helix Model' of DNA?", "options": ["Gregor Mendel", "Louis Pasteur", "James Watson and Francis Crick", "Charles Darwin"], "correctAnswer": "James Watson and Francis Crick", "explanation": "Watson and Crick, based on Rosalind Franklin's work, proposed the double helix structure of DNA in 1953. [5]" },
+        { "question": "What is the process of producing genetically identical copies of an organism?", "options": ["Hybridization", "Mutation", "Cloning", "Selective breeding"], "correctAnswer": "Cloning", "explanation": "Cloning is the process of generating a genetically identical copy of a cell or an organism." },
+        { "question": "Which of these is a 'sex-linked' disorder?", "options": ["Diabetes", "Asthma", "Hemophilia", "Malaria"], "correctAnswer": "Hemophilia", "explanation": "Hemophilia is an X-linked recessive genetic disorder. [5]" },
+        { "question": "What is 'gene cloning'?", "options": ["Creating copies of an entire organism", "Isolating and making multiple copies of a specific gene", "Modifying an organism's entire genome", "Creating hybrid organisms"], "correctAnswer": "Isolating and making multiple copies of a specific gene", "explanation": "Gene cloning involves isolating a specific gene and replicating it multiple times. [5]" },
+        { "question": "Which enzyme is responsible for synthesizing new DNA strands during replication?", "options": ["Helicase", "Ligase", "DNA Polymerase", "Primase"], "correctAnswer": "DNA Polymerase", "explanation": "DNA Polymerase is a key enzyme in DNA replication, responsible for adding nucleotides to the growing DNA strand. [5]" },
+        { "question": "What is the term for the total number of species and their genetic diversity in an ecosystem?", "options": ["Ecosystem diversity", "Species diversity", "Genetic diversity", "Biodiversity"], "correctAnswer": "Biodiversity", "explanation": "Biodiversity encompasses the variety of life on Earth at all its levels, from genes to ecosystems. [10]" },
+        { "question": "Which of these is a 'vestigial organ' in humans?", "options": ["Brain", "Heart", "Appendix", "Liver"], "correctAnswer": "Appendix", "explanation": "Vestigial organs are anatomical features that have lost all or most of their original function in a species through evolution, such as the human appendix. [5]" },
+        { "question": "What is the role of 'vectors' in genetic engineering?", "options": ["To transport proteins in the cell", "To cut DNA at specific sites", "To carry and deliver foreign DNA into a host cell", "To synthesize DNA from an RNA template"], "correctAnswer": "To carry and deliver foreign DNA into a host cell", "explanation": "Vectors (like plasmids or viruses) are used to introduce foreign genetic material into a cell. [5]" },
+        { "question": "Which type of interaction occurs when one species benefits and the other is neither harmed nor helped?", "options": ["Mutualism", "Commensalism", "Parasitism", "Competition"], "correctAnswer": "Commensalism", "explanation": "Commensalism is a relationship between individuals of two species in which one species obtains food or other benefits from the other without either harming or benefiting the latter." }
+      ]
+    },
+    {
+      "title": "Class 12 English Core",
+      "description": "An advanced quiz on English literature, grammar, and writing for Class 12.",
+      "subject": "English Core",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "Identify the literary device: 'Her smile was like sunshine on a cloudy day.'", "options": ["Metaphor", "Simile", "Personification", "Hyperbole"], "correctAnswer": "Simile", "explanation": "A simile makes a comparison between two different things using 'like' or 'as'." },
+        { "question": "Which of these is an example of an 'idiom'?", "options": ["It is raining heavily.", "She has a green thumb.", "He runs fast.", "The cat sat on the mat."], "correctAnswer": "She has a green thumb.", "explanation": "An idiom is a phrase or expression whose meaning cannot be understood from the ordinary meaning of its individual words (to have a green thumb means to be good at gardening)." },
+        { "question": "Complete the sentence with the correct conjunction: 'He is intelligent; ____, he is very lazy.'", "options": ["therefore", "consequently", "however", "moreover"], "correctAnswer": "however", "explanation": "'However' is used to introduce a statement that contrasts with something that has just been said. [46]" },
+        { "question": "Which type of narrative perspective uses 'I' and 'me'?", "options": ["Second person", "Third person omniscient", "Third person limited", "First person"], "correctAnswer": "First person", "explanation": "In first-person narration, the story is told by a character within the story." },
+        { "question": "What is the correct use of a semicolon?", "options": ["To separate items in a simple list.", "To join two independent clauses that are closely related.", "To introduce a direct quotation.", "To indicate a pause within a clause."], "correctAnswer": "To join two independent clauses that are closely related.", "explanation": "Semicolons are used to connect two independent clauses or items in a complex list. [44]" },
+        { "question": "Identify the 'complex sentence':", "options": ["The sun shines brightly.", "She cooked dinner, and he washed the dishes.", "Although it was cold, we went for a walk.", "He is tall and strong."], "correctAnswer": "Although it was cold, we went for a walk.", "explanation": "A complex sentence contains an independent clause ('we went for a walk') and at least one dependent clause ('Although it was cold')." },
+        { "question": "What is 'Alliteration'?", "options": ["Repetition of vowel sounds", "Repetition of consonant sounds at the beginning of words", "Comparison using 'like' or 'as'", "Exaggeration for effect"], "correctAnswer": "Repetition of consonant sounds at the beginning of words", "explanation": "Alliteration is the occurrence of the same letter or sound at the beginning of adjacent or closely connected words (e.g., 'Peter Piper picked a peck...')." },
+        { "question": "Choose the correctly punctuated sentence:", "options": ["Its a beautiful day.", "It's a beautiful day.", "Its' a beautiful day.", "Its a beautiful day!"], "correctAnswer": "It's a beautiful day.", "explanation": "'It's' is a contraction of 'it is'." },
+        { "question": "What is the 'theme' of a literary work?", "options": ["The main character", "The setting of the story", "The central idea or message", "The plot summary"], "correctAnswer": "The central idea or message", "explanation": "The theme is the underlying meaning or main idea that the writer wants to convey. [48]" },
+        { "question": "Which of these is a formal writing style?", "options": ["Using slang and colloquialisms", "Using contractions and abbreviations", "Using precise vocabulary and complex sentence structures", "Using exclamation marks frequently"], "correctAnswer": "Using precise vocabulary and complex sentence structures", "explanation": "Formal writing emphasizes professionalism, clarity, and adherence to grammatical rules." }
+      ]
+    },
+    {
+      "title": "Class 12 History",
+      "description": "An advanced quiz on ancient, medieval, and modern Indian history, and global historical events for Class 12.",
+      "subject": "History",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "Who was the first Governor-General of Bengal?", "options": ["Robert Clive", "Warren Hastings", "Lord Cornwallis", "Lord Dalhousie"], "correctAnswer": "Warren Hastings", "explanation": "Warren Hastings served as the first Governor-General of Bengal from 1772 to 1785. [35]" },
+        { "question": "The Harappan civilization is also known by which other name?", "options": ["Vedic Civilization", "Indus Valley Civilization", "Mauryan Civilization", "Gupta Civilization"], "correctAnswer": "Indus Valley Civilization", "explanation": "The Harappan civilization developed along the Indus River valley. [1]" },
+        { "question": "What was the immediate cause of the 'Revolt of 1857'?", "options": ["Economic exploitation by British", "Religious conversions by missionaries", "The greased cartridges controversy", "Annexation of Awadh"], "correctAnswer": "The greased cartridges controversy", "explanation": "The rumors about greased cartridges, suspected to be coated with animal fat, ignited widespread resentment among sepoys. [37]" },
+        { "question": "Which Buddhist text is known as the 'Basket of Discipline'?", "options": ["Sutta Pitaka", "Vinaya Pitaka", "Abhidhamma Pitaka", "Jataka Tales"], "correctAnswer": "Vinaya Pitaka", "explanation": "The Vinaya Pitaka contains rules and regulations for the monastic order. [35]" },
+        { "question": "Who was the last Mughal Emperor of India?", "options": ["Akbar", "Aurangzeb", "Bahadur Shah II", "Shah Jahan"], "correctAnswer": "Bahadur Shah II", "explanation": "Bahadur Shah II (also known as Bahadur Shah Zafar) was the last Mughal emperor, deposed by the British after the 1857 Revolt. [37]" },
+        { "question": "The 'Drain of Wealth' theory was propounded by whom?", "options": ["Jawaharlal Nehru", "Mahatma Gandhi", "Dadabhai Naoroji", "B.R. Ambedkar"], "correctAnswer": "Dadabhai Naoroji", "explanation": "Dadabhai Naoroji argued that British rule led to the economic exploitation of India, a concept known as the 'drain of wealth'. [35]" },
+        { "question": "Which historical event led to the establishment of the 'East India Company'?", "options": ["Battle of Plassey", "Arrival of Vasco da Gama", "Royal Charter from Queen Elizabeth I", "Battle of Buxar"], "correctAnswer": "Royal Charter from Queen Elizabeth I", "explanation": "The British East India Company was formed under a Royal Charter in 1600. [35]" },
+        { "question": "The 'Gandhara School of Art' flourished under which dynasty?", "options": ["Mauryan", "Gupta", "Kushan", "Chola"], "correctAnswer": "Kushan", "explanation": "The Gandhara School of Art, known for its Greco-Buddhist style, flourished during the Kushan period, particularly under Emperor Kanishka. [37]" },
+        { "question": "What was the significance of the 'Lahore Session of the Indian National Congress' in 1929?", "options": ["Demand for Poorna Swaraj (Complete Independence)", "Launch of Non-Cooperation Movement", "Call for partition of India", "Formation of Muslim League"], "correctAnswer": "Demand for Poorna Swaraj (Complete Independence)", "explanation": "The Lahore Session, presided over by Jawaharlal Nehru, declared 'Poorna Swaraj' as the goal of the Indian National Congress. [35]" },
+        { "question": "The 'Great Bath' is one of the most famous structures found at which Indus Valley Civilization site?", "options": ["Harappa", "Mohenjo-Daro", "Lothal", "Kalibangan"], "correctAnswer": "Mohenjo-Daro", "explanation": "The Great Bath is a well-known structure in the ancient city of Mohenjo-Daro. [1]" }
+      ]
+    },
+    {
+      "title": "Class 12 Geography",
+      "description": "An advanced quiz on human geography, economic geography, and environmental issues for Class 12.",
+      "subject": "Geography",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "Which of these is a 'primary activity'?", "options": ["Manufacturing", "Banking", "Fishing", "Teaching"], "correctAnswer": "Fishing", "explanation": "Primary activities involve the extraction of natural resources directly from the Earth (e.g., agriculture, mining, fishing). [7]" },
+        { "question": "What is the term for the average number of people per unit of area?", "options": ["Birth rate", "Death rate", "Population density", "Migration rate"], "correctAnswer": "Population density", "explanation": "Population density is a measure of population per unit area or volume. [7]" },
+        { "question": "Which continent has the highest population growth rate?", "options": ["Asia", "Europe", "Africa", "North America"], "correctAnswer": "Africa", "explanation": "Africa consistently has the highest population growth rate among all continents. [7]" },
+        { "question": "What is 'shifting cultivation' (Jhumming) considered in terms of sustainability?", "options": ["Highly sustainable", "Moderately sustainable", "Least sustainable", "Neutral"], "correctAnswer": "Least sustainable", "explanation": "Shifting cultivation is often criticized for its environmental impact, including deforestation and soil degradation, making it less sustainable in the long run. [7]" },
+        { "question": "The 'Ruhr Region' is famous for its industrial development, particularly coal and steel. In which country is it located?", "options": ["France", "Germany", "United Kingdom", "United States"], "correctAnswer": "Germany", "explanation": "The Ruhr region is a major industrial area in Germany. [7]" },
+        { "question": "What is the concept of 'megalopolis'?", "options": ["A small town", "A large rural area", "A very large, heavily populated city or urban complex", "A group of isolated villages"], "correctAnswer": "A very large, heavily populated city or urban complex", "explanation": "A megalopolis refers to a vast urban area resulting from the merging of several large cities. [7]" },
+        { "question": "Which of these is a major cause of 'desertification'?", "options": ["Increased rainfall", "Overgrazing and deforestation", "Volcanic activity", "Glacial retreat"], "correctAnswer": "Overgrazing and deforestation", "explanation": "Desertification is the process by which fertile land becomes desert, typically as a result of drought, deforestation, or inappropriate agriculture. [7]" },
+        { "question": "What is 'Transhumance'?", "options": ["Migration of birds", "Seasonal migration of livestock and their herders", "Movement of industrial goods", "Daily commuting of people"], "correctAnswer": "Seasonal migration of livestock and their herders", "explanation": "Transhumance is a traditional practice of moving livestock between fixed summer and winter pastures. [7]" },
+        { "question": "Which economic activity involves providing services rather than producing tangible goods?", "options": ["Primary sector", "Secondary sector", "Tertiary sector", "Quaternary sector"], "correctAnswer": "Tertiary sector", "explanation": "The tertiary sector includes services such as banking, teaching, healthcare, and tourism. [13]" },
+        { "question": "The 'Kyoto Protocol' is an international treaty aimed at reducing:", "options": ["Ozone depletion", "Greenhouse gas emissions", "Deforestation", "Water pollution"], "correctAnswer": "Greenhouse gas emissions", "explanation": "The Kyoto Protocol commits state parties to reduce greenhouse gas emissions. [7]" }
+      ]
+    },
+    {
+      "title": "Class 12 Political Science",
+      "description": "An advanced quiz on international relations, contemporary world politics, and India's foreign policy for Class 12.",
+      "subject": "Political Science",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "What was the main objective of the 'Non-Aligned Movement' (NAM) during the Cold War?", "options": ["To align with the USA", "To align with the USSR", "To remain independent from major power blocs", "To form a military alliance"], "correctAnswer": "To remain independent from major power blocs", "explanation": "NAM was a group of states that did not formally align with or against any major power bloc. [7]" },
+        { "question": "Which of these is a permanent member of the UN Security Council?", "options": ["Germany", "Japan", "India", "China"], "correctAnswer": "China", "explanation": "The five permanent members of the UN Security Council are China, France, Russia, the United Kingdom, and the United States." },
+        { "question": "What does 'Sovereignty' mean in international relations?", "options": ["Dependence on other countries", "Economic dominance", "Supreme authority within a territory, free from external control", "Military power"], "correctAnswer": "Supreme authority within a territory, free from external control", "explanation": "Sovereignty refers to the full right and power of a governing body over itself, without any interference from outside sources or bodies. [7]" },
+        { "question": "Which major event led to the 'end of the Cold War'?", "options": ["Cuban Missile Crisis", "Vietnam War", "Fall of the Berlin Wall", "Korean War"], "correctAnswer": "Fall of the Berlin Wall", "explanation": "The fall of the Berlin Wall in 1989 and the subsequent dissolution of the Soviet Union are often cited as marking the end of the Cold War. [7]" },
+        { "question": "What is 'Disarmament'?", "options": ["Increasing military spending", "Development of new weapons", "Reduction or withdrawal of military forces and weapons", "Maintaining a large army"], "correctAnswer": "Reduction or withdrawal of military forces and weapons", "explanation": "Disarmament involves the reduction of weapons and military capabilities. [7]" },
+        { "question": "The concept of 'Globalization' is often associated with the increasing flow of:", "options": ["Goods, services, capital, and people", "Only capital", "Only goods", "Only information"], "correctAnswer": "Goods, services, capital, and people", "explanation": "Globalization encompasses economic, social, cultural, and political integration across borders. [26]" },
+        { "question": "Which international body primarily deals with global trade rules?", "options": ["IMF", "World Bank", "WTO", "UNICEF"], "correctAnswer": "WTO", "explanation": "The World Trade Organization (WTO) is an intergovernmental organization that regulates international trade. [7]" },
+        { "question": "What is the main objective of India's 'Look East Policy' (now Act East Policy)?", "options": ["To strengthen ties with African countries", "To strengthen economic and strategic relations with Southeast Asian and East Asian nations", "To focus solely on Western powers", "To develop closer ties with South American countries"], "correctAnswer": "To strengthen economic and strategic relations with Southeast Asian and East Asian nations", "explanation": "The policy aims to enhance India's engagement with its eastern neighbors. [7]" },
+        { "question": "Which country is NOT a member of SAARC (South Asian Association for Regional Cooperation)?", "options": ["India", "Pakistan", "Myanmar", "Sri Lanka"], "correctAnswer": "Myanmar", "explanation": "SAARC includes Afghanistan, Bangladesh, Bhutan, India, Maldives, Nepal, Pakistan, and Sri Lanka." },
+        { "question": "What is 'Human Security'?", "options": ["Security of a nation-state's borders", "Security of individuals from various threats (economic, food, health, environmental, personal, community, political)", "Military security", "Economic security only"], "correctAnswer": "Security of individuals from various threats (economic, food, health, environmental, personal, community, political)", "explanation": "Human security focuses on the safety and well-being of individuals rather than just the state." }
+      ]
+    },
+    {
+      "title": "Class 12 Economics",
+      "description": "An advanced quiz on macroeconomics, Indian economic development, and international economics for Class 12.",
+      "subject": "Economics",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "Which of these is a component of 'aggregate demand' in a two-sector economy?", "options": ["Government expenditure", "Exports", "Consumption expenditure", "Imports"], "correctAnswer": "Consumption expenditure", "explanation": "In a simple two-sector economy (households and firms), aggregate demand consists of consumption expenditure and investment expenditure. [3, 19]" },
+        { "question": "What is the relationship between 'marginal propensity to consume' (MPC) and 'marginal propensity to save' (MPS)?", "options": ["MPC + MPS = 0", "MPC - MPS = 1", "MPC + MPS = 1", "MPC * MPS = 1"], "correctAnswer": "MPC + MPS = 1", "explanation": "Any additional income is either consumed or saved. [3, 19]" },
+        { "question": "What is 'repo rate'?", "options": ["Rate at which commercial banks lend to the central bank", "Rate at which commercial banks borrow from the central bank", "Rate at which central bank lends to the government", "Rate at which commercial banks lend to each other"], "correctAnswer": "Rate at which commercial banks borrow from the central bank", "explanation": "Repo rate is the rate at which the central bank (RBI in India) lends money to commercial banks in the event of any shortfall of funds. [3]" },
+        { "question": "What is 'fiscal deficit'?", "options": ["Difference between total revenue and total expenditure", "Difference between total expenditure and total receipts excluding borrowings", "Difference between current revenue and current expenditure", "Difference between capital receipts and capital expenditure"], "correctAnswer": "Difference between total expenditure and total receipts excluding borrowings", "explanation": "Fiscal deficit indicates the total borrowing requirements of the government. [3, 13]" },
+        { "question": "What is 'demand-pull inflation' caused by?", "options": ["Increased supply of goods", "Decreased aggregate demand", "Excess aggregate demand over aggregate supply", "Decrease in money supply"], "correctAnswer": "Excess aggregate demand over aggregate supply", "explanation": "Demand-pull inflation occurs when aggregate demand in an economy is more than aggregate supply. [19]" },
+        { "question": "Which of these is a measure to correct 'deficient demand' (deflationary gap)?", "options": ["Increase government expenditure", "Increase taxes", "Decrease money supply", "Decrease bank rate"], "correctAnswer": "Increase government expenditure", "explanation": "To combat deficient demand, the government can increase its spending or reduce taxes to boost aggregate demand. Decreasing bank rate is also expansionary. [3, 19]" },
+        { "question": "What is the purpose of 'Balance of Payments' (BoP) statement?", "options": ["To record a country's exports only", "To record all economic transactions between residents of a country and the rest of the world", "To record government expenditure only", "To calculate national income"], "correctAnswer": "To record all economic transactions between residents of a country and the rest of the world", "explanation": "BoP records all transactions related to goods, services, and capital flows between a country and the rest of the world. [3, 19]" },
+        { "question": "What is 'privatization' in the context of economic reforms in India?", "options": ["Increasing government control over industries", "Transferring ownership of public sector enterprises to the private sector", "Nationalizing private businesses", "Increasing tariffs on imports"], "correctAnswer": "Transferring ownership of public sector enterprises to the private sector", "explanation": "Privatization was a key component of India's economic reforms in 1991. [3, 26]" },
+        { "question": "What is the 'Human Capital Formation'?", "options": ["Investing in physical capital", "Investing in human skills and knowledge", "Building new factories", "Extracting natural resources"], "correctAnswer": "Investing in human skills and knowledge", "explanation": "Human Capital Formation refers to the process of increasing the stock of human skills and knowledge through education, training, and healthcare. [3]" },
+        { "question": "What is the 'green GDP'?", "options": ["GDP based on agricultural output", "GDP that accounts for environmental damage and resource depletion", "GDP related to renewable energy", "GDP measured in constant prices"], "correctAnswer": "GDP that accounts for environmental damage and resource depletion", "explanation": "Green GDP is a measure of national income that accounts for the environmental costs of economic growth. [3]" }
+      ]
+    },
+    {
+      "title": "Class 12 Computer Science",
+      "description": "An advanced quiz on data structures, databases, networking, and programming in Python for Class 12.",
+      "subject": "Computer Science",
+      "grade": "12",
+      "difficulty": "hard",
+      "timeLimit": 50,
+      "questions": [
+        { "question": "Which data structure uses LIFO (Last In, First Out) principle?", "options": ["Queue", "Stack", "Linked List", "Tree"], "correctAnswer": "Stack", "explanation": "A stack allows operations only at one end, typically called the 'top', making it LIFO. [11]" },
+        { "question": "Which SQL command is used to retrieve data from a database?", "options": ["INSERT", "UPDATE", "SELECT", "DELETE"], "correctAnswer": "SELECT", "explanation": "The SELECT statement is used to fetch data from a database. [11]" },
+        { "question": "What does 'LAN' stand for?", "options": ["Local Area Network", "Large Area Network", "Limited Access Network", "Local Access Node"], "correctAnswer": "Local Area Network", "explanation": "A LAN connects computers within a limited area like an office or building." },
+        { "question": "Which of these is an example of an 'inheritance' in Object-Oriented Programming?", "options": ["A Car class having a speed attribute", "A 'Dog' class inheriting properties from an 'Animal' class", "A function calculating the area of a circle", "A loop iterating through a list"], "correctAnswer": "A 'Dog' class inheriting properties from an 'Animal' class", "explanation": "Inheritance allows a new class (subclass/child class) to derive properties and behavior from an existing class (superclass/parent class). [8]" },
+        { "question": "In Python, which keyword is used to define a function?", "options": ["function", "define", "def", "func"], "correctAnswer": "def", "explanation": "The 'def' keyword is used to create user-defined functions in Python." },
+        { "question": "What is 'Primary Key' in a database?", "options": ["A key that allows duplicate values", "A key that can be null", "A column or set of columns that uniquely identifies each row in a table", "A key used for sorting data"], "correctAnswer": "A column or set of columns that uniquely identifies each row in a table", "explanation": "A primary key ensures data integrity and uniquely identifies records. [8]" },
+        { "question": "Which networking device filters network traffic and forwards data packets between computer networks?", "options": ["Hub", "Switch", "Router", "Modem"], "correctAnswer": "Router", "explanation": "Routers connect different networks and route data packets between them. [11]" },
+        { "question": "What is the purpose of the 'finally' block in a try-except-finally statement in Python?", "options": ["It executes only if an exception occurs.", "It executes only if no exception occurs.", "It always executes, regardless of whether an exception occurred or not.", "It is optional and rarely used."], "correctAnswer": "It always executes, regardless of whether an exception occurred or not.", "explanation": "The `finally` block is guaranteed to execute, making it suitable for cleanup operations. [8]" },
+        { "question": "Which type of software is copyrighted and distributed at no cost, but usually allows for further development?", "options": ["Freeware", "Shareware", "Open Source", "Proprietary software"], "correctAnswer": "Open Source", "explanation": "Open-source software is usually free to use, modify, and distribute, with its source code publicly available. [11]" },
+        { "question": "What does 'WWW' stand for?", "options": ["World Wide Web", "World Wide Widget", "Web World Wide", "Wide Web World"], "correctAnswer": "World Wide Web", "explanation": "The World Wide Web is a system of interconnected hypertext documents accessible via the Internet. [11]" }
+      ]
+    }
+  ]
+}
