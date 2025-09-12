@@ -426,7 +426,7 @@
     <script>
         class AuthApp {
             constructor() {
-                this.backendUrl = 'https://sih-backend-xi.vercel.app';
+                this.backendUrl = 'http://localhost:8000'; // Change to your backend URL
                 this.token = localStorage.getItem('stitch_jwt') || null;
                 this.init();
             }

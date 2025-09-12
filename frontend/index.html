@@ -1461,7 +1461,7 @@
                 this.isExpanded = false; // Always start in slim mode
                 this.isMobile = window.innerWidth < 768;
                 this.isLoading = false;
-                this.backendUrl = 'https://sih-backend-xi.vercel.app'; // Change to your backend URL
+                this.backendUrl = 'http://localhost:8000'; // Change to your backend URL
                 console.log('Backend URL set to:', this.backendUrl);
                 console.log('Current timestamp:', new Date().toISOString());
                 this.token = localStorage.getItem('stitch_jwt') || null;

@@ -104,103 +104,8 @@ const checkAndAwardBadges = async (userId) => {
 
 // Routes
 
-// Authentication routes
-app.post('/api/auth/register', async (req, res) => {
-  try {
-    const { name, email, password, grade } = req.body;
-
-    // Check if user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists with this email' });
-    }
-
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 12);
-
-    // Create user
-    const user = new User({
-      name,
-      email,
-      password: hashedPassword,
-      grade
-    });
-
-    await user.save();
-
-    // Create initial leaderboard entry
-    const leaderboard = new Leaderboard({
-      userId: user._id,
-      grade,
-      totalPoints: 0,
-      badgeCount: 0
-    });
-    await leaderboard.save();
-
-    // Generate JWT
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET || 'fallback_secret',
-      { expiresIn: '7d' }
-    );
-
-    res.status(201).json({
-      message: 'User created successfully',
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        grade: user.grade
-      }
-    });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
-
-app.post('/api/auth/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-
-    // Find user
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Check password
-    const isValidPassword = await bcrypt.compare(password, user.password);
-    if (!isValidPassword) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Update last active
-    user.lastActive = new Date();
-    await user.save();
-
-    // Generate JWT
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET || 'fallback_secret',
-      { expiresIn: '7d' }
-    );
-
-    res.json({
-      message: 'Login successful',
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        grade: user.grade,
-        profilePicture: user.profilePicture
-      }
-    });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 
 // Dashboard route
 app.get('/api/dashboard', authenticateToken, async (req, res) => {
@@ -583,35 +488,8 @@ app.get('/api/badges', authenticateToken, async (req, res) => {
 });
 
 // Leaderboard route
-app.get('/api/leaderboard', authenticateToken, async (req, res) => {
-  try {
-    const currentUser = await User.findById(req.user.userId);
-    
-    if (!currentUser) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    
-    const leaderboard = await Leaderboard.find({ grade: currentUser.grade })
-      .populate('userId', 'name profilePicture')
-      .sort({ totalPoints: -1 })
-      .limit(20);
-
-    const leaderboardWithRanks = leaderboard
-      .filter(entry => entry.userId) // Filter out entries with null userId
-      .map((entry, index) => ({
-        rank: index + 1,
-        user: entry.userId,
-        totalPoints: entry.totalPoints,
-        badgeCount: entry.badgeCount,
-        isCurrentUser: entry.userId._id.toString() === req.user.userId
-      }));
-
-    res.json(leaderboardWithRanks);
-  } catch (error) {
-    console.error('Leaderboard error:', error);
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
+const leaderboardRoutes = require('./routes/leaderboard');
+app.use('/api/leaderboard', leaderboardRoutes);
 
 // Settings routes
 app.get('/api/settings', authenticateToken, async (req, res) => {
