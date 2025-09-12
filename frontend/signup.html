@@ -290,40 +290,19 @@
             cursor: pointer;
         }
 
+        #login-form, #signup-form {
+            transition: opacity 0.3s ease-in-out;
+        }
+
         #signup-form {
             display: none;
+            opacity: 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <a class="logo" href="#">
-                <div class="logo-icon">
-                    <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
-                    </svg>
-                </div>
-                <h1 class="logo-text">EduQuest</h1>
-            </a>
-            
-            <button class="menu-button" id="menu-toggle">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-            
-            <div class="nav-container" id="nav-menu">
-                <nav class="main-nav">
-                    <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Courses</a>
-                    <a href="#">Contact</a>
-                </nav>
-                <div class="header-actions">
-                    <a class="button" href="#" id="login-link">Log In</a>
-                    <a class="button button-primary" href="#" id="signup-link">Sign Up</a>
-                </div>
-            </div>
-        </header>
+
 
         <main>
             <div class="form-container">
@@ -397,7 +376,7 @@
     <script>
         class AuthApp {
             constructor() {
-                this.backendUrl = 'https://sih25048.vercel.app';
+                this.backendUrl = 'https://sih-backend-xi.vercel.app/';
                 this.token = localStorage.getItem('stitch_jwt') || null;
                 this.init();
             }
@@ -410,7 +389,7 @@
             checkAuth() {
                 if (this.token) {
                     // User is already logged in, redirect to dashboard
-                    window.location.href = 'dashboard.html';
+                    window.location.href = 'index.html';
                     return;
                 }
             }
@@ -420,39 +399,30 @@
                 const signupForm = document.getElementById('signup-form');
                 const showSignup = document.getElementById('show-signup');
                 const showLogin = document.getElementById('show-login');
-                const loginLink = document.getElementById('login-link');
-                const signupLink = document.getElementById('signup-link');
-                const menuToggle = document.getElementById('menu-toggle');
-                const navMenu = document.getElementById('nav-menu');
 
                 // Form switching
                 showSignup.addEventListener('click', (e) => {
                     e.preventDefault();
-                    loginForm.style.display = 'none';
-                    signupForm.style.display = 'block';
-                });
-
-                signupLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    loginForm.style.display = 'none';
-                    signupForm.style.display = 'block';
+                    loginForm.style.opacity = '0';
+                    setTimeout(() => {
+                        loginForm.style.display = 'none';
+                        signupForm.style.display = 'block';
+                        setTimeout(() => {
+                            signupForm.style.opacity = '1';
+                        }, 10);
+                    }, 300);
                 });
 
                 showLogin.addEventListener('click', (e) => {
                     e.preventDefault();
-                    loginForm.style.display = 'block';
-                    signupForm.style.display = 'none';
-                });
-
-                loginLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    loginForm.style.display = 'block';
-                    signupForm.style.display = 'none';
-                });
-                
-                // Mobile menu toggle
-                menuToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('open');
+                    signupForm.style.opacity = '0';
+                    setTimeout(() => {
+                        signupForm.style.display = 'none';
+                        loginForm.style.display = 'block';
+                        setTimeout(() => {
+                            loginForm.style.opacity = '1';
+                        }, 10);
+                    }, 300);
                 });
 
                 // Login form submission
@@ -495,7 +465,7 @@
                     localStorage.setItem('stitch_jwt', this.token);
                     
                     // Redirect to dashboard
-                    window.location.href = 'dashboard.html';
+                    window.location.href = 'index.html';
                 } catch (error) {
                     this.showError(`Login failed: ${error.message}`);
                 }
