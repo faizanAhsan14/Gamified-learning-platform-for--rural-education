@@ -498,10 +498,12 @@ app.get('/api/quizzes', authenticateToken, async (req, res) => {
     // Build filter object
     const filter = { isActive: true };
     if (subject) filter.subject = subject;
-    if (grade) filter.grade = parseInt(grade);
+    if (grade) filter.grade = grade;
     if (difficulty) filter.difficulty = difficulty;
     
+    console.log('Querying quizzes with filter:', filter);
     const quizzes = await Quiz.find(filter).populate('moduleId');
+    console.log('Found quizzes:', quizzes.length);
 
     const quizzesWithResults = quizzes.map(quiz => {
       const userResult = user.quizResults.find(result => 
@@ -570,6 +572,7 @@ app.get('/api/quizzes/:id', authenticateToken, async (req, res) => {
         question: q.question,
         type: q.type,
         options: q.options,
+        explanation: q.explanation,
         points: q.points
       }))
     };

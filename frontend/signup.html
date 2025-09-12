@@ -194,9 +194,14 @@
             max-width: 28rem;
             margin: auto;
             background-color: var(--container-background);
-            border-radius: 1rem;
+            --container-radius: 1rem;
+            --container-padding: 2rem;
+            border-radius: var(--container-radius);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
+            padding: var(--container-padding);
+            position: relative; /* added for stacked form animation */
+            min-height: 320px; /* reserve space to avoid layout jump */
+            transition: border-radius 450ms cubic-bezier(.2,.9,.2,1), padding 350ms cubic-bezier(.2,.9,.2,1), box-shadow 350ms;
         }
         
         @media (max-width: 480px) {
@@ -290,13 +295,55 @@
             cursor: pointer;
         }
 
-        #login-form, #signup-form {
-            transition: opacity 0.3s ease-in-out;
+        /* form sections animate in place (no absolute positioning) so content stays inside the box */
+        .form-section {
+            transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.45s ease;
+            transform-origin: top center;
+            box-sizing: border-box;
         }
 
-        #signup-form {
-            display: none;
+        .form-section.hidden {
             opacity: 0;
+            transform: translateY(-8px) scale(0.995);
+            max-height: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .form-section.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            max-height: 2000px; /* large enough to contain form content */
+            overflow: visible;
+            pointer-events: auto;
+        }
+
+        /* Morph variants for the container to give a morphing effect between forms */
+        .form-container.morph-signup {
+            --container-radius: 2rem 2rem 1rem 1rem; /* slightly different corner shape */
+            --container-padding: 3rem;
+            box-shadow: 0 20px 30px -6px rgba(0,0,0,0.25);
+            background: linear-gradient(180deg, rgba(28,38,32,1) 0%, rgba(24,34,28,1) 100%);
+        }
+
+        .form-container.morph-login {
+            --container-radius: 1rem;
+            --container-padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background: var(--container-background);
+        }
+
+        /* Slight header scaling during morph to emphasize change */
+        .form-container .form-header h2 {
+            transition: transform 350ms cubic-bezier(.2,.9,.2,1);
+        }
+
+        .form-container.morph-signup .form-header h2 {
+            transform: translateY(-4px) scale(1.04);
+        }
+
+        .form-container.morph-login .form-header h2 {
+            transform: translateY(0) scale(1);
         }
     </style>
 </head>
@@ -356,8 +403,11 @@
                         <div class="form-group">
                             <label class="form-label" for="signup-grade">Grade Level</label>
                             <select class="form-input" id="signup-grade" required>
+                                <option value="Grade 6">Grade 6</option>
+                                <option value="Grade 7">Grade 7</option>
+                                <option value="Grade 8">Grade 8</option>
                                 <option value="Grade 9">Grade 9</option>
-                                <option value="Grade 10" selected>Grade 10</option>
+                                <option value="Grade 10">Grade 10</option>
                                 <option value="Grade 11">Grade 11</option>
                                 <option value="Grade 12">Grade 12</option>
                             </select>
@@ -389,7 +439,7 @@
             checkAuth() {
                 if (this.token) {
                     // User is already logged in, redirect to dashboard
-                    window.location.href = 'index.html';
+                    window.location.href = '/';
                     return;
                 }
             }
@@ -397,32 +447,36 @@
             bindEvents() {
                 const loginForm = document.getElementById('login-form');
                 const signupForm = document.getElementById('signup-form');
+                const formContainer = document.querySelector('.form-container');
                 const showSignup = document.getElementById('show-signup');
                 const showLogin = document.getElementById('show-login');
 
                 // Form switching
+                // Use class toggles for smooth animation
                 showSignup.addEventListener('click', (e) => {
                     e.preventDefault();
-                    loginForm.style.opacity = '0';
-                    setTimeout(() => {
-                        loginForm.style.display = 'none';
-                        signupForm.style.display = 'block';
-                        setTimeout(() => {
-                            signupForm.style.opacity = '1';
-                        }, 10);
-                    }, 300);
+                    loginForm.classList.remove('visible');
+                    loginForm.classList.add('hidden');
+                    signupForm.classList.remove('hidden');
+                    signupForm.classList.add('visible');
+                    // apply morph style
+                    if (formContainer) {
+                        formContainer.classList.add('morph-signup');
+                        formContainer.classList.remove('morph-login');
+                    }
                 });
 
                 showLogin.addEventListener('click', (e) => {
                     e.preventDefault();
-                    signupForm.style.opacity = '0';
-                    setTimeout(() => {
-                        signupForm.style.display = 'none';
-                        loginForm.style.display = 'block';
-                        setTimeout(() => {
-                            loginForm.style.opacity = '1';
-                        }, 10);
-                    }, 300);
+                    signupForm.classList.remove('visible');
+                    signupForm.classList.add('hidden');
+                    loginForm.classList.remove('hidden');
+                    loginForm.classList.add('visible');
+                    // apply morph style back to login
+                    if (formContainer) {
+                        formContainer.classList.add('morph-login');
+                        formContainer.classList.remove('morph-signup');
+                    }
                 });
 
                 // Login form submission
@@ -439,8 +493,11 @@
                     await this.handleSignup(signupFormElement);
                 });
 
-                // Show login form by default
-                loginForm.style.display = 'block';
+                // Initialize classes: login visible, signup hidden
+                loginForm.classList.add('form-section', 'visible');
+                signupForm.classList.add('form-section', 'hidden');
+                // Start with login morph style
+                if (formContainer) formContainer.classList.add('morph-login');
             }
 
             async handleLogin(form) {
@@ -465,7 +522,7 @@
                     localStorage.setItem('stitch_jwt', this.token);
                     
                     // Redirect to dashboard
-                    window.location.href = 'index.html';
+                    window.location.href = '/';
                 } catch (error) {
                     this.showError(`Login failed: ${error.message}`);
                 }
@@ -490,11 +547,35 @@
                         throw new Error(errorData.message || 'Registration failed');
                     }
 
-                    // Registration successful, redirect to index
-                    window.location.href = 'index.html';
-                } catch (error) {
-                    this.showError(`Registration failed: ${error.message}`);
-                }
+                    // Registration successful — show success and switch to login form (don't redirect)
+                    this.showSuccess('Registration successful. Please log in.');
+
+                    const loginForm = document.getElementById('login-form');
+                    const signupForm = document.getElementById('signup-form');
+
+                    // Prefill the login email so user can just enter password
+                    const loginEmailInput = document.getElementById('login-email');
+                    if (loginEmailInput) loginEmailInput.value = email;
+
+                    // Switch to login form using class toggles for smooth animation
+                    signupForm.classList.remove('visible');
+                    signupForm.classList.add('hidden');
+                    loginForm.classList.remove('hidden');
+                    loginForm.classList.add('visible');
+
+                    // reset morph to login state after successful signup
+                    const formContainer = document.querySelector('.form-container');
+                    if (formContainer) {
+                        formContainer.classList.add('morph-login');
+                        formContainer.classList.remove('morph-signup');
+                    }
+
+                     // focus the password field so user can quickly login
+                     const loginPassword = document.getElementById('login-password');
+                     if (loginPassword) setTimeout(() => loginPassword.focus(), 350);
+                 } catch (error) {
+                     this.showError(`Registration failed: ${error.message}`);
+                 }
             }
 
             showError(message) {

@@ -1554,17 +1554,7 @@
                     }
                     
                     if (!this.token) {
-                        // For testing purposes, create a mock user if no token
-                        console.log('No token found, creating mock user for testing');
-                        this.data.dashboard = {
-                            user: {
-                                id: 'test_user_' + Date.now(),
-                                name: 'Test User',
-                                grade: 'Grade 9',
-                                profilePicture: ''
-                            }
-                        };
-                        this.loadContent('dashboard');
+                        window.location.href = 'signup.html';
                         return;
                     }
                     await this.loadAllData();
@@ -1869,7 +1859,7 @@
                                     <a href="#" data-content="badges">View All</a>
                                 </div>
                                 <div class="card">
-                                    <div style="display: flex; justify-content: space-around; text-align: center; gap: 1rem;">
+                                    <div style="display: flex; justify-content: space-around; text-align: center; gap: 1rem
                                     ${recentBadges.map(badge => `
                                         <div style="flex: 1;">
                                             <span class="material-symbols-outlined" style="font-size: 2.5rem; color: ${badge.color};">${badge.icon}</span>
@@ -2105,6 +2095,9 @@
                                         <div class="form-group">
                                             <label class="form-label">Grade Level</label>
                                             <select name="grade" class="form-input">
+                                            <option ${user.grade === 'Grade 6' ? 'selected' : ''}>Grade 6</option>
+                                            <option ${user.grade === 'Grade 7' ? 'selected' : ''}>Grade 7</option>
+                                            <option ${user.grade === 'Grade 8' ? 'selected' : ''}>Grade 8</option>    
                                             <option ${user.grade === 'Grade 9' ? 'selected' : ''}>Grade 9</option>
                                             <option ${user.grade === 'Grade 10' ? 'selected' : ''}>Grade 10</option>
                                             <option ${user.grade === 'Grade 11' ? 'selected' : ''}>Grade 11</option>
@@ -2441,6 +2434,7 @@
                         question: q.question,
                         correct_answer: q.correctAnswer,
                         incorrect_answers: (q.options || []).filter(option => option !== q.correctAnswer),
+                        explanation: q.explanation, // Pass explanation
                         category: selectedQuiz.subject,
                         difficulty: 'medium'
                     }));
@@ -2535,6 +2529,7 @@
                 const selectedAnswer = selected.dataset.answer;
                 const current = this.quizState.questions[this.quizState.currentIndex];
                 const correct = this.decodeHtml(current.correct_answer);
+                const explanation = current.explanation; // Get explanation
                 const isLastQuestion = this.quizState.currentIndex === this.quizState.questions.length - 1;
 
                 // Stop timer
@@ -2553,31 +2548,37 @@
                     this.elements.quizScore.classList.add('bounce-score');
                 }
 
-                // If this was the last question, jump directly to results
-                if (isLastQuestion) {
-                    this.showResults();
-                    return;
-                }
-
-                // Visual feedback only for non-final questions
+                // Visual feedback
                 if (selectedAnswer === correct) {
                     selected.classList.add('correct-answer');
                 } else {
                     selected.classList.add('incorrect-answer');
-                    // Shake container
                     this.elements.quizPlayerView.classList.remove('shake-animation');
                     void this.elements.quizPlayerView.offsetWidth;
                     this.elements.quizPlayerView.classList.add('shake-animation');
-                    // Highlight correct one
                     this.elements.quizAnswersContainer.querySelectorAll('.answer-btn').forEach(b => {
                         if (b.dataset.answer === correct) b.classList.add('correct-answer');
                     });
                 }
 
+                // Show explanation if available
+                if (explanation) {
+                    const explanationEl = document.createElement('div');
+                    explanationEl.className = 'explanation';
+                    explanationEl.innerHTML = `<strong>Explanation:</strong> ${explanation}`;
+                    this.elements.quizAnswersContainer.appendChild(explanationEl);
+                }
+
+                // If this was the last question, jump to results after a delay
+                if (isLastQuestion) {
+                    setTimeout(() => this.showResults(), explanation ? 2500 : 1200);
+                    return;
+                }
+
                 setTimeout(() => {
                     this.quizState.currentIndex += 1;
-                        this.displayCurrentQuestion();
-                }, 1200);
+                    this.displayCurrentQuestion();
+                }, explanation ? 2500 : 1200);
             }
 
             async showResults() {
