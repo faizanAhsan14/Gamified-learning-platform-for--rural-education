@@ -1561,20 +1561,16 @@
                         return;
                     }
 
-                    const [dashboard, modules, quizzes, badges, leaderboard, settings] = await Promise.all([
-                        this.apiFetch('/api/dashboard'),
-                        this.apiFetch('/api/modules'),
-                        this.apiFetch('/api/quizzes'),
-                        this.apiFetch('/api/badges'),
-                        this.apiFetch('/api/leaderboard'),
-                        this.apiFetch('/api/settings')
-                    ]);
+                    // Only load dashboard initially for faster startup
+                    const dashboard = await this.apiFetch('/api/dashboard');
                     this.data.dashboard = dashboard;
-                    this.data.modules = modules;
-                    this.data.quizzes = quizzes;
-                    this.data.badges = badges;
-                    this.data.leaderboard = leaderboard;
-                    this.data.settings = settings;
+                    
+                    // Initialize other data as empty objects to be loaded on demand
+                    this.data.modules = null;
+                    this.data.quizzes = null;
+                    this.data.badges = null;
+                    this.data.leaderboard = null;
+                    this.data.settings = null;
                     this.updateProfileSection();
                     this.showGlobalLoading(false);
                 } catch (error) {
@@ -1738,26 +1734,31 @@
                 }
             }
             
-            generateDashboardContent() {
-                if (!this.data.dashboard || !this.data.modules || !this.data.quizzes || !this.data.badges) {
+            async generateDashboardContent() {
+                if (!this.data.dashboard) {
                     return '<div class="content-header"><h1>Loading...</h1></div>';
                 }
                 
+                // Use featured data directly from dashboard (no additional API calls needed)
+                const modules = this.data.dashboard.featuredModules || [];
+                const quizzes = this.data.dashboard.featuredQuizzes || [];
+                const badges = this.data.dashboard.featuredBadges || [];
+                
                 const user = this.data.dashboard.user;
                 const totalProgress = this.data.dashboard.overallProgress || 0;
-                const recentModules = (this.data.dashboard.modules || []).slice(0, 3).map(m => ({
+                const recentModules = modules.map(m => ({
                     title: m.title,
                     description: m.description,
                     status: m.isUnlocked ? 'unlocked' : 'locked',
                     progress: m.progress || 0
                 }));
-                const recentQuizzes = (this.data.dashboard.quizzes || []).slice(0, 2).map(q => ({
+                const recentQuizzes = quizzes.map(q => ({
                     title: q.title,
                     questions: q.questions ? q.questions.length : 0,
                     duration: q.timeLimit || 0,
                     status: q.isCompleted ? 'completed' : 'unlocked'
                 }));
-                const recentBadges = (this.data.dashboard.badges || []).slice(0, 3).map(b => ({
+                const recentBadges = badges.map(b => ({
                     title: b.name,
                     type: b.type,
                     icon: 'emoji_events',
@@ -1861,12 +1862,13 @@
                 `;
             }
             
-            generateStemModulesContent() {
-                if (!this.data.modules) {
+            async generateStemModulesContent() {
+                const modules = await this.loadModules();
+                if (!modules) {
                     return '<div class="content-header"><h1>Loading...</h1></div>';
                 }
                 
-                const modules = this.data.modules.map(m => ({
+                const modulesData = modules.map(m => ({
                     title: m.title,
                     description: m.description,
                     status: m.isUnlocked ? 'unlocked' : 'locked',
@@ -1882,7 +1884,7 @@
                         
                         <section class="content-section">
                             <div class="grid-container">
-                            ${modules.map(module => `
+                            ${modulesData.map(module => `
                                 <div class="card">
                                     <h3 style="margin-bottom: 0.75rem; ${module.status === 'locked' ? 'color: var(--text-secondary);' : ''}">${module.title}</h3>
                                     <div class="card-content">
@@ -1926,8 +1928,8 @@
             
             async generateBadgesContent() {
                 try {
-                    // Use the existing API fetch to get badge data
-                    const badges = await this.apiFetch('/api/badges');
+                    // Load badges data on demand
+                    const badges = await this.loadBadges();
 
                     if (!badges) {
                         throw new Error('No badge data returned from API.');
@@ -1971,8 +1973,8 @@
             
             async generateLeaderboardContent() {
                 try {
-                    // Use backend API data instead of static data
-                    const leaderboard = this.data.leaderboard || [];
+                    // Load leaderboard data on demand
+                    const leaderboard = await this.loadLeaderboard() || [];
                     
                     // Get current user info
                     const currentUser = this.data.dashboard ? this.data.dashboard.user : null;
@@ -2032,13 +2034,14 @@
                 }
             }
             
-            generateSettingsContent() {
-                if (!this.data.settings) {
+            async generateSettingsContent() {
+                const settings = await this.loadSettings();
+                if (!settings) {
                     return '<div class="content-header"><h1>Loading...</h1></div>';
                 }
                 
-                const user = this.data.settings;
-                const preferences = this.data.settings.settings || { dailyReminders: true, soundEffects: true, darkMode: true };
+                const user = settings;
+                const preferences = settings.settings || { dailyReminders: true, soundEffects: true, darkMode: true };
                 
                 return `
                         <div class="content-header">
@@ -2205,9 +2208,9 @@
                     
                     grid.innerHTML = categoryList.map(cat => `
                         <div class="card">
-                            <h3 style="margin-bottom: 0.5rem;">${cat.name}</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">${cat.quizCount} quiz${cat.quizCount > 1 ? 'es' : ''} • Multiple choice</p>
-                            <button class="btn btn-primary" data-category-id="${cat.id}" data-category-name="${cat.name}" data-subject="${cat.subject}" data-grade="${cat.grade}">Start Quiz</button>
+                            <h3 style="margin-bottom: 0.5rem;">${cat.subject}</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">${cat.grade} • Multiple choice</p>
+                            <button class="btn btn-primary" data-category-id="${cat.id}" data-category-name="${cat.subject}" data-subject="${cat.subject}" data-grade="${cat.grade}">Start Quiz</button>
                         </div>
                     `).join('') + `
                         <div class="card" style="border: 2px dashed var(--primary-color);">
@@ -2230,11 +2233,18 @@
                             const name = e.currentTarget.getAttribute('data-category-name');
                             const subject = e.currentTarget.getAttribute('data-subject');
                             const grade = e.currentTarget.getAttribute('data-grade');
-                            console.log('Quiz button clicked:', { id, name, subject, grade });
+                            
+                            // Validate data attributes
+                            const validId = id && id !== 'undefined' ? id : null;
+                            const validName = name && name !== 'undefined' ? name : 'Quiz';
+                            const validSubject = subject && subject !== 'undefined' ? subject : 'General';
+                            const validGrade = grade && grade !== 'undefined' ? grade : (self.data.dashboard?.user?.grade || 'Grade 6');
+                            
+                            console.log('Quiz button clicked:', { id: validId, name: validName, subject: validSubject, grade: validGrade });
                             console.log('self context:', self);
                             console.log('startQuiz method exists:', typeof self.startQuiz);
                             if (typeof self.startQuiz === 'function') {
-                                self.startQuiz(id, name, subject, grade);
+                                self.startQuiz(validId, validName, validSubject, validGrade);
                             } else {
                                 console.error('startQuiz method not found!');
                             }
@@ -2344,8 +2354,54 @@
                 overlay.classList.toggle('active', !!isActive);
             }
 
+            // Load data on demand methods - now using consolidated dashboard data
+            async loadModules() {
+                if (this.data.modules === null && this.data.dashboard) {
+                    console.log('Using modules data from dashboard...');
+                    this.data.modules = this.data.dashboard.modules;
+                }
+                return this.data.modules;
+            }
+
+            async loadQuizzes() {
+                if (this.data.quizzes === null && this.data.dashboard) {
+                    console.log('Using quizzes data from dashboard...');
+                    this.data.quizzes = this.data.dashboard.quizzes;
+                }
+                return this.data.quizzes;
+            }
+
+            async loadBadges() {
+                if (this.data.badges === null && this.data.dashboard) {
+                    console.log('Using badges data from dashboard...');
+                    this.data.badges = this.data.dashboard.badges;
+                }
+                return this.data.badges;
+            }
+
+            async loadLeaderboard() {
+                if (this.data.leaderboard === null && this.data.dashboard) {
+                    console.log('Using leaderboard data from dashboard...');
+                    this.data.leaderboard = this.data.dashboard.leaderboard;
+                }
+                return this.data.leaderboard;
+            }
+
+            async loadSettings() {
+                if (this.data.settings === null && this.data.dashboard) {
+                    console.log('Using settings data from dashboard...');
+                    this.data.settings = this.data.dashboard.settings;
+                }
+                return this.data.settings;
+            }
+
             async startQuiz(categoryId, categoryName, subject, grade) {
                 console.log('startQuiz called with:', { categoryId, categoryName, subject, grade });
+                
+                // Validate and set fallback values
+                const validSubject = subject && subject !== 'undefined' ? subject : 'General';
+                const validGrade = grade && grade !== 'undefined' ? grade : (this.data.dashboard?.user?.grade || 'Grade 6');
+                
                 this.quizState.isActive = true;
                 this.quizState.questions = [];
                 this.quizState.currentIndex = 0;
@@ -2353,8 +2409,8 @@
                 this.quizState.correctAnswers = 0;
                 this.quizState.currentCategory = categoryName;
                 this.quizState.currentCategoryId = categoryId;
-                this.quizState.subject = subject;
-                this.quizState.grade = grade;
+                this.quizState.subject = validSubject;
+                this.quizState.grade = validGrade;
                 this.quizState.timeLeft = 30;
 
                 // Enter fullscreen quiz mode and show quiz player, hide standard page content inside main-content
@@ -2376,7 +2432,8 @@
                 this.elements.quizResultsView.style.display = 'none';
 
                 try {
-                    const response = await fetch(`/api/quizzes?subject=${subject}&grade=${grade}`, {
+                    console.log('Making quiz API call with:', { subject: validSubject, grade: validGrade });
+                    const response = await fetch(`/api/quizzes?subject=${validSubject}&grade=${validGrade}`, {
                         headers: {
                             'Authorization': `Bearer ${this.token}`,
                             'Content-Type': 'application/json'
@@ -2387,10 +2444,31 @@
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     
-                    const quizData = await response.json();
+                    let quizData = await response.json();
+                    console.log('Quiz data loaded:', quizData.length, 'quizzes');
+                    console.log('Quiz data:', quizData);
                     
-                    if (quizData.length === 0) {
-                        throw new Error('No quizzes found for this category');
+                    if (!quizData || quizData.length === 0) {
+                        console.log(`No quizzes found for ${validSubject} - ${validGrade}, trying without grade filter...`);
+                        // Try without grade filter as fallback
+                        const fallbackResponse = await fetch(`/api/quizzes?subject=${validSubject}`, {
+                            headers: {
+                                'Authorization': `Bearer ${this.token}`,
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                        
+                        if (fallbackResponse.ok) {
+                            const fallbackData = await fallbackResponse.json();
+                            if (fallbackData && fallbackData.length > 0) {
+                                console.log(`Found ${fallbackData.length} quizzes for ${validSubject} without grade filter`);
+                                quizData = fallbackData;
+                            } else {
+                                throw new Error(`No quizzes found for ${validSubject}`);
+                            }
+                        } else {
+                            throw new Error(`No quizzes found for ${validSubject} - ${validGrade}`);
+                        }
                     }
                     
                     // Select a random quiz from the filtered results
@@ -2594,7 +2672,12 @@
                 }
 
                 // Buttons
-                this.elements.playAgainBtn.onclick = () => this.startQuiz(this.quizState.currentCategoryId, this.quizState.currentCategory, this.quizState.subject, this.quizState.grade);
+                this.elements.playAgainBtn.onclick = () => this.startQuiz(
+                    this.quizState.currentCategoryId, 
+                    this.quizState.currentCategory, 
+                    this.quizState.subject, 
+                    this.quizState.grade
+                );
                 this.elements.returnToQuizzesBtn.onclick = () => this.returnToQuizzes();
             }
 
@@ -2630,7 +2713,7 @@
                 const scoreData = {
                     student_id: user.id || 'user_' + Date.now(),
                     student_name: user.name,
-                    grade: user.grade,
+                    grade: this.quizState.grade || user.grade || 'Grade 6',
                     subject: this.quizState.subject,
                     quiz_id: this.quizState.quizId,
                     score: percentage,

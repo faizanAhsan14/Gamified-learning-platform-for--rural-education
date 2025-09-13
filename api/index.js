@@ -48,7 +48,7 @@ const { authenticateToken } = require('./middleware/auth');
 
 // Routes
 const quizRoutes = require('./routes/quizzes');
-app.use('/quizzes', quizRoutes);
+app.use('/api/quizzes', quizRoutes);
 
 // Helper function to calculate overall progress
 const calculateOverallProgress = async (userId) => {
@@ -163,18 +163,82 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
       };
     });
 
+    // Get all quizzes for the quizzes page
+    const allQuizzes = await Quiz.find({ isActive: true }).populate('moduleId');
+    const allQuizzesWithResults = allQuizzes.map(quiz => {
+      const userResult = user.quizResults.find(result => 
+        result.quizId.toString() === quiz._id.toString()
+      );
+      
+      return {
+        ...quiz.toObject(),
+        isCompleted: !!userResult,
+        score: userResult ? userResult.score : null,
+        lastAttempt: userResult ? userResult.completedAt : null,
+        bestScore: userResult ? Math.max(...user.quizResults
+          .filter(r => r.quizId.toString() === quiz._id.toString())
+          .map(r => r.score)) : null
+      };
+    });
+
+    // Get all badges with status
+    const allBadges = [
+      { name: 'Biology Pro', type: 'gold', description: 'Completed all biology modules with 90%+ scores' },
+      { name: 'Algebra Ace', type: 'silver', description: 'Solved 50+ algebraic problems' },
+      { name: 'Coding Starter', type: 'bronze', description: 'Completed first programming module' },
+      { name: 'Quiz Master', type: 'special', description: 'Perfect scores on 5 consecutive quizzes' },
+      { name: 'Chemistry Champion', type: 'gold', description: 'Complete chemistry lab module' },
+      { name: 'Physics Pioneer', type: 'silver', description: 'Master motion physics concepts' }
+    ];
+
+    const badgesWithStatus = allBadges.map(badge => ({
+      ...badge,
+      earned: user.badges.some(userBadge => userBadge.name === badge.name),
+      earnedAt: user.badges.find(userBadge => userBadge.name === badge.name)?.earnedAt
+    }));
+
+    // Get leaderboard data
+    const leaderboardEntries = await Leaderboard.find()
+      .populate('userId', 'name email')
+      .sort({ totalPoints: -1, badgeCount: -1 })
+      .limit(10);
+
+    const leaderboard = leaderboardEntries.map((entry, index) => ({
+      rank: index + 1,
+      user: entry.userId,
+      totalPoints: entry.totalPoints,
+      badgeCount: entry.badgeCount,
+      isCurrentUser: entry.userId._id.toString() === user._id.toString()
+    }));
+
+    // Get user settings
+    const userSettings = {
+      name: user.name,
+      email: user.email,
+      grade: user.grade,
+      profilePicture: user.profilePicture,
+      settings: user.settings || { dailyReminders: true, soundEffects: true, darkMode: true }
+    };
+
     res.json({
       user: {
+        id: user._id,
         name: user.name,
+        email: user.email,
         grade: user.grade,
         profilePicture: user.profilePicture,
         totalPoints: user.totalPoints
       },
       overallProgress,
-      modules: availableModules.slice(0, 3), // Featured modules
-      quizzes: quizzesWithResults.slice(0, 2), // Recent quizzes
-      badges: user.badges.slice(-3), // Recent badges
-      totalBadges: user.badges.length
+      modules: availableModules, // All modules for the modules page
+      featuredModules: availableModules.slice(0, 3), // Featured modules for dashboard
+      quizzes: allQuizzesWithResults, // All quizzes for the quizzes page
+      featuredQuizzes: quizzesWithResults.slice(0, 2), // Recent quizzes for dashboard
+      badges: badgesWithStatus, // All badges with status
+      featuredBadges: user.badges.slice(-3), // Recent badges for dashboard
+      totalBadges: user.badges.length,
+      leaderboard: leaderboard,
+      settings: userSettings
     });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
@@ -293,177 +357,7 @@ app.post('/api/modules/:id/progress', authenticateToken, async (req, res) => {
   }
 });
 
-// Quiz routes
-app.get('/api/quizzes', authenticateToken, async (req, res) => {
-  try {
-    const user = await User.findById(req.user.userId);
-    const { subject, grade, difficulty } = req.query;
-
-    // Build filter object
-    const filter = { isActive: true };
-    if (subject && subject !== 'undefined') filter.subject = subject;
-    if (grade && grade !== 'undefined') filter.grade = grade;
-    if (difficulty && difficulty !== 'undefined') filter.difficulty = difficulty;
-    
-    console.log('Querying quizzes with filter:', filter);
-    const quizzes = await Quiz.find(filter).populate('moduleId');
-    console.log('Quizzes found from DB:', quizzes);
-    console.log('Found quizzes:', quizzes.length);
-
-    const quizzesWithResults = quizzes.map(quiz => {
-      const userResult = user.quizResults.find(result => 
-        result.quizId.toString() === quiz._id.toString()
-      );
-      
-      return {
-        ...quiz.toObject(),
-        isCompleted: !!userResult,
-        score: userResult ? userResult.score : null,
-        lastAttempt: userResult ? userResult.completedAt : null,
-        bestScore: userResult ? Math.max(...user.quizResults
-          .filter(r => r.quizId.toString() === quiz._id.toString())
-          .map(r => r.score)) : null
-      };
-    });
-
-    res.json(quizzesWithResults);
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
-
-// Get quiz categories (grouped by subject and grade)
-app.get('/api/quizzes/categories', authenticateToken, async (req, res) => {
-  try {
-    const categories = await Quiz.aggregate([
-      { $match: { isActive: true } },
-      {
-        $group: {
-          _id: { subject: '$subject', grade: '$grade' },
-          quizCount: { $sum: 1 },
-          title: { $first: '$title' }
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          id: { $concat: ['$_id.subject', ' - Grade ', { $toString: '$_id.grade' }] },
-          name: { $concat: ['$_id.subject', ' - Grade ', { $toString: '$_id.grade' }] },
-          subject: '$_id.subject',
-          grade: '$_id.grade',
-          quizCount: 1
-        }
-      },
-      { $sort: { subject: 1, grade: 1 } }
-    ]);
-
-    res.json(categories);
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
-
-app.get('/api/quizzes/:id', authenticateToken, async (req, res) => {
-  try {
-    const quiz = await Quiz.findById(req.params.id);
-    if (!quiz) {
-      return res.status(404).json({ message: 'Quiz not found' });
-    }
-
-    // Remove correct answers from questions for security
-    const safeQuiz = {
-      ...quiz.toObject(),
-      questions: quiz.questions.map(q => ({
-        question: q.question,
-        type: q.type,
-        options: q.options,
-        explanation: q.explanation,
-        points: q.points
-      }))
-    };
-
-    res.json(safeQuiz);
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
-
-app.post('/api/quizzes/:id/submit', authenticateToken, async (req, res) => {
-  try {
-    const { answers, timeSpent } = req.body;
-    const quiz = await Quiz.findById(req.params.id);
-    
-    if (!quiz) {
-      return res.status(404).json({ message: 'Quiz not found' });
-    }
-
-    // Calculate score
-    let correctAnswers = 0;
-    let totalPoints = 0;
-    let maxPoints = 0;
-
-    const detailedResults = quiz.questions.map((question, index) => {
-      const userAnswer = answers[index];
-      const isCorrect = userAnswer === question.correctAnswer;
-      
-      if (isCorrect) {
-        correctAnswers++;
-        totalPoints += question.points;
-      }
-      maxPoints += question.points;
-
-      return {
-        question: question.question,
-        userAnswer,
-        correctAnswer: question.correctAnswer,
-        isCorrect,
-        explanation: question.explanation,
-        points: isCorrect ? question.points : 0
-      };
-    });
-
-    const scorePercentage = Math.round((totalPoints / maxPoints) * 100);
-
-    // Save result
-    const user = await User.findById(req.user.userId);
-    user.quizResults.push({
-      quizId: quiz._id,
-      score: scorePercentage,
-      totalQuestions: quiz.questions.length,
-      timeSpent,
-      completedAt: new Date()
-    });
-
-    // Award points based on score
-    const pointsAwarded = Math.round(scorePercentage / 2); // Max 50 points per quiz
-    user.totalPoints += pointsAwarded;
-
-    await user.save();
-
-    // Update leaderboard
-    await Leaderboard.findOneAndUpdate(
-      { userId: user._id },
-      { 
-        totalPoints: user.totalPoints,
-        lastUpdated: new Date()
-      }
-    );
-
-    // Check for new badges
-    const newBadges = await checkAndAwardBadges(user._id);
-
-    res.json({
-      score: scorePercentage,
-      correctAnswers,
-      totalQuestions: quiz.questions.length,
-      pointsAwarded,
-      newBadges,
-      detailedResults: detailedResults
-    });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
-});
+// Quiz routes are now handled in /api/routes/quizzes.js
 
 // Badges route
 app.get('/api/badges', authenticateToken, async (req, res) => {
