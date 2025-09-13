@@ -9,6 +9,7 @@ const helmet = require('helmet');
 require('dotenv').config();
 
 const app = express();
+app.set('trust proxy', true);
 const PORT = process.env.PORT || 8000;
 
 // Middleware
@@ -297,15 +298,16 @@ app.get('/api/quizzes', authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId);
     const { subject, grade, difficulty } = req.query;
-    
+
     // Build filter object
     const filter = { isActive: true };
-    if (subject) filter.subject = subject;
-    if (grade) filter.grade = grade;
-    if (difficulty) filter.difficulty = difficulty;
+    if (subject && subject !== 'undefined') filter.subject = subject;
+    if (grade && grade !== 'undefined') filter.grade = grade;
+    if (difficulty && difficulty !== 'undefined') filter.difficulty = difficulty;
     
     console.log('Querying quizzes with filter:', filter);
     const quizzes = await Quiz.find(filter).populate('moduleId');
+    console.log('Quizzes found from DB:', quizzes);
     console.log('Found quizzes:', quizzes.length);
 
     const quizzesWithResults = quizzes.map(quiz => {
