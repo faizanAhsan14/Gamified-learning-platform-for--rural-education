@@ -48,7 +48,9 @@ const { authenticateToken } = require('./middleware/auth');
 
 // Routes
 const quizRoutes = require('./routes/quizzes');
+const reportsRoutes = require('./routes/reports');
 app.use('/api/quizzes', quizRoutes);
+app.use('/api/reports', reportsRoutes);
 
 // Helper function to calculate overall progress
 const calculateOverallProgress = async (userId) => {
