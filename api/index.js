@@ -31,7 +31,7 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // Database connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/gamified-learning';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://tim:timdim@sih-db.j7iwowb.mongodb.net/?retryWrites=true&w=majority&appName=SIH-DB';
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
@@ -77,6 +77,7 @@ const Quiz = require('./models/Quiz');
 const Leaderboard = require('./models/Leaderboard');
 const Category = require('./models/Category');
 const QuizResult = require('./models/QuizResult');
+const Video = require('./models/Video');
 
 // JWT middleware
 const { authenticateToken } = require('./middleware/auth');
@@ -84,8 +85,10 @@ const { authenticateToken } = require('./middleware/auth');
 // Routes
 const quizRoutes = require('./routes/quizzes');
 const reportsRoutes = require('./routes/reports');
+const videoRoutes = require('./routes/videos');
 app.use('/api/quizzes', quizRoutes);
 app.use('/api/reports', reportsRoutes);
+app.use('/api/videos', videoRoutes);
 
 // Test QuizResult model
 app.get('/api/test-quizresult', async (req, res) => {
@@ -104,13 +107,30 @@ app.get('/api/test-quizresult', async (req, res) => {
   }
 });
 
-// Helper function to calculate overall progress
+// Helper function to calculate overall progress based on quiz completion
 const calculateOverallProgress = async (userId) => {
-  const user = await User.findById(userId).populate('moduleProgress.moduleId');
-  if (!user || !user.moduleProgress.length) return 0;
+  const user = await User.findById(userId);
+  if (!user) return 0;
   
-  const totalProgress = user.moduleProgress.reduce((sum, progress) => sum + progress.progress, 0);
-  return Math.round(totalProgress / user.moduleProgress.length);
+  // Get all quizzes for the user's grade
+  const userGrade = user.grade;
+  const gradeNumber = userGrade.replace('Grade ', '');
+  const allQuizzes = await Quiz.find({ 
+    isActive: true,
+    grade: { $in: [userGrade, gradeNumber, parseInt(gradeNumber)] }
+  });
+  
+  if (!allQuizzes.length) return 0;
+  
+  // Count completed quizzes
+  const completedQuizzes = user.quizResults.filter(result => 
+    allQuizzes.some(quiz => quiz._id.toString() === result.quizId.toString())
+  );
+  
+  const uniqueCompletedQuizzes = new Set(completedQuizzes.map(r => r.quizId.toString()));
+  const completionPercentage = Math.round((uniqueCompletedQuizzes.size / allQuizzes.length) * 100);
+  
+  return completionPercentage;
 };
 
 // Helper function to award badges
@@ -178,6 +198,25 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
 
     const overallProgress = await calculateOverallProgress(req.user.userId);
 
+    // Calculate quiz completion statistics
+    const userGrade = user.grade;
+    const gradeNumber = userGrade.replace('Grade ', '');
+    const userGradeQuizzes = await Quiz.find({ 
+      isActive: true,
+      grade: { $in: [userGrade, gradeNumber, parseInt(gradeNumber)] }
+    });
+    
+    const completedQuizzes = user.quizResults.filter(result => 
+      userGradeQuizzes.some(quiz => quiz._id.toString() === result.quizId.toString())
+    );
+    const uniqueCompletedQuizzes = new Set(completedQuizzes.map(r => r.quizId.toString()));
+    
+    const quizStats = {
+      totalQuizzes: userGradeQuizzes.length,
+      completedQuizzes: uniqueCompletedQuizzes.size,
+      completionPercentage: overallProgress
+    };
+
     // Get available modules with prerequisites check
     const allModules = await Module.find({ isActive: true });
     const availableModules = [];
@@ -224,8 +263,8 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
     });
 
     // Get all quizzes for the quizzes page
-    const allQuizzes = await Quiz.find({ isActive: true }).populate('moduleId');
-    const allQuizzesWithResults = allQuizzes.map(quiz => {
+    const allAvailableQuizzes = await Quiz.find({ isActive: true }).populate('moduleId');
+    const allQuizzesWithResults = allAvailableQuizzes.map(quiz => {
       const userResult = user.quizResults && user.quizResults.find(result => 
         result && result.quizId && result.quizId.toString() === quiz._id.toString()
       );
@@ -292,6 +331,7 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
         totalPoints: user.totalPoints
       },
       overallProgress,
+      quizStats,
       modules: availableModules, // All modules for the modules page
       featuredModules: availableModules.slice(0, 3), // Featured modules for dashboard
       quizzes: allQuizzesWithResults, // All quizzes for the quizzes page
