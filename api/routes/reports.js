@@ -90,12 +90,36 @@ router.post('/test-answer-matching', authenticateToken, async (req, res) => {
       options: q.options
     })));
     
-    // Test answer matching
+    // Test answer matching - use same logic as main submission endpoint
     let correctAnswers = 0;
     const results = quiz.questions.map((question, index) => {
       const userAnswer = answers[index];
-      const correctAnswer = question.correctAnswer;
-      const isCorrect = userAnswer === correctAnswer;
+      // Handle both field names (correctAnswer from backend, correct_answer from frontend mapping)
+      const correctAnswer = question.correctAnswer || question.correct_answer;
+      
+      // Normalize answers for comparison (trim whitespace and handle case sensitivity)
+      const normalizedUserAnswer = userAnswer ? userAnswer.toString().trim() : '';
+      const normalizedCorrectAnswer = correctAnswer ? correctAnswer.toString().trim() : '';
+      
+      let isCorrect = false;
+      
+      // First try direct comparison
+      if (normalizedUserAnswer === normalizedCorrectAnswer) {
+        isCorrect = true;
+      } else if (question.options && question.options.length > 0) {
+        // If direct match fails, check if both answers exist in the options and are the same
+        const correctAnswerInOptions = question.options.find(option => 
+          option && option.toString().trim() === normalizedCorrectAnswer
+        );
+        const userAnswerInOptions = question.options.find(option => 
+          option && option.toString().trim() === normalizedUserAnswer
+        );
+        
+        // If both answers are found in options and they're the same option, it's correct
+        if (correctAnswerInOptions && userAnswerInOptions && correctAnswerInOptions === userAnswerInOptions) {
+          isCorrect = true;
+        }
+      }
       
       if (isCorrect) {
         correctAnswers++;
@@ -107,7 +131,9 @@ router.post('/test-answer-matching', authenticateToken, async (req, res) => {
         userAnswer,
         correctAnswer,
         isCorrect,
-        options: question.options
+        options: question.options,
+        normalizedUserAnswer,
+        normalizedCorrectAnswer
       };
     });
     
@@ -157,13 +183,16 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
     let correctAnswers = 0;
     let totalQuestions = quiz.questions.length;
 
+    console.log('=== QUIZ SUBMISSION DEBUG ===');
     console.log('Quiz questions:', quiz.questions.map((q, idx) => ({ 
       index: idx, 
       question: q.question, 
       correctAnswer: q.correctAnswer,
+      correct_answer: q.correct_answer,
       options: q.options 
     })));
     console.log('User answers:', answers);
+    console.log('User answers types:', answers.map(a => typeof a));
     console.log('Answers length:', answers.length);
     console.log('Questions length:', quiz.questions.length);
     
@@ -178,20 +207,55 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
       const userAnswer = answers[index];
       // Handle both field names (correctAnswer from backend, correct_answer from frontend mapping)
       const correctAnswer = question.correctAnswer || question.correct_answer;
-      const isCorrect = userAnswer === correctAnswer;
       
-      console.log(`Question ${index}: "${question.question}"`);
-      console.log(`User answer: "${userAnswer}"`);
-      console.log(`Correct answer: "${correctAnswer}"`);
-      console.log(`Is correct: ${isCorrect}`);
+      // Normalize answers for comparison (trim whitespace and handle case sensitivity)
+      const normalizedUserAnswer = userAnswer ? userAnswer.toString().trim() : '';
+      const normalizedCorrectAnswer = correctAnswer ? correctAnswer.toString().trim() : '';
       
-      // Try to find the correct answer in the options if direct match fails
-      if (!isCorrect && question.options) {
-        const correctAnswerInOptions = question.options.find(option => option === correctAnswer);
-        const userAnswerInOptions = question.options.find(option => option === userAnswer);
-        console.log(`Correct answer in options: ${correctAnswerInOptions}`);
-        console.log(`User answer in options: ${userAnswerInOptions}`);
+      let isCorrect = false;
+      
+      console.log(`\n--- Question ${index} ---`);
+      console.log(`Question: "${question.question}"`);
+      console.log(`User answer: "${userAnswer}" (type: ${typeof userAnswer}, normalized: "${normalizedUserAnswer}")`);
+      console.log(`Correct answer: "${correctAnswer}" (type: ${typeof correctAnswer}, normalized: "${normalizedCorrectAnswer}")`);
+      console.log(`Options:`, question.options);
+      
+      // First try direct comparison
+      if (normalizedUserAnswer === normalizedCorrectAnswer) {
+        isCorrect = true;
+        console.log(`✅ Direct match: ${isCorrect}`);
+      } else {
+        console.log(`❌ Direct match failed`);
+        
+        // Try case-insensitive comparison
+        if (normalizedUserAnswer.toLowerCase() === normalizedCorrectAnswer.toLowerCase()) {
+          isCorrect = true;
+          console.log(`✅ Case-insensitive match: ${isCorrect}`);
+        } else if (question.options && question.options.length > 0) {
+          console.log(`❌ Case-insensitive match failed, checking options`);
+          
+          // If direct match fails, check if both answers exist in the options and are the same
+          const correctAnswerInOptions = question.options.find(option => 
+            option && option.toString().trim() === normalizedCorrectAnswer
+          );
+          const userAnswerInOptions = question.options.find(option => 
+            option && option.toString().trim() === normalizedUserAnswer
+          );
+          
+          console.log(`Correct answer in options: "${correctAnswerInOptions}"`);
+          console.log(`User answer in options: "${userAnswerInOptions}"`);
+          
+          // If both answers are found in options and they're the same option, it's correct
+          if (correctAnswerInOptions && userAnswerInOptions && correctAnswerInOptions === userAnswerInOptions) {
+            isCorrect = true;
+            console.log(`✅ Found matching answers in options, marking as correct`);
+          } else {
+            console.log(`❌ No match found in options`);
+          }
+        }
       }
+      
+      console.log(`Final result: ${isCorrect ? '✅ CORRECT' : '❌ INCORRECT'}`);
       
       if (isCorrect) {
         correctAnswers++;
@@ -207,10 +271,13 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
       };
     });
 
+    console.log(`\n=== SCORING SUMMARY ===`);
     console.log(`Total correct answers: ${correctAnswers}/${totalQuestions}`);
+    console.log(`Correct answers percentage: ${totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0}%`);
 
     // Calculate percentage based on correct answers (consistent with frontend)
     const scorePercentage = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+    console.log(`Final score percentage: ${scorePercentage}%`);
     
     // Award points based on score percentage with better scaling
     let pointsAwarded = 0;
@@ -431,10 +498,12 @@ router.get('/user-performance', authenticateToken, async (req, res) => {
     // If no QuizResult stats, calculate from the results we have (either QuizResult or user array)
     if (stats.length === 0 && results.length > 0) {
       console.log('Calculating stats from available results');
+      console.log('Results data:', results.map(r => ({ score: r.score, pointsAwarded: r.pointsAwarded, timeSpent: r.timeSpent })));
+      
       const totalQuizzes = results.length;
-      const totalScore = results.reduce((sum, result) => sum + result.score, 0);
-      const averageScore = totalQuizzes > 0 ? totalScore / totalQuizzes : 0;
-      const bestScore = Math.max(...results.map(result => result.score));
+      const totalScore = results.reduce((sum, result) => sum + (result.score || 0), 0);
+      const averageScore = totalQuizzes > 0 ? Math.round(totalScore / totalQuizzes) : 0;
+      const bestScore = results.length > 0 ? Math.max(...results.map(result => result.score || 0)) : 0;
       const totalPoints = results.reduce((sum, result) => sum + (result.pointsAwarded || 0), 0);
       const totalTimeSpent = results.reduce((sum, result) => sum + (result.timeSpent || 0), 0);
       
@@ -480,18 +549,20 @@ router.get('/leaderboard/:grade', authenticateToken, async (req, res) => {
 
     console.log(`Found ${leaderboard.length} leaderboard entries for grade ${grade}`);
 
-    // Add rank to each entry
-    const rankedLeaderboard = leaderboard.map((entry, index) => ({
-      rank: index + 1,
-      userId: entry.userId._id,
-      name: entry.userId.name,
-      profilePicture: entry.userId.profilePicture,
-      totalPoints: entry.totalPoints,
-      badgeCount: entry.badgeCount,
-      weeklyPoints: entry.weeklyPoints,
-      monthlyPoints: entry.monthlyPoints,
-      lastUpdated: entry.lastUpdated
-    }));
+    // Add rank to each entry, filtering out entries with null userId
+    const rankedLeaderboard = leaderboard
+      .filter(entry => entry.userId) // Filter out entries with null userId
+      .map((entry, index) => ({
+        rank: index + 1,
+        userId: entry.userId._id,
+        name: entry.userId.name,
+        profilePicture: entry.userId.profilePicture,
+        totalPoints: entry.totalPoints,
+        badgeCount: entry.badgeCount,
+        weeklyPoints: entry.weeklyPoints,
+        monthlyPoints: entry.monthlyPoints,
+        lastUpdated: entry.lastUpdated
+      }));
 
     console.log('Leaderboard data:', rankedLeaderboard.slice(0, 3)); // Log first 3 entries
 

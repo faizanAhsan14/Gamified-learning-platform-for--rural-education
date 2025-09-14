@@ -31,9 +31,43 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://isurajpanda_db_user:7Lz0FjUP3dr1GnMz@cluster0.yxm40fv.mongodb.net/newGame', {
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/gamified-learning';
+
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+}).then(() => {
+  console.log('✅ MongoDB connected successfully');
+}).catch(err => {
+  console.error('❌ MongoDB connection error:', err.message);
+  console.log('💡 Trying to connect to local MongoDB...');
+  
+  // Fallback to local MongoDB
+  mongoose.connect('mongodb://localhost:27017/gamified-learning', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000,
+  }).then(() => {
+    console.log('✅ Connected to local MongoDB');
+  }).catch(localErr => {
+    console.error('❌ Local MongoDB connection failed:', localErr.message);
+    console.log('💡 Please ensure MongoDB is running locally or check your network connection');
+  });
+});
+
+// Connection event handlers
+mongoose.connection.on('connected', () => {
+  console.log('🔗 Mongoose connected to MongoDB');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('❌ Mongoose connection error:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('🔌 Mongoose disconnected from MongoDB');
 });
 
 // Models
@@ -138,6 +172,10 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
       .populate('moduleProgress.moduleId')
       .populate('completedModules');
 
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
     const overallProgress = await calculateOverallProgress(req.user.userId);
 
     // Get available modules with prerequisites check
@@ -147,19 +185,21 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
     for (const module of allModules) {
       const prerequisites = await Module.find({ _id: { $in: module.prerequisites } });
       const prerequisitesMet = prerequisites.every(prereq => 
-        user.completedModules.some(completed => completed._id.toString() === prereq._id.toString())
+        user.completedModules && user.completedModules.some(completed => 
+          completed && completed._id && completed._id.toString() === prereq._id.toString()
+        )
       );
       
-      const userProgress = user.moduleProgress.find(p => 
-        p.moduleId && p.moduleId._id.toString() === module._id.toString()
+      const userProgress = user.moduleProgress && user.moduleProgress.find(p => 
+        p && p.moduleId && p.moduleId._id && p.moduleId._id.toString() === module._id.toString()
       );
       
       availableModules.push({
         ...module.toObject(),
         isUnlocked: prerequisites.length === 0 || prerequisitesMet,
         progress: userProgress ? userProgress.progress : 0,
-        isCompleted: user.completedModules.some(completed => 
-          completed._id.toString() === module._id.toString()
+        isCompleted: user.completedModules && user.completedModules.some(completed => 
+          completed && completed._id && completed._id.toString() === module._id.toString()
         )
       });
     }
@@ -171,8 +211,8 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
 
     // Format quiz results
     const quizzesWithResults = recentQuizzes.map(quiz => {
-      const userResult = user.quizResults.find(result => 
-        result.quizId.toString() === quiz._id.toString()
+      const userResult = user.quizResults && user.quizResults.find(result => 
+        result && result.quizId && result.quizId.toString() === quiz._id.toString()
       );
       
       return {
@@ -186,8 +226,8 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
     // Get all quizzes for the quizzes page
     const allQuizzes = await Quiz.find({ isActive: true }).populate('moduleId');
     const allQuizzesWithResults = allQuizzes.map(quiz => {
-      const userResult = user.quizResults.find(result => 
-        result.quizId.toString() === quiz._id.toString()
+      const userResult = user.quizResults && user.quizResults.find(result => 
+        result && result.quizId && result.quizId.toString() === quiz._id.toString()
       );
       
       return {
@@ -195,8 +235,8 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
         isCompleted: !!userResult,
         score: userResult ? userResult.score : null,
         lastAttempt: userResult ? userResult.completedAt : null,
-        bestScore: userResult ? Math.max(...user.quizResults
-          .filter(r => r.quizId.toString() === quiz._id.toString())
+        bestScore: userResult && user.quizResults ? Math.max(...user.quizResults
+          .filter(r => r && r.quizId && r.quizId.toString() === quiz._id.toString())
           .map(r => r.score)) : null
       };
     });
@@ -213,8 +253,8 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
 
     const badgesWithStatus = allBadges.map(badge => ({
       ...badge,
-      earned: user.badges.some(userBadge => userBadge.name === badge.name),
-      earnedAt: user.badges.find(userBadge => userBadge.name === badge.name)?.earnedAt
+      earned: user.badges && user.badges.some(userBadge => userBadge && userBadge.name === badge.name),
+      earnedAt: user.badges && user.badges.find(userBadge => userBadge && userBadge.name === badge.name)?.earnedAt
     }));
 
     // Get leaderboard data
@@ -223,13 +263,15 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
       .sort({ totalPoints: -1, badgeCount: -1 })
       .limit(10);
 
-    const leaderboard = leaderboardEntries.map((entry, index) => ({
-      rank: index + 1,
-      user: entry.userId,
-      totalPoints: entry.totalPoints,
-      badgeCount: entry.badgeCount,
-      isCurrentUser: entry.userId._id.toString() === user._id.toString()
-    }));
+    const leaderboard = leaderboardEntries
+      .filter(entry => entry.userId) // Filter out entries with null userId
+      .map((entry, index) => ({
+        rank: index + 1,
+        user: entry.userId,
+        totalPoints: entry.totalPoints,
+        badgeCount: entry.badgeCount,
+        isCurrentUser: entry.userId._id.toString() === user._id.toString()
+      }));
 
     // Get user settings
     const userSettings = {
@@ -255,8 +297,8 @@ app.get('/api/dashboard', authenticateToken, async (req, res) => {
       quizzes: allQuizzesWithResults, // All quizzes for the quizzes page
       featuredQuizzes: quizzesWithResults.slice(0, 2), // Recent quizzes for dashboard
       badges: badgesWithStatus, // All badges with status
-      featuredBadges: user.badges.slice(-3), // Recent badges for dashboard
-      totalBadges: user.badges.length,
+      featuredBadges: user.badges ? user.badges.slice(-3) : [], // Recent badges for dashboard
+      totalBadges: user.badges ? user.badges.length : 0,
       leaderboard: leaderboard,
       settings: userSettings
     });
