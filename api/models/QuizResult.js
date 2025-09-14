@@ -41,14 +41,6 @@ const quizResultSchema = new mongoose.Schema({
     type: Number, 
     required: true 
   },
-  detailedResults: [{
-    question: String,
-    userAnswer: String,
-    correctAnswer: String,
-    isCorrect: Boolean,
-    explanation: String,
-    points: Number
-  }],
   completedAt: { 
     type: Date, 
     default: Date.now 

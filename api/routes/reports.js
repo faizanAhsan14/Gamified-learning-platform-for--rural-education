@@ -15,16 +15,118 @@ router.get('/test', (req, res) => {
 // Test QuizResult model
 router.get('/test-quizresult', async (req, res) => {
   try {
+    console.log('Testing QuizResult model...');
+    console.log('QuizResult model:', QuizResult);
+    console.log('QuizResult.modelName:', QuizResult.modelName);
+    console.log('QuizResult.schema:', QuizResult.schema);
+    
     const count = await QuizResult.countDocuments();
     res.json({ 
       message: 'QuizResult model is working!', 
       totalRecords: count,
-      modelName: QuizResult.modelName
+      modelName: QuizResult.modelName,
+      hasFindMethod: typeof QuizResult.find === 'function',
+      hasCountDocumentsMethod: typeof QuizResult.countDocuments === 'function'
     });
   } catch (error) {
+    console.error('QuizResult model error:', error);
     res.status(500).json({ 
       message: 'QuizResult model error', 
-      error: error.message 
+      error: error.message,
+      stack: error.stack
+    });
+  }
+});
+
+// Test user quizResults array
+router.get('/test-user-quizresults', authenticateToken, async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const user = await User.findById(userId).populate('quizResults.quizId', 'title subject');
+    
+    res.json({
+      message: 'User quizResults test',
+      userId: userId,
+      quizResultsCount: user.quizResults.length,
+      quizResults: user.quizResults.map(result => ({
+        quizId: result.quizId,
+        score: result.score,
+        totalQuestions: result.totalQuestions,
+        correctAnswers: Math.round((result.score / 100) * result.totalQuestions),
+        timeSpent: result.timeSpent,
+        pointsAwarded: result.pointsAwarded,
+        completedAt: result.completedAt,
+        subject: result.quizId?.subject || 'Unknown'
+      }))
+    });
+  } catch (error) {
+    console.error('User quizResults test error:', error);
+    res.status(500).json({ 
+      message: 'User quizResults test error', 
+      error: error.message
+    });
+  }
+});
+
+// Test quiz answer matching logic
+router.post('/test-answer-matching', authenticateToken, async (req, res) => {
+  try {
+    const { quizId, answers } = req.body;
+    const userId = req.user.userId;
+    
+    console.log('Testing answer matching for quiz:', quizId);
+    console.log('User answers:', answers);
+    
+    // Get quiz details
+    const quiz = await Quiz.findById(quizId);
+    if (!quiz) {
+      return res.status(404).json({ message: 'Quiz not found' });
+    }
+    
+    console.log('Quiz questions:', quiz.questions.map((q, idx) => ({
+      index: idx,
+      question: q.question,
+      correctAnswer: q.correctAnswer,
+      options: q.options
+    })));
+    
+    // Test answer matching
+    let correctAnswers = 0;
+    const results = quiz.questions.map((question, index) => {
+      const userAnswer = answers[index];
+      const correctAnswer = question.correctAnswer;
+      const isCorrect = userAnswer === correctAnswer;
+      
+      if (isCorrect) {
+        correctAnswers++;
+      }
+      
+      return {
+        questionIndex: index,
+        question: question.question,
+        userAnswer,
+        correctAnswer,
+        isCorrect,
+        options: question.options
+      };
+    });
+    
+    const scorePercentage = Math.round((correctAnswers / quiz.questions.length) * 100);
+    
+    res.json({
+      message: 'Answer matching test completed',
+      quizId,
+      totalQuestions: quiz.questions.length,
+      correctAnswers,
+      scorePercentage,
+      results
+    });
+    
+  } catch (error) {
+    console.error('Answer matching test error:', error);
+    res.status(500).json({ 
+      message: 'Answer matching test error', 
+      error: error.message
     });
   }
 });
@@ -55,9 +157,41 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
     let correctAnswers = 0;
     let totalQuestions = quiz.questions.length;
 
+    console.log('Quiz questions:', quiz.questions.map((q, idx) => ({ 
+      index: idx, 
+      question: q.question, 
+      correctAnswer: q.correctAnswer,
+      options: q.options 
+    })));
+    console.log('User answers:', answers);
+    console.log('Answers length:', answers.length);
+    console.log('Questions length:', quiz.questions.length);
+    
+    // Check if answers array has the right length
+    if (answers.length !== quiz.questions.length) {
+      console.error('MISMATCH: Answers length does not match questions length!');
+      console.error('Answers:', answers);
+      console.error('Questions:', quiz.questions.map(q => q.question));
+    }
+
     const detailedResults = quiz.questions.map((question, index) => {
       const userAnswer = answers[index];
-      const isCorrect = userAnswer === question.correctAnswer;
+      // Handle both field names (correctAnswer from backend, correct_answer from frontend mapping)
+      const correctAnswer = question.correctAnswer || question.correct_answer;
+      const isCorrect = userAnswer === correctAnswer;
+      
+      console.log(`Question ${index}: "${question.question}"`);
+      console.log(`User answer: "${userAnswer}"`);
+      console.log(`Correct answer: "${correctAnswer}"`);
+      console.log(`Is correct: ${isCorrect}`);
+      
+      // Try to find the correct answer in the options if direct match fails
+      if (!isCorrect && question.options) {
+        const correctAnswerInOptions = question.options.find(option => option === correctAnswer);
+        const userAnswerInOptions = question.options.find(option => option === userAnswer);
+        console.log(`Correct answer in options: ${correctAnswerInOptions}`);
+        console.log(`User answer in options: ${userAnswerInOptions}`);
+      }
       
       if (isCorrect) {
         correctAnswers++;
@@ -66,12 +200,14 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
       return {
         question: question.question,
         userAnswer,
-        correctAnswer: question.correctAnswer,
+        correctAnswer: correctAnswer,
         isCorrect,
         explanation: question.explanation,
         points: isCorrect ? 1 : 0
       };
     });
+
+    console.log(`Total correct answers: ${correctAnswers}/${totalQuestions}`);
 
     // Calculate percentage based on correct answers (consistent with frontend)
     const scorePercentage = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
@@ -91,10 +227,25 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
     }
 
     // Check if this is a retake
-    const existingResults = await QuizResult.find({ userId, quizId }).sort({ completedAt: -1 });
+    console.log('Checking for existing results...');
+    console.log('QuizResult model available:', !!QuizResult);
+    console.log('QuizResult.find available:', typeof QuizResult.find === 'function');
+    
+    let existingResults = [];
+    try {
+      existingResults = await QuizResult.find({ userId, quizId }).sort({ completedAt: -1 });
+      console.log('Found existing results:', existingResults.length);
+    } catch (findError) {
+      console.error('Error finding existing results:', findError);
+      // Continue with empty results
+    }
+    
     const attemptNumber = existingResults.length + 1;
 
     // Create quiz result record
+    console.log('Creating QuizResult document...');
+    console.log('QuizResult constructor available:', typeof QuizResult === 'function');
+    
     const quizResult = new QuizResult({
       userId,
       quizId,
@@ -105,11 +256,13 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
       correctAnswers,
       timeSpent,
       pointsAwarded,
-      detailedResults,
       attemptNumber
     });
 
+    console.log('QuizResult document created:', quizResult);
+    
     await quizResult.save();
+    console.log('QuizResult saved successfully:', quizResult._id);
 
     // Update user's quiz results array (keep existing functionality)
     // Check if this quiz was already attempted and update the best score
@@ -124,10 +277,12 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
         existingQuizResult.totalQuestions = quiz.questions.length;
         existingQuizResult.timeSpent = timeSpent;
         existingQuizResult.completedAt = new Date();
+        existingQuizResult.pointsAwarded = pointsAwarded;
         
         // Award bonus points for improvement (only if score improved significantly)
         if (scorePercentage - existingQuizResult.score >= 10) {
           pointsAwarded += 5; // Bonus for significant improvement
+          existingQuizResult.pointsAwarded = pointsAwarded;
         }
       }
     } else {
@@ -137,7 +292,8 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
         score: scorePercentage,
         totalQuestions: quiz.questions.length,
         timeSpent,
-        completedAt: new Date()
+        completedAt: new Date(),
+        pointsAwarded: pointsAwarded
       });
     }
 
@@ -170,8 +326,7 @@ router.post('/submit-quiz', authenticateToken, async (req, res) => {
       correctAnswers,
       totalQuestions: quiz.questions.length,
       pointsAwarded,
-      attemptNumber,
-      detailedResults
+      attemptNumber
     });
 
   } catch (error) {
@@ -198,20 +353,63 @@ router.get('/user-performance', authenticateToken, async (req, res) => {
 
     let results = [];
     try {
+      // First, let's check if there are any QuizResult documents at all
+      const totalCount = await QuizResult.countDocuments();
+      console.log('Total QuizResult documents in database:', totalCount);
+      
+      // Check if there are any results for this user
+      const userCount = await QuizResult.countDocuments({ userId });
+      console.log(`QuizResult documents for user ${userId}:`, userCount);
+      
       results = await QuizResult.find(filter)
         .populate('quizId', 'title subject difficulty timeLimit')
         .sort({ completedAt: -1 })
         .limit(parseInt(limit));
       console.log('Found results:', results.length);
+      
+      if (results.length > 0) {
+        console.log('First result:', results[0]);
+      }
     } catch (findError) {
       console.error('Error finding quiz results:', findError);
       // If QuizResult collection doesn't exist yet, return empty results
       results = [];
     }
 
-    // Calculate performance statistics
+    // If no QuizResult documents found, try to get data from user's quizResults array
+    if (results.length === 0) {
+      console.log('No QuizResult documents found, trying to get from user quizResults array');
+      const user = await User.findById(userId).populate('quizResults.quizId', 'title subject difficulty timeLimit');
+      if (user && user.quizResults && user.quizResults.length > 0) {
+        results = user.quizResults
+          .sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt))
+          .slice(0, parseInt(limit))
+          .map(result => {
+            // Calculate correct answers properly
+            const correctAnswers = Math.round((result.score / 100) * result.totalQuestions);
+            return {
+              quizId: result.quizId,
+              score: result.score,
+              totalQuestions: result.totalQuestions,
+              correctAnswers: correctAnswers,
+              timeSpent: result.timeSpent,
+              completedAt: result.completedAt,
+              subject: result.quizId?.subject || 'Unknown',
+              grade: user.grade,
+              pointsAwarded: result.pointsAwarded || 0
+            };
+          });
+        console.log('Found results from user quizResults array:', results.length);
+        if (results.length > 0) {
+          console.log('First result from user array:', results[0]);
+        }
+      }
+    }
+
+    // Calculate performance statistics after we have the results
     let stats = [];
     try {
+      // First try to get stats from QuizResult collection
       stats = await QuizResult.aggregate([
         { $match: { userId: new mongoose.Types.ObjectId(userId) } },
         {
@@ -225,10 +423,29 @@ router.get('/user-performance', authenticateToken, async (req, res) => {
           }
         }
       ]);
-      console.log('Stats calculated:', stats);
+      console.log('Stats calculated from QuizResult:', stats);
     } catch (statsError) {
-      console.error('Error calculating stats:', statsError);
-      // If stats fail, continue with empty stats
+      console.error('Error calculating stats from QuizResult:', statsError);
+    }
+
+    // If no QuizResult stats, calculate from the results we have (either QuizResult or user array)
+    if (stats.length === 0 && results.length > 0) {
+      console.log('Calculating stats from available results');
+      const totalQuizzes = results.length;
+      const totalScore = results.reduce((sum, result) => sum + result.score, 0);
+      const averageScore = totalQuizzes > 0 ? totalScore / totalQuizzes : 0;
+      const bestScore = Math.max(...results.map(result => result.score));
+      const totalPoints = results.reduce((sum, result) => sum + (result.pointsAwarded || 0), 0);
+      const totalTimeSpent = results.reduce((sum, result) => sum + (result.timeSpent || 0), 0);
+      
+      stats = [{
+        totalQuizzes,
+        averageScore,
+        bestScore,
+        totalPoints,
+        totalTimeSpent
+      }];
+      console.log('Stats calculated from available results:', stats[0]);
     }
 
     res.json({

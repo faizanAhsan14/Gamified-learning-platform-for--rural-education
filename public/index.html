@@ -2584,26 +2584,29 @@
                                 
                                 <div style="display: flex; flex-direction: column; gap: 1rem;">
                                     ${performanceData.results && performanceData.results.length > 0 ? 
-                                        performanceData.results.map(result => `
+                                        performanceData.results.map(result => {
+                                            console.log('Rendering result:', result);
+                                            return `
                                             <div style="display: grid; grid-template-columns: 1fr auto auto auto; gap: 1rem; padding: 1rem; background: var(--background-light); border-radius: 0.75rem; align-items: center;">
                                                 <div>
-                                                    <div style="font-weight: 600; color: var(--text-primary);">${result.quizId.title}</div>
-                                                    <div style="font-size: 0.9rem; color: var(--text-secondary);">${result.subject} • ${result.grade}</div>
+                                                    <div style="font-weight: 600; color: var(--text-primary);">${result.quizId?.title || 'Unknown Quiz'}</div>
+                                                    <div style="font-size: 0.9rem; color: var(--text-secondary);">${result.subject || 'Unknown'} • ${result.grade || 'Unknown'}</div>
                                                 </div>
                                                 <div style="text-align: center;">
-                                                    <div style="font-weight: 700; color: var(--primary-color);">${result.score}%</div>
+                                                    <div style="font-weight: 700; color: var(--primary-color);">${result.score || 0}%</div>
                                                     <div style="font-size: 0.8rem; color: var(--text-secondary);">Score</div>
                                                 </div>
                                                 <div style="text-align: center;">
-                                                    <div style="font-weight: 600; color: var(--text-primary);">${result.correctAnswers}/${result.totalQuestions}</div>
+                                                    <div style="font-weight: 600; color: var(--text-primary);">${result.correctAnswers || 0}/${result.totalQuestions || 0}</div>
                                                     <div style="font-size: 0.8rem; color: var(--text-secondary);">Correct</div>
                                                 </div>
                                                 <div style="text-align: center;">
-                                                    <div style="font-weight: 600; color: var(--text-primary);">${Math.round(result.timeSpent / 60)}m</div>
+                                                    <div style="font-weight: 600; color: var(--text-primary);">${Math.round((result.timeSpent || 0) / 60)}m</div>
                                                     <div style="font-size: 0.8rem; color: var(--text-secondary);">Time</div>
                                                 </div>
                                             </div>
-                                        `).join('') : 
+                                            `;
+                                        }).join('') : 
                                         '<div style="text-align: center; padding: 2rem; color: var(--text-secondary);">No quiz results yet. Take some quizzes to see your performance!</div>'
                                     }
                                 </div>
@@ -3075,6 +3078,7 @@
 
             async loadUserPerformance() {
                 try {
+                    console.log('Loading user performance data...');
                     const response = await fetch('/api/reports/user-performance', {
                         headers: {
                             'Authorization': `Bearer ${this.token}`
@@ -3083,6 +3087,15 @@
                     
                     if (response.ok) {
                         const data = await response.json();
+                        console.log('User performance data loaded:', data);
+                        console.log('Results count:', data.results ? data.results.length : 0);
+                        console.log('Statistics:', data.statistics);
+                        if (data.results && data.results.length > 0) {
+                            console.log('First result:', data.results[0]);
+                            console.log('First result score:', data.results[0].score);
+                            console.log('First result correct answers:', data.results[0].correctAnswers);
+                            console.log('First result total questions:', data.results[0].totalQuestions);
+                        }
                         return data;
                     } else {
                         console.error('Failed to load user performance:', response.statusText);
@@ -3292,6 +3305,12 @@
 
                 // Store user answer
                 this.quizState.userAnswers[this.quizState.currentIndex] = selectedAnswer;
+                
+                console.log(`Question ${this.quizState.currentIndex}: "${current.question}"`);
+                console.log(`Selected answer: "${selectedAnswer}"`);
+                console.log(`Correct answer: "${correct}"`);
+                console.log(`Is correct: ${selectedAnswer === correct}`);
+                console.log(`User answers so far:`, this.quizState.userAnswers);
 
                 // Stop timer
                 this.stopTimer();
@@ -3448,6 +3467,13 @@
                 };
 
                 console.log('Submitting quiz data:', quizData);
+                console.log('Quiz questions:', this.quizState.questions.map((q, idx) => ({
+                    index: idx,
+                    question: q.question,
+                    correct_answer: q.correct_answer,
+                    options: q.incorrect_answers ? [q.correct_answer, ...q.incorrect_answers] : []
+                })));
+                console.log('User answers array:', this.quizState.userAnswers);
 
                 try {
                     console.log('Using token:', this.token ? 'Token exists' : 'No token found');
@@ -3464,7 +3490,38 @@
                         // Test QuizResult model
                         const quizResultTestResponse = await fetch('/api/reports/test-quizresult');
                         const quizResultTestData = await quizResultTestResponse.json();
-                        console.log('QuizResult model test:', quizResultTestData);
+                        console.log('QuizResult model test (reports):', quizResultTestData);
+                        
+                        // Test QuizResult model from main API
+                        const mainQuizResultTestResponse = await fetch('/api/test-quizresult');
+                        const mainQuizResultTestData = await mainQuizResultTestResponse.json();
+                        console.log('QuizResult model test (main):', mainQuizResultTestData);
+                        
+                        // Test user quizResults array
+                        const userQuizResultsTestResponse = await fetch('/api/reports/test-user-quizresults', {
+                            headers: {
+                                'Authorization': `Bearer ${this.token}`
+                            }
+                        });
+                        const userQuizResultsTestData = await userQuizResultsTestResponse.json();
+                        console.log('User quizResults test:', userQuizResultsTestData);
+                        
+                        // Test answer matching with sample data
+                        if (this.quizState.quizId && this.quizState.userAnswers) {
+                            const answerMatchingTestResponse = await fetch('/api/reports/test-answer-matching', {
+                                method: 'POST',
+                                headers: {
+                                    'Authorization': `Bearer ${this.token}`,
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    quizId: this.quizState.quizId,
+                                    answers: this.quizState.userAnswers
+                                })
+                            });
+                            const answerMatchingTestData = await answerMatchingTestResponse.json();
+                            console.log('Answer matching test:', answerMatchingTestData);
+                        }
                     } catch (testError) {
                         console.error('API test failed:', testError);
                         console.log('This might indicate the API server is not running');
@@ -3533,12 +3590,12 @@
                     // Check and award achievements
                     const awards = await this.checkAchievements({
                         student_id: user.id,
-                        student_name: user.name,
-                        grade: this.quizState.grade || user.grade || 'Grade 6',
-                        subject: this.quizState.subject,
-                        quiz_id: this.quizState.quizId,
-                        score: percentage,
-                        timestamp: new Date().toISOString()
+                    student_name: user.name,
+                    grade: this.quizState.grade || user.grade || 'Grade 6',
+                    subject: this.quizState.subject,
+                    quiz_id: this.quizState.quizId,
+                    score: percentage,
+                    timestamp: new Date().toISOString()
                     });
 
                     if (awards && awards.length > 0) {
@@ -3563,6 +3620,10 @@
             async checkAchievements(scoreData) {
                 try {
                     const response = await fetch('data/achievements.json');
+                    if (!response.ok) {
+                        console.log('Achievements file not found, skipping achievement checks');
+                        return [];
+                    }
                     const achievementsData = await response.json();
 
                     const awards = [];

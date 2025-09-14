@@ -42,6 +42,7 @@ const Module = require('./models/Module');
 const Quiz = require('./models/Quiz');
 const Leaderboard = require('./models/Leaderboard');
 const Category = require('./models/Category');
+const QuizResult = require('./models/QuizResult');
 
 // JWT middleware
 const { authenticateToken } = require('./middleware/auth');
@@ -51,6 +52,23 @@ const quizRoutes = require('./routes/quizzes');
 const reportsRoutes = require('./routes/reports');
 app.use('/api/quizzes', quizRoutes);
 app.use('/api/reports', reportsRoutes);
+
+// Test QuizResult model
+app.get('/api/test-quizresult', async (req, res) => {
+  try {
+    const count = await QuizResult.countDocuments();
+    res.json({ 
+      message: 'QuizResult model is working!', 
+      totalRecords: count,
+      modelName: QuizResult.modelName
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      message: 'QuizResult model error', 
+      error: error.message 
+    });
+  }
+});
 
 // Helper function to calculate overall progress
 const calculateOverallProgress = async (userId) => {

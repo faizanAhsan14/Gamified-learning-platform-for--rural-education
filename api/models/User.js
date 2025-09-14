@@ -24,7 +24,8 @@ const userSchema = new mongoose.Schema({
     score: Number,
     totalQuestions: Number,
     completedAt: { type: Date, default: Date.now },
-    timeSpent: Number // in seconds
+    timeSpent: Number, // in seconds
+    pointsAwarded: { type: Number, default: 0 }
   }],
   settings: {
     dailyReminders: { type: Boolean, default: true },

@@ -1,0 +1,100 @@
+{
+  "achievements": [
+    {
+      "id": "quiz_master",
+      "name": "Quiz Master",
+      "description": "Perfect scores on 5 consecutive quizzes",
+      "type": "special",
+      "icon": "🏆",
+      "criteria": {
+        "type": "consecutive_perfect",
+        "count": 5
+      }
+    },
+    {
+      "id": "biology_pro",
+      "name": "Biology Pro",
+      "description": "Completed all biology modules with 90%+ scores",
+      "type": "gold",
+      "icon": "🥇",
+      "criteria": {
+        "type": "subject_excellence",
+        "subject": "Biology",
+        "min_score": 90,
+        "min_quizzes": 3
+      }
+    },
+    {
+      "id": "algebra_ace",
+      "name": "Algebra Ace",
+      "description": "Solved 50+ algebraic problems",
+      "type": "silver",
+      "icon": "🥈",
+      "criteria": {
+        "type": "problem_count",
+        "subject": "Mathematics",
+        "min_count": 50
+      }
+    },
+    {
+      "id": "coding_starter",
+      "name": "Coding Starter",
+      "description": "Completed first programming module",
+      "type": "bronze",
+      "icon": "🥉",
+      "criteria": {
+        "type": "module_completion",
+        "subject": "Programming",
+        "min_modules": 1
+      }
+    },
+    {
+      "id": "chemistry_champion",
+      "name": "Chemistry Champion",
+      "description": "Complete chemistry lab module",
+      "type": "gold",
+      "icon": "🧪",
+      "criteria": {
+        "type": "module_completion",
+        "subject": "Chemistry",
+        "min_modules": 1
+      }
+    },
+    {
+      "id": "physics_pioneer",
+      "name": "Physics Pioneer",
+      "description": "Master motion physics concepts",
+      "type": "silver",
+      "icon": "⚡",
+      "criteria": {
+        "type": "module_completion",
+        "subject": "Physics",
+        "min_modules": 1
+      }
+    },
+    {
+      "id": "speed_demon",
+      "name": "Speed Demon",
+      "description": "Complete 10 quizzes in under 5 minutes each",
+      "type": "special",
+      "icon": "⚡",
+      "criteria": {
+        "type": "speed_completion",
+        "min_quizzes": 10,
+        "max_time_per_quiz": 300
+      }
+    },
+    {
+      "id": "persistent_learner",
+      "name": "Persistent Learner",
+      "description": "Complete 20 quizzes total",
+      "type": "bronze",
+      "icon": "📚",
+      "criteria": {
+        "type": "total_quizzes",
+        "min_count": 20
+      }
+    }
+  ],
+  "awards": []
+}
