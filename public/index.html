@@ -2308,6 +2308,15 @@
                                     <h2>Interactive Quizzes</h2>
                                     <a href="#" data-content="quizzes">View All</a>
                                 </div>
+                                <div style="background: var(--background-light); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem; border-left: 3px solid var(--primary-color);">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                                        <span class="material-symbols-outlined" style="font-size: 1rem; color: var(--primary-color);">school</span>
+                                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary-color);">Grade-Specific Content</span>
+                                    </div>
+                                    <p style="margin: 0; font-size: 0.8rem; color: var(--text-secondary);">
+                                        Showing quizzes for ${user.grade || 'your grade level'}
+                                    </p>
+                                </div>
                                 <div style="display: flex; flex-direction: column; gap: 1rem;">
                                 ${recentQuizzes.map(quiz => `
                                     <div class="card quiz-row" style="flex-direction: row; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; flex-wrap: wrap; gap: 1rem;">
@@ -2398,15 +2407,28 @@
             }
 
             generateQuizzesContent() {
+                // Get user's grade for display
+                const userGrade = this.data.dashboard?.user?.grade || 'Grade 6';
+                
                 // Placeholder while categories load
                 return `
                         <div class="content-header">
                             <h1>Interactive Quizzes</h1>
-                            <p>Browse categories and start a 10-question quiz.</p>
+                            <p>Browse categories and start a 10-question quiz for <strong>${userGrade}</strong>.</p>
+                            <div style="background: var(--background-light); padding: 1rem; border-radius: 0.75rem; margin-top: 1rem; border-left: 4px solid var(--primary-color);">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span class="material-symbols-outlined" style="color: var(--primary-color);">school</span>
+                                    <strong style="color: var(--primary-color);">Grade-Specific Quizzes</strong>
+                                </div>
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                                    You can only access quizzes designed for your grade level (${userGrade}). 
+                                    This ensures the content is appropriate for your learning level.
+                                </p>
+                            </div>
                         </div>
                         <section class="content-section">
                             <div class="grid-container" id="quiz-categories-grid">
-                                <div class="card">Loading categories...</div>
+                                <div class="card">Loading categories for ${userGrade}...</div>
                             </div>
                         </section>
                 `;
@@ -2789,7 +2811,8 @@
                     }
 
                     const categoryList = await response.json();
-                    console.log('Quiz categories loaded:', categoryList.length, 'categories');
+                    const userGrade = self.data.dashboard?.user?.grade || 'Grade 6';
+                    console.log(`Quiz categories loaded for ${userGrade}:`, categoryList.length, 'categories');
                     const grid = self.elements.pageContent ? self.elements.pageContent.querySelector('#quiz-categories-grid') : null;
                     if (!grid) {
                         console.error('Quiz grid not found!');
@@ -2797,21 +2820,52 @@
                     }
 
                     if (!categoryList.length) {
-                        grid.innerHTML = '<div class="card">No categories found. Please try again later.</div>';
+                        grid.innerHTML = `
+                            <div class="card" style="text-align: center; padding: 2rem;">
+                                <div style="margin-bottom: 1rem;">
+                                    <span class="material-symbols-outlined" style="font-size: 3rem; color: var(--text-secondary);">quiz</span>
+                                </div>
+                                <h3 style="margin-bottom: 0.5rem; color: var(--text-primary);">No Quizzes Available</h3>
+                                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                                    No quizzes are currently available for <strong>${userGrade}</strong>.
+                                </p>
+                                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                                    Please check back later or contact your administrator if you believe this is an error.
+                                </p>
+                            </div>
+                        `;
                         return;
                     }
-
+                    
                     grid.innerHTML = categoryList.map(cat => `
                         <div class="card">
-                            <h3 style="margin-bottom: 0.5rem;">${cat.subject}</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">${cat.grade} • Multiple choice</p>
-                            <button class="btn btn-primary" data-category-id="${cat.id}" data-category-name="${cat.subject}" data-subject="${cat.subject}" data-grade="${cat.grade}">Start Quiz</button>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                                <h3 style="margin: 0;">${cat.subject}</h3>
+                                <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 600;">
+                                    ${cat.grade}
+                                </span>
+                            </div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">
+                                ${cat.quizCount} quiz${cat.quizCount !== 1 ? 'es' : ''} available • Multiple choice
+                            </p>
+                            <button class="btn btn-primary" data-category-id="${cat.id}" data-category-name="${cat.subject}" data-subject="${cat.subject}" data-grade="${cat.grade}">
+                                <span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem;">quiz</span>
+                                Start Quiz
+                            </button>
                         </div>
                     `).join('') + `
-                        <div class="card" style="border: 2px dashed var(--primary-color);">
-                            <h3 style="margin-bottom: 0.5rem; color: var(--primary-color);">Test Quiz</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">Debug test button</p>
-                            <button class="btn btn-secondary" onclick="console.log('Test button clicked'); alert('Test button works!');">Test Button</button>
+                        <div class="card" style="border: 2px dashed var(--primary-color); background: var(--background-light);">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                                <h3 style="margin: 0; color: var(--primary-color);">Test Quiz</h3>
+                                <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 600;">
+                                    ${userGrade}
+                                </span>
+                            </div>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">Debug test button for development</p>
+                            <button class="btn btn-primary" data-category-id="test" data-category-name="Test Quiz" data-subject="General" data-grade="${userGrade}">
+                                <span class="material-symbols-outlined" style="font-size: 1rem; margin-right: 0.5rem;">bug_report</span>
+                                Start Test Quiz
+                            </button>
                         </div>
                     `;
 

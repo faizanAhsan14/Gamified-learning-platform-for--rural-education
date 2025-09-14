@@ -40,17 +40,33 @@ router.get('/categories', authenticateToken, async (req, res) => {
 router.get('/', authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId);
-    const { subject, grade, difficulty } = req.query;
-
-    // Build filter object
-    const filter = { isActive: true };
-    if (subject && subject !== 'undefined') filter.subject = subject;
-    if (grade && grade !== 'undefined') {
-      // Handle both "Grade 11" and "11" formats
-      const gradeNumber = grade.replace('Grade ', '');
-      filter.grade = { $in: [grade, gradeNumber, parseInt(gradeNumber)] };
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
+
+    const { subject, grade, difficulty } = req.query;
+    const userGrade = user.grade;
+
+    // Build filter object - always filter by user's grade for security
+    const filter = { isActive: true };
+    
+    // Always restrict to user's grade
+    const gradeNumber = userGrade.replace('Grade ', '');
+    filter.grade = { $in: [userGrade, gradeNumber, parseInt(gradeNumber)] };
+    
+    if (subject && subject !== 'undefined') filter.subject = subject;
     if (difficulty && difficulty !== 'undefined') filter.difficulty = difficulty;
+    
+    // If a specific grade is requested, validate it matches user's grade
+    if (grade && grade !== 'undefined') {
+      const requestedGradeNumber = grade.replace('Grade ', '');
+      const userGradeNumber = userGrade.replace('Grade ', '');
+      if (requestedGradeNumber !== userGradeNumber) {
+        return res.status(403).json({ 
+          message: `Access denied: You can only access quizzes for your grade (${userGrade})` 
+        });
+      }
+    }
     
     console.log('Querying quizzes with filter:', filter);
     const quizzes = await Quiz.find(filter).populate('moduleId');
